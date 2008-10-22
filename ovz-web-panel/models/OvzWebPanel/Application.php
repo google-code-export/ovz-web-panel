@@ -1,0 +1,91 @@
+<?php
+/**
+ * Main application class
+ *
+ * @author Alexei Yuzhakov <ayuzhakov@parallels.com> 
+ */
+class OvzWebPanel_Application {
+	
+	/**
+	 * Run application
+	 *
+	 */
+	public function run() {
+		$this->_initConfig();		
+		//$this->_initDatabase();
+		$this->_initSession();
+		$this->_initFrontController();
+		//$this->_initRouter();		
+		$this->_initMainMenu();
+		
+		Zend_Controller_Front::getInstance()->dispatch();
+	}
+	
+	/**
+	 * Init config object
+	 *
+	 */
+	private function _initConfig() {
+		$config = new Zend_Config(OvzWebPanel_Config_Defaults::getDefaults(), true);
+		$configFromFile = new Zend_Config_Ini(ROOT_PATH . '/config.ini');
+		
+		$config->merge($configFromFile);
+		$config->setReadOnly();
+		
+		Zend_Registry::set('config', $config);
+	}
+	
+	/**
+	 * Init config object
+	 *
+	 */
+	private function _initDatabase() {
+		$db = Zend_Db::factory(
+			Zend_Registry::get('config')->database->adapter,
+			Zend_Registry::get('config')->database->params->toArray()
+		);
+		
+		Zend_Registry::set('db', $db);
+		
+		Zend_Db_Table_Abstract::setDefaultAdapter($db);
+	}
+	
+	/**
+	 * Init session object
+	 *
+	 */
+	private function _initSession() {
+		Zend_Session::start();
+		
+		Zend_Registry::set('session', new Zend_Session_Namespace('Default'));
+	}
+	
+	/**
+	 * Init controller object
+	 *
+	 */
+	private function _initFrontController() {
+		Zend_Layout::startMvc(array('layoutPath' => ROOT_PATH . '/views/layouts'));
+
+		$frontController = Zend_Controller_Front::getInstance();
+		$frontController->addControllerDirectory(ROOT_PATH . '/controllers');
+		$frontController->registerPlugin(new Zend_Controller_Plugin_ErrorHandler());
+	}
+	
+	/**
+	 * Init router
+	 *
+	 */
+	private function _initRouter() {
+		$router = Zend_Controller_Front::getInstance()->getRouter();		
+		$router->addConfig(Zend_Registry::get('config'), 'routes');
+	}
+	
+	/**
+	 * Init main menu
+	 *
+	 */
+	private function _initMainMenu() {		
+		Zend_Registry::set('mainMenu', Zend_Registry::get('config')->menu->toArray());
+	}
+}
