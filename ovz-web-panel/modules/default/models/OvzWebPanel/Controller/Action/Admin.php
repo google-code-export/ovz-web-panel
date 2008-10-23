@@ -35,7 +35,7 @@ abstract class OvzWebPanel_Controller_Action_Admin extends OvzWebPanel_Controlle
 		
 		// render menu
 		$response = $this->getResponse();
-		$response->insert('menu', $this->view->render('_default/menu.phtml')); 
+		$response->insert('menu', $this->view->render('_partials/menu.phtml')); 
 	}
 	
 	/**

@@ -14,7 +14,7 @@ class AuthController extends OvzWebPanel_Controller_Action_Simple {
 		$this->view->pageTitle = "Login";
 		
 		if ($this->getRequest()->isPost()) {
-			$this->_redirect('/admin/dashboard/index');
+			$this->_redirect('/admin/dashboard');
 		}
 	}
 	

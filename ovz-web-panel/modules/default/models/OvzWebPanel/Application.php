@@ -65,11 +65,10 @@ class OvzWebPanel_Application {
 	 *
 	 */
 	private function _initFrontController() {
-		Zend_Layout::startMvc(array('layoutPath' => ROOT_PATH . '/views/layouts'));
+		Zend_Layout::startMvc(array('layoutPath' => ROOT_PATH . '/modules/default/views/layouts'));
 
 		$frontController = Zend_Controller_Front::getInstance();
-		$frontController->addControllerDirectory(ROOT_PATH . '/modules/default/controllers');
-		$frontController->addControllerDirectory(ROOT_PATH . '/modules/admin/controllers', 'admin');
+		$frontController->addModuleDirectory(ROOT_PATH . '/modules');
 	}
 	
 	/**
