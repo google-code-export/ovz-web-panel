@@ -17,7 +17,18 @@ class OvzWebPanel_Config_Defaults {
 				'productName'    => 'OpenVZ Web Panel',
 				'productVersion' => '0.1',
 			),
-						
+
+			'routes' => array(							
+				'login' => array(
+					'type' => 'Zend_Controller_Router_Route_Static',
+					'route' => 'login',
+					'defaults' => array(
+						'controller' => 'auth',
+						'action' => 'login',
+					),
+				),
+			),
+					
 			'menu' => array(
 				'general' => array(
 					'title' => 'General',
@@ -41,6 +52,11 @@ class OvzWebPanel_Config_Defaults {
 							'title' => 'Logs',
 							'link' => '/logs',
 							'icon' => 'menu_icon_logs.png',
+						),
+						array(
+							'title' => 'Logout',
+							'link' => '/auth/logout',
+							'icon' => 'menu_icon_logout.png',
 						),
 					),
 				),

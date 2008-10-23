@@ -15,7 +15,7 @@ class OvzWebPanel_Application {
 		//$this->_initDatabase();
 		$this->_initSession();
 		$this->_initFrontController();
-		//$this->_initRouter();		
+		$this->_initRouter();		
 		$this->_initMainMenu();
 		
 		Zend_Controller_Front::getInstance()->dispatch();
@@ -68,7 +68,8 @@ class OvzWebPanel_Application {
 		Zend_Layout::startMvc(array('layoutPath' => ROOT_PATH . '/views/layouts'));
 
 		$frontController = Zend_Controller_Front::getInstance();
-		$frontController->addControllerDirectory(ROOT_PATH . '/controllers');
+		$frontController->addControllerDirectory(ROOT_PATH . '/modules/default/controllers');
+		$frontController->addControllerDirectory(ROOT_PATH . '/modules/admin/controllers', 'admin');
 	}
 	
 	/**
@@ -76,7 +77,7 @@ class OvzWebPanel_Application {
 	 *
 	 */
 	private function _initRouter() {
-		$router = Zend_Controller_Front::getInstance()->getRouter();		
+		$router = Zend_Controller_Front::getInstance()->getRouter();
 		$router->addConfig(Zend_Registry::get('config'), 'routes');
 	}
 	

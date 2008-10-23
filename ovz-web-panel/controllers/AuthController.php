@@ -11,7 +11,11 @@ class AuthController extends OvzWebPanel_Controller_Action_Simple {
 	 *
 	 */
 	public function loginAction() {
+		$this->view->pageTitle = "Login";
 		
+		if ($this->getRequest()->isPost()) {
+			$this->_redirect('/admin/dashboard/index');
+		}
 	}
 	
 	/**
@@ -19,7 +23,7 @@ class AuthController extends OvzWebPanel_Controller_Action_Simple {
 	 *
 	 */
 	public function logoutAction() {
-		
+		$this->_redirect('/login');
 	}
 
 }

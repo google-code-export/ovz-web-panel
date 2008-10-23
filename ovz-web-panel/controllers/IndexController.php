@@ -4,10 +4,10 @@
  *
  * @author Alexei Yuzhakov <ayuzhakov@parallels.com> 
  */
-class IndexController extends OvzWebPanel_Controller_Action_Admin {
+class IndexController extends OvzWebPanel_Controller_Action_Simple {
 		
 	public function indexAction() {
-		$this->view->pageTitle = 'Dashboard';
+		$this->_redirect('/login');
 	}
 			
 }
