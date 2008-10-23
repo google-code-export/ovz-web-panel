@@ -31,7 +31,7 @@ abstract class OvzWebPanel_Controller_Action_Admin extends OvzWebPanel_Controlle
 	 *
 	 */
 	private function _generateMenu() {
-		$this->view->menus = Zend_Registry::get('mainMenu');
+		$this->view->menus = Zend_Registry::get('config')->menu->toArray();
 		
 		// render menu
 		$response = $this->getResponse();

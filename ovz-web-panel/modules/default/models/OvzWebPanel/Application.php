@@ -15,8 +15,7 @@ class OvzWebPanel_Application {
 		//$this->_initDatabase();
 		$this->_initSession();
 		$this->_initFrontController();
-		$this->_initRouter();		
-		$this->_initMainMenu();
+		$this->_initRouter();
 		
 		Zend_Controller_Front::getInstance()->dispatch();
 	}
@@ -80,11 +79,4 @@ class OvzWebPanel_Application {
 		$router->addConfig(Zend_Registry::get('config'), 'routes');
 	}
 	
-	/**
-	 * Init main menu
-	 *
-	 */
-	private function _initMainMenu() {		
-		Zend_Registry::set('mainMenu', Zend_Registry::get('config')->menu->toArray());
-	}
 }
