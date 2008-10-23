@@ -27,31 +27,31 @@ class OvzWebPanel_Config_Defaults {
 							'link' => '/dashboard',
 							'icon' => 'menu_icon_dashboard.png',
 						),
+						array(
+							'title' => 'Configuration',
+							'link' => '/configuration',
+							'icon' => 'menu_icon_tool.png',
+						),
+						array(
+							'title' => 'Hardware servers',
+							'link' => '/hardware-server/list',
+							'icon' => 'menu_icon_host.png',
+						),
+						array(
+							'title' => 'Logs',
+							'link' => '/logs',
+							'icon' => 'menu_icon_logs.png',
+						),
 					),
 				),
-				
-				'reports' => array(
-					'title' => 'Statictics reports',
+			
+				'hardwareServers' => array(
+					'title' => 'Hardware servers',
 					'items' => array(
 						array(
-							'title' => 'Latest reports',
-							'link' => '/report/latest',
-							'icon' => 'menu_icon_report.png',
-						),
-						array(
-							'title' => 'Reports by version',
-							'link' => '/report/select-product',
-							'icon' => 'menu_icon_product.png',
-						),
-						array(
-							'title' => 'Search reports',
-							'link' => '/report/search',
-							'icon' => 'search.png',
-						),
-						array(
-							'title' => 'Upload report',
-							'link' => '/upload',
-							'icon' => 'menu_icon_plus.gif',
+							'title' => 'note.lan',
+							'link' => '/hardware-server/id/10',
+							'icon' => 'menu_icon_host.png',
 						),
 					),
 				),
@@ -61,15 +61,15 @@ class OvzWebPanel_Config_Defaults {
 					'items' => array(
 						array(
 							'title' => 'Documentation',
-							'link' => 'http://doc.sbts.plesk.ru/stats_server:start',
-							'external' => true,
-							'icon' => 'menu_icon_docs.png',
-						),
-						array(
-							'title' => 'Feedback',
-							'link' => 'http://doc.sbts.plesk.ru/stats_server:feedback',
+							'link' => 'http://link-here',
 							'external' => true,
 							'icon' => 'menu_icon_help.png',
+						),
+						array(
+							'title' => 'Support',
+							'link' => 'http://link-here',
+							'external' => true,
+							'icon' => 'menu_icon_docs.png',
 						),
 					),
 				),

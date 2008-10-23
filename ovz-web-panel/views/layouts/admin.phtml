@@ -1,0 +1,20 @@
+<?php echo $this->render('_header.phtml'); ?>
+
+		<script type="text/javascript" src="/js/layouts/admin.js"></script>
+
+		<div id="layoutMenu">
+			<?php echo $this->layout()->menu; ?>
+		</div>
+		
+		<div id="layoutMainArea">
+			<div id="layoutMainAreaHeader">
+				<?php echo $this->escape($this->pageTitle); ?>
+			</div>
+			<div id="layoutContent">
+				<?php echo $this->layout()->content; ?>
+			</div>
+		</div>
+		
+		<div id="layoutFooter"></div>
+
+<?php echo $this->render('_footer.phtml'); ?>

@@ -1,0 +1,27 @@
+<?php foreach ($this->menus as $menu) : ?>
+
+	<div class="menuBox">
+		<div class="menuHeader">
+			<div class="menuHeaderLeftConer"><img src="/skins/win_xp/images/panel_corner.gif"/></div>
+			<div class="menuHeaderText"><?php echo $this->escape($menu['title']); ?></div>
+			<div class="menuHeaderButton"><img src="/skins/win_xp/images/button_hide.gif"></div>
+		</div>
+		
+		<div class="menuContent">
+			<ul class="menuItemsList">
+				<?php foreach ($menu['items'] as $menuItem) : ?>
+					<li class="menuItem">
+						<a 
+							href="<?php echo $this->escape($menuItem['link']); ?>" 
+							<?php echo (isset($menuItem['external']) && $menuItem['external']) ? 'target="_blnak"' : ''; ?>
+						>
+							<img src="/skins/win_xp/images/<?php echo (isset($menuItem['icon']) && $menuItem['icon']) ? $menuItem['icon'] : 'menu_icon_default.gif'; ?>" border="0"/>
+							<span><?php echo $this->escape($menuItem['title']); ?></span>
+						</a>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</div>
+	
+<?php endforeach; ?>

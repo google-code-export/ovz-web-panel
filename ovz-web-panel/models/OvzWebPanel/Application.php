@@ -69,7 +69,6 @@ class OvzWebPanel_Application {
 
 		$frontController = Zend_Controller_Front::getInstance();
 		$frontController->addControllerDirectory(ROOT_PATH . '/controllers');
-		$frontController->registerPlugin(new Zend_Controller_Plugin_ErrorHandler());
 	}
 	
 	/**

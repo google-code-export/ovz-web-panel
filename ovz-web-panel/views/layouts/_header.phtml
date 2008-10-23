@@ -1,0 +1,31 @@
+<?php echo $this->doctype('XHTML1_STRICT'); ?>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><?php echo $this->escape($this->pageTitle) . " - $this->productName $this->productVersion "; ?></title>
+	<?php echo $this->headScript() ?>
+	<link rel="shortcut icon" href="/images/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="/skins/common.css?1"/>
+	<link rel="stylesheet" type="text/css" href="/skins/win_xp/styles.css?1"/>
+	<script type="text/javascript" src="/js/externals/prototype.js"></script>
+	<script type="text/javascript" src="/js/layouts/abstract.js"></script>
+</head>
+<body>
+
+	<div id="layoutMain">
+		<div id="layoutHeader">
+			<div id="layoutLogo">
+				<div id="layoutLogoInner">
+					<img src="/skins/win_xp/images/logo.gif">
+					<?php echo "$this->productName $this->productVersion"; ?>
+				</div>
+			</div>
+			<div id="layoutCopyright">
+				<div id="layoutCopyrightInner">
+					&copy; Copyright 2004-2008 Parallels.<br/>
+					All Rights Reserved.
+				</div>
+			</div>
+		</div>
+		
+		<div id="layoutSeparator"><img width="100%" height="2" src="/images/blank.gif"/></div>
