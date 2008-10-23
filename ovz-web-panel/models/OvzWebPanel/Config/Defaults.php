@@ -35,22 +35,22 @@ class OvzWebPanel_Config_Defaults {
 					'items' => array(
 						array(
 							'title' => 'Dashboard',
-							'link' => '/dashboard',
+							'link' => '/admin/dashboard',
 							'icon' => 'menu_icon_dashboard.png',
 						),
 						array(
 							'title' => 'Configuration',
-							'link' => '/configuration',
+							'link' => '/admin/configuration',
 							'icon' => 'menu_icon_tool.png',
 						),
 						array(
 							'title' => 'Hardware servers',
-							'link' => '/hardware-server/list',
+							'link' => '/admin/hardware-server/list',
 							'icon' => 'menu_icon_host.png',
 						),
 						array(
 							'title' => 'Logs',
-							'link' => '/logs',
+							'link' => '/admin/logs',
 							'icon' => 'menu_icon_logs.png',
 						),
 						array(
@@ -66,7 +66,7 @@ class OvzWebPanel_Config_Defaults {
 					'items' => array(
 						array(
 							'title' => 'note.lan',
-							'link' => '/hardware-server/id/10',
+							'link' => '/admin/hardware-server/id/10',
 							'icon' => 'menu_icon_host.png',
 						),
 					),
