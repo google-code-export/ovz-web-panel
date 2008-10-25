@@ -1,0 +1,3 @@
+OvzWebPanel = {};
+
+OvzWebPanel.Layouts = {};

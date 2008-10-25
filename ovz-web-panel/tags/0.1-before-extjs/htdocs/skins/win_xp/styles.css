@@ -1,0 +1,238 @@
+table {
+	width: 100%;
+}
+
+th {
+	background-color: #D6DFF7;
+}
+
+tr {
+	background-color: #F2F2F2;
+}
+
+a {
+	color: #215DC6;
+}
+
+a:hover {
+	color: #000;
+}
+
+legend {
+	font-weight: bold;
+	color: #000
+}
+
+fieldset {
+	margin: 10px;
+}
+
+#layoutMain {
+	height: 100%;
+	width: 100%;
+}
+
+#layoutHeader {
+	width: 100%;
+	height: 48px;
+	background-image: url(images/top_header_body_bg.jpg);
+	background-position: right bottom;
+	background-repeat: no-repeat;
+	background-color: #FFFFFF;
+}
+
+#layoutLogo {
+	float: left;
+	text-align: center;
+	top: 50%;
+	display: table;
+	height: 48px;
+	padding-left: 20px;
+}
+
+#layoutLogoInner {
+	display: table-cell;
+	padding-top: 10px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#layoutLogoInner img {
+	vertical-align: middle;
+}
+
+#layoutCopyright {
+	float: right;
+	color: #FFFFFF;
+	text-align: right;
+	padding-right: 50px;
+	display: table;
+	height: 48px;
+}
+
+#layoutCopyrightInner {
+	display: table-cell;
+	padding-top: 10px;
+}
+
+#layoutSeparator {
+	width: 100%;
+	height: 2px;
+	background-color: #7083E1;
+}
+
+#layoutMenu {
+	background-color: #6E89DD;
+	float: left;
+	width: 250px;
+	height: expression((document.body.clientHeight - 50) + "px");
+	bottom: 0px;
+	top: 50px;
+	left: 0px;
+	position: absolute;
+	overflow: auto;
+}
+
+#layoutMainArea {
+	margin-left: 250px;
+}
+
+#layoutMainAreaHeader {
+	height: 40px;
+	background-color: #FFFFFF;
+	font-size: 20px;
+	border-bottom: 1px solid;
+	line-height: 40px;
+	padding-left: 10px;
+}
+
+#layoutContent {
+	overflow: auto;
+}
+
+#layoutFooter {
+	clear: both;
+}
+
+#layoutSelectProjectBox {
+	padding-top: 100px;
+	width: 500px;
+	margin: auto;
+}
+
+#layoutErrorBox {
+	padding-top: 100px;
+	width: 700px;
+	margin: auto;
+}
+
+#pager {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	float: left;
+}
+
+.rowStatusPassed {
+	background-color: #CCFFCC;
+}
+
+.rowStatusFailed {
+	background-color: #FFCCCC;
+}
+
+.menuBox {
+	padding: 10px;
+}
+
+.menuHeader {
+	background-color: #FFFFFF;
+	height: 21px;
+	background-image: url(images/panel_header_bg.gif);
+	background-repeat: no-repeat;
+	background-position: right top;
+}
+
+.menuHeaderLeftConer {
+	float: left;
+}
+
+.menuHeaderText {
+	float: left;
+	color: #215DC6;
+	font-weight: bold;
+	padding-left: 10px;
+	padding-top: 4px;
+}
+
+.menuHeaderButton {
+	float: right;
+	padding-right: 2px;
+}
+
+.menuContent {
+	background-color: #D6DFF7;
+	padding: 10px;
+}
+
+.menuItemsList {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	line-height: 20px;
+	text-indent: 10px;
+}
+
+.menuItem {
+	padding: 2px;
+}
+
+.menuItem a {
+	text-decoration: none;
+}
+
+.menuItem img {
+	vertical-align: middle;
+	padding-right: 5px;
+}
+
+.menuItem span {
+	text-decoration: underline;
+}
+
+.tableLinkMore {
+	float: left;
+	padding: 5px;
+}
+
+.tableLinkRss {
+	float: right;
+	padding: 5px;
+}
+
+.tableLinkRss a {
+	background: url(images/rss.png) no-repeat 0 50%;
+	padding: 2px 0 2px 22px;
+}
+
+.tableRecordsTotal {
+	float: right;
+	padding: 5px;
+}
+
+.clearer {
+	clear: both;
+}
+
+.tableRowHighlighted {
+	background-color: #E2E2E2
+}
+
+.detailsLink {
+	background: url(images/search.png) no-repeat 0 50%;
+	padding: 2px 0 2px 22px;
+}
+
+.filterLink {
+	background: url(images/filter.gif) no-repeat 0 50%;
+	padding: 2px 0 2px 22px;
+}
