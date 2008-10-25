@@ -9,23 +9,8 @@ OvzWebPanel.Layouts.Admin.autoResizeContentArea = function() {
 	layoutContent.style.width = (document.body.scrollWidth - contentWidthOffset) + 'px';
 }
 
-OvzWebPanel.Layouts.Admin.observeListRowsHighlight = function() {
-	highlightRowCallback = function(listRow) {
-		listRow.observe('mouseover', function(event) {
-			listRow.addClassName('tableRowHighlighted');
-		});
-		
-		listRow.observe('mouseout', function(event) {
-			listRow.removeClassName('tableRowHighlighted');
-		});
-	}
-	
-	$$('tr').each(highlightRowCallback);
-}
-
 Event.observe(window, 'load', function(event) {
 	OvzWebPanel.Layouts.Admin.autoResizeContentArea();
-	OvzWebPanel.Layouts.Admin.observeListRowsHighlight();
 });
 
 Event.observe(window, 'resize', function(event) {
