@@ -2,7 +2,7 @@
 /**
  * Auth controller actions
  *
- * @author Alexei Yuzhakov <ayuzhakov@parallels.com> 
+ * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
 class AuthController extends OvzWebPanel_Controller_Action_Simple {
 		

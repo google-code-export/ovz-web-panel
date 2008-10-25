@@ -2,7 +2,7 @@
 /**
  * Index controller
  *
- * @author Alexei Yuzhakov <ayuzhakov@parallels.com> 
+ * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
 class IndexController extends OvzWebPanel_Controller_Action_Simple {
 		

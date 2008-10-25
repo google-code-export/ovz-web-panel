@@ -2,7 +2,7 @@
 /**
  * Abstract controller action
  *
- * @author Alexei Yuzhakov <ayuzhakov@parallels.com> 
+ * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
 abstract class OvzWebPanel_Controller_Action_Abstract extends Zend_Controller_Action {
 	

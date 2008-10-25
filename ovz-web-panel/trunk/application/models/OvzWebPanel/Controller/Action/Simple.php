@@ -2,7 +2,7 @@
 /**
  * Simple (by layout) controller
  *
- * @author Alexei Yuzhakov <ayuzhakov@parallels.com> 
+ * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
 abstract class OvzWebPanel_Controller_Action_Simple extends OvzWebPanel_Controller_Action_Abstract {
 	

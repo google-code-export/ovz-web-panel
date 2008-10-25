@@ -2,7 +2,7 @@
 /**
  * Errors controller actions
  *
- * @author Alexei Yuzhakov <ayuzhakov@parallels.com> 
+ * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
 class ErrorController extends OvzWebPanel_Controller_Action_Simple {
 		

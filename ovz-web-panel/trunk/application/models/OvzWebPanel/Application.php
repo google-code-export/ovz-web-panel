@@ -2,7 +2,7 @@
 /**
  * Main application class
  *
- * @author Alexei Yuzhakov <ayuzhakov@parallels.com> 
+ * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
 class OvzWebPanel_Application {
 	
