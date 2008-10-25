@@ -1,4 +1,4 @@
 BEGIN TRANSACTION;
-CREATE TABLE user (id integer primary key autoincrement, userName varchar(255), userPassword  char(32), roleId int);
+CREATE TABLE users (id INTEGER NOT NULL PRIMARY KEY autoincrement, userName VARCHAR(255) UNIQUE NOT NULL, userPassword CHAR(32) NOT NULL, roleId INTEGER NOT NULL);
 DELETE FROM sqlite_sequence;
 COMMIT;

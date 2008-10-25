@@ -1,5 +1,7 @@
 <?php
 
+chdir(dirname(__FILE__));
+
 define('ROOT_PATH', dirname(__FILE__));
 
 set_include_path(get_include_path() 

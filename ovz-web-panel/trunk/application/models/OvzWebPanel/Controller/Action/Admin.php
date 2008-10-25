@@ -13,6 +13,10 @@ abstract class OvzWebPanel_Controller_Action_Admin extends OvzWebPanel_Controlle
 	public function init() {
 		parent::init();
 		
+		if (!$this->_auth->hasIdentity()) {
+			$this->_redirect('/login');
+		}
+		
 		$this->_helper->layout->setLayout('admin');
 	}
 	

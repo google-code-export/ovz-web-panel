@@ -12,7 +12,7 @@ class OvzWebPanel_Application {
 	 */
 	public function run() {
 		$this->_initConfig();		
-		//$this->_initDatabase();
+		$this->_initDatabase();
 		$this->_initSession();
 		$this->_initFrontController();
 		$this->_initRouter();
