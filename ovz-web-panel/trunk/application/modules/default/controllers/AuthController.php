@@ -16,8 +16,8 @@ class AuthController extends OvzWebPanel_Controller_Action_Simple {
 		}
 		
 		if ($this->_request->isPost()) {
-			$userName = $this->_getParam('login', '*');
-			$userPassword = $this->_getParam('password');
+			$userName = $this->_getParam('userName', '*');
+			$userPassword = $this->_getParam('userPassword');
 			
 			$this->_authAdapter
 				->setIdentity($userName)

@@ -11,8 +11,11 @@
 			<ul class="menuItemsList">
 				<?php foreach ($menu['items'] as $menuItem) : ?>
 					<li class="menuItem">
-						<a 
-							href="<?php echo $this->escape($menuItem['link']); ?>" 
+						<a
+							<?php if ($menuItem['id']) : ?>
+								id="<?php echo $this->escape($menuItem['id']); ?>"
+							<?php endif; ?>
+							href="<?php echo ($menuItem['link']) ? $this->escape($menuItem['link']) : '#'; ?>" 
 							<?php echo (isset($menuItem['external']) && $menuItem['external']) ? 'target="_blnak"' : ''; ?>
 						>
 							<img src="/skins/win_xp/images/<?php echo (isset($menuItem['icon']) && $menuItem['icon']) ? $menuItem['icon'] : 'menu_icon_default.gif'; ?>" border="0"/>

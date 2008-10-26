@@ -1,32 +1,3 @@
-table {
-	width: 100%;
-}
-
-th {
-	background-color: #D6DFF7;
-}
-
-tr {
-	background-color: #F2F2F2;
-}
-
-a {
-	color: #215DC6;
-}
-
-a:hover {
-	color: #000;
-}
-
-legend {
-	font-weight: bold;
-	color: #000
-}
-
-fieldset {
-	margin: 10px;
-}
-
 #layoutMain {
 	height: 100%;
 	width: 100%;
@@ -187,7 +158,12 @@ fieldset {
 }
 
 .menuItem a {
+	color: #215DC6;
 	text-decoration: none;
+}
+
+.menuItem a:hover {
+	color: #000;
 }
 
 .menuItem img {

@@ -15,7 +15,7 @@ class OvzWebPanel_Config_Defaults {
 		$defaults = array(
 			'general' => array(
 				'productName'    => 'OpenVZ Web Panel',
-				'productVersion' => '0.1',
+				'productVersion' => '0.2',
 			),
 
 			'routes' => array(							
@@ -54,8 +54,8 @@ class OvzWebPanel_Config_Defaults {
 							'icon' => 'menu_icon_logs.png',
 						),
 						array(
+							'id' => 'mainMenuGeneralLogoutLink',
 							'title' => 'Logout',
-							'link' => '/auth/logout',
 							'icon' => 'menu_icon_logout.png',
 						),
 					),

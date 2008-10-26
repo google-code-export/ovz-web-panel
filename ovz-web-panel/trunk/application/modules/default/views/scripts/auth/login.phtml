@@ -1,25 +1,20 @@
-<div style="padding-top: 100px; margin: auto; width: 250px;">
+<script type="text/javascript" src="/js/views/login.js"></script>
 
-	<div style="padding: 10px; border: solid 1px;">
-		<form action="/auth/login" method="post">
-			Log into OpenVZ Web Panel 0.1<br/>
-			<br/>
-			
-			<?php if ($this->error): ?>
-				<div style="color: red">Error: <?php echo $this->escape($this->error); ?></div>
-				<br/>
-			<?php endif; ?>
-			
-			Login:<br/>
-			<input type="text" name="login"><br/>
-			<br/>
-			
-			Password:<br/>
-			<input type="password" name="password"><br/>
-			<br/>
-			
-			<input type="submit" name="sumbit" value="Log in">
-		</form>
-	</div>
-
+<div id="loginWindow" class="x-hidden">
+	<div class="x-window-header">Log into OpenVZ Web Panel 0.1</div>
 </div>
+
+<?php if ($this->error): ?>
+
+	<script type="text/javascript">
+		Ext.onReady(function(event) {
+			Ext.MessageBox.show({
+				title: 'Error',
+				msg: '<?php echo $this->escape($this->error); ?>',
+				buttons: Ext.MessageBox.OK,
+				icon: Ext.MessageBox.ERROR
+			});
+		});
+	</script>
+			
+<?php endif; ?>

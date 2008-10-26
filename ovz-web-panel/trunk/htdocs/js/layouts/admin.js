@@ -3,16 +3,24 @@ OvzWebPanel.Layouts.Admin = {};
 OvzWebPanel.Layouts.Admin.autoResizeContentArea = function() {
 	var contentHeightOffset = 91;	
 	var contentWidthOffset = 250;	
-	var layoutContent = document.getElementById('layoutContent');
+	var layoutContent = Ext.get('layoutContent');
 	
-	layoutContent.style.height = (document.body.scrollHeight - contentHeightOffset) + 'px';
-	layoutContent.style.width = (document.body.scrollWidth - contentWidthOffset) + 'px';
+	layoutContent.setHeight(document.body.scrollHeight - contentHeightOffset);
+	layoutContent.setWidth(document.body.scrollWidth - contentWidthOffset);
 }
 
-Event.observe(window, 'load', function(event) {
+Ext.EventManager.onWindowResize(function(event) {
 	OvzWebPanel.Layouts.Admin.autoResizeContentArea();
 });
 
-Event.observe(window, 'resize', function(event) {
+Ext.onReady(function(event) {
 	OvzWebPanel.Layouts.Admin.autoResizeContentArea();
+	
+	Ext.get('mainMenuGeneralLogoutLink').on('click', function(e){
+		Ext.MessageBox.confirm('Confirm', 'Are you sure you want to log out?', function(button, text) {
+			if ('yes' == button) {
+				window.location.href = '/auth/logout';
+			}
+		});
+	});
 });
