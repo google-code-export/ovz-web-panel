@@ -54,8 +54,8 @@ class OvzWebPanel_Config_Defaults {
 							'icon' => 'menu_icon_logs.png',
 						),
 						array(
-							'id' => 'mainMenuGeneralLogoutLink',
 							'title' => 'Logout',
+							'link' => 'javascript: OvzWebPanel.Layouts.Admin.onLogoutLinkClick();',
 							'icon' => 'menu_icon_logout.png',
 						),
 					),

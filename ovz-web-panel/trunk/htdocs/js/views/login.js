@@ -38,7 +38,6 @@ Ext.onReady(function(event) {
 	
 	var loginWindow = new Ext.Window({
 		applyTo: 'loginWindow',
-		modal: true,
 		width: 350,
 		height: 145,
 		y: 150,

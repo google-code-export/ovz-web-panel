@@ -1,22 +1,16 @@
 <?php echo $this->render('_header.phtml'); ?>
+	
+	<script type="text/javascript" src="/js/layouts/admin.js"></script>
 
-		<script type="text/javascript" src="/js/layouts/admin.js"></script>
-
-		<div id="layoutMenu">
-			<?php echo $this->layout()->menu; ?>
+	<div id="panelMenu">
+		<?php echo $this->layout()->menu; ?>
+	</div>
+	
+	<div id="panelContent">
+		<div class="x-panel-header"><?php echo $this->escape($this->pageTitle); ?></div>
+		<div id="panelContentInner">
+			<?php echo $this->layout()->content; ?>
 		</div>
-		
-		<div id="layoutMainArea">
-			<div id="layoutMainAreaHeader">
-				<?php echo $this->escape($this->pageTitle); ?>
-			</div>
-			<div id="layoutContent">
-				<div style="padding: 10px;">
-					<?php echo $this->layout()->content; ?>
-				</div>
-			</div>
-		</div>
-		
-		<div id="layoutFooter"></div>
+	</div>
 
 <?php echo $this->render('_footer.phtml'); ?>
