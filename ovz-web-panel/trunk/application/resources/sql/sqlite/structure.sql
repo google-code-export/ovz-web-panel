@@ -1,4 +1,20 @@
 BEGIN TRANSACTION;
-CREATE TABLE users (id INTEGER NOT NULL PRIMARY KEY autoincrement, userName VARCHAR(255) UNIQUE NOT NULL, userPassword CHAR(32) NOT NULL, roleId INTEGER NOT NULL);
+
 DELETE FROM sqlite_sequence;
+INSERT INTO "sqlite_sequence" VALUES('users', 1);
+
+CREATE TABLE users (
+	id INTEGER NOT NULL PRIMARY KEY autoincrement,
+	userName VARCHAR(255) UNIQUE NOT NULL,
+	userPassword CHAR(32) NOT NULL,
+	roleId INTEGER NOT NULL
+);
+INSERT INTO "users" VALUES(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
+
+CREATE TABLE hwServers (
+	id INTEGER NOT NULL PRIMARY KEY autoincrement,
+	hostName VARCHAR(255) UNIQUE NOT NULL,
+	authKey VARCHAR(255) NOT NULL
+);
+
 COMMIT;

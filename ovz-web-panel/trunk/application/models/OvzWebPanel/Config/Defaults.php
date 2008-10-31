@@ -38,21 +38,21 @@ class OvzWebPanel_Config_Defaults {
 							'link' => '/admin/dashboard',
 							'icon' => 'menu_icon_dashboard.png',
 						),
-						array(
+						/*array(
 							'title' => 'Configuration',
 							'link' => '/admin/configuration',
 							'icon' => 'menu_icon_tool.png',
-						),
+						),*/
 						array(
 							'title' => 'Hardware servers',
 							'link' => '/admin/hardware-server/list',
 							'icon' => 'menu_icon_host.png',
 						),
-						array(
+						/*array(
 							'title' => 'Logs',
 							'link' => '/admin/logs',
 							'icon' => 'menu_icon_logs.png',
-						),
+						),*/
 						array(
 							'title' => 'Logout',
 							'link' => 'javascript: OvzWebPanel.Layouts.Admin.onLogoutLinkClick();',
@@ -61,7 +61,7 @@ class OvzWebPanel_Config_Defaults {
 					),
 				),
 			
-				'hardwareServers' => array(
+				/*'hardwareServers' => array(
 					'title' => 'Hardware servers',
 					'items' => array(
 						array(
@@ -70,7 +70,7 @@ class OvzWebPanel_Config_Defaults {
 							'icon' => 'menu_icon_host.png',
 						),
 					),
-				),
+				),*/
 				
 				'help' => array(
 					'title' => 'Help',

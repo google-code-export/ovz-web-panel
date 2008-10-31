@@ -64,7 +64,7 @@
 	padding: 5px;
 }
 
-div#panelContent .x-panel-header {
+#rightPanelHeader {
 	height: 25px;
 	line-height: 25px;
 	font-size: 20px;
@@ -77,4 +77,16 @@ div#panelContent .x-panel-header {
 
 div#errorWindow .x-window-body th {
 	font-weight: bold;
+}
+
+.x-grid3-row-table a {
+	color: #385F95;
+}
+
+.addHwServer .x-btn-text {
+    background-image: url(images/add.png);
+}
+
+.removeHwServer .x-btn-text {
+    background-image: url(images/delete.png);
 }
