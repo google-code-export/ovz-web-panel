@@ -3,18 +3,3 @@
 <div id="loginWindow" class="x-hidden">
 	<div class="x-window-header">Log into <?php echo "$this->productName $this->productVersion"; ?></div>
 </div>
-
-<?php if ($this->error): ?>
-
-	<script type="text/javascript">
-		Ext.onReady(function(event) {
-			Ext.MessageBox.show({
-				title: 'Error',
-				msg: '<?php echo $this->escape($this->error); ?>',
-				buttons: Ext.MessageBox.OK,
-				icon: Ext.MessageBox.ERROR
-			});
-		});
-	</script>
-			
-<?php endif; ?>

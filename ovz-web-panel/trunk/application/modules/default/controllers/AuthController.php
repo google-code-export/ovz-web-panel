@@ -32,15 +32,18 @@ class AuthController extends OvzWebPanel_Controller_Action_Simple {
 					'roleId',
 				)));
 				
-				$this->_redirect('/admin/dashboard');
-			} else {
-				$this->_helper->flashMessenger(implode(' ', $result->getMessages()));
-				$this->_redirect('/login');
+				$this->_helper->json(array('success' => true));
+			} else {		
+				$this->_helper->json(array(
+					'success' => false,
+					'errors' => array(
+						'message' => implode(' ', $result->getMessages())
+					)
+				));
 			}
 		}
 		
 		$this->view->pageTitle = "Login";
-		$this->view->error = implode(' ', $this->_helper->flashMessenger->getMessages());
 	}
 	
 	/**

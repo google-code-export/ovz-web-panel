@@ -8,12 +8,8 @@ Ext.onReady(function(event) {
 		width: 350,
 		defaults: { width: 230 },
 		defaultType: 'textfield',
-		
-		onSubmit: Ext.emptyFn,		
-		submit: function() {
-			this.getForm().getEl().dom.submit();
-		},
-		
+		waitMsgTarget: true,
+				
 		items: [{
 				fieldLabel: 'User name',
 				name: 'userName',
@@ -31,7 +27,27 @@ Ext.onReady(function(event) {
 			text: 'Log in',
 			type: 'submit',
 			handler: function() {
-				loginForm.submit();
+				loginForm.form.submit({
+					waitMsg: 'Loading...',
+					success: function() {
+						document.location.href = '/admin/dashboard';
+					},
+					failure: function(form, action) {
+						var resultMessage = ('client' == action.failureType)
+							? 'Please, fill the form.'
+							: action.result.errors.message;
+						
+						Ext.MessageBox.show({
+							title: 'Error',
+							msg: resultMessage,
+							buttons: Ext.MessageBox.OK,
+							icon: Ext.MessageBox.ERROR,
+							fn: function() {
+								Ext.get('userName').focus();
+							}
+						});
+					}
+				});
 			}
 		}]
 	});
