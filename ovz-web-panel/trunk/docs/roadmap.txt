@@ -1,0 +1,63 @@
+Milestone 1:
+* HW daemon
+  * execute command on HW server
+  * get response on command execution
+  * boostrapper commands
+    * start/stop
+	* status
+	* restart
+* Web panel
+  * HW server
+    * List
+    * Add server
+	* Delete server
+	* View server info
+  * Virtual server
+    * List
+    * Add
+    * Delete	
+	* Stop/Start
+  * Configuration
+    * My profile
+  * Dashboard
+    * Intro test
+	* Stats about HW servers
+	  * Total HW servers
+	* Stats about VS
+	  * 
+* Tests
+  * Unit tests	
+* Build system
+  * simple script for packaging
+  * every day run
+* Project publication
+  * description
+  * sources publication
+  * build
+  
+Milestone 2:
+* HW daemon
+  * implement alive command (start if stopped)
+  * commands logging
+  * set debug level via config
+* Web panel
+  * Login
+    * checkbox remember me
+    * AJAX response on login atempt
+  * actions logging
+  * Panel users managment
+    * list
+	* add
+	* delete
+	* enable/disable
+  * VS
+    * edit configuations
+	* limits info
+  * E-mail notification
+* Build system
+  * run on svn change
+    * minimal delay time
+* Tests
+  * Selenium tests
+* Panel daemon
+  * regular check of HW nodes
