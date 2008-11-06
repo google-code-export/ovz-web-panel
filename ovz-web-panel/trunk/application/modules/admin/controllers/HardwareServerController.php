@@ -35,4 +35,19 @@ class Admin_HardwareServerController extends OvzWebPanel_Controller_Action_Admin
 		$this->view->hwServersJsonData = Zend_Json::encode($hwServersJsonData);
 	}
 	
+	/**
+	 * Delete server
+	 *
+	 */
+	public function deleteAction() {
+		$id = $this->_request->getParam('id');
+		
+		$hwServers = new OvzWebPanel_Table_HwServers();
+		$hwServer = $hwServers->fetchRow($hwServers->select()->where('id = ?', $id));
+		
+		$hwServer->delete();
+		
+		$this->_helper->json(array('success' => true));
+	}
+	
 }

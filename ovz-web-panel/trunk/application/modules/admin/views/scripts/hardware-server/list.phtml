@@ -12,12 +12,47 @@ Ext.onReady(function(){
 	}
 	
 	function removeHwServer() {
-		alert('implement deletion');
+		var selectedItem = Ext.getCmp('hwServersGrid').getSelectionModel().getSelected();
+		
+		if (!selectedItem) {
+			Ext.MessageBox.show({
+				title: 'Error',
+				msg: 'Please select a server.',
+				buttons: Ext.Msg.OK,
+				icon: Ext.MessageBox.ERROR
+			});
+			
+			return ;
+		}
+		
+		Ext.MessageBox.confirm('Confirm', 'Are you sure you want to remove server <b>' + selectedItem.get('hostName') + '</b>?', function(button, text) {
+			if ('yes' == button) {				
+				Ext.Ajax.request({
+					url: '/admin/hardware-server/delete',
+					success: function(response) {
+						var result = Ext.util.JSON.decode(response.responseText);
+						
+						if (!result.success) {
+							Ext.MessageBox.show({
+								title: 'Error',
+								msg: 'Server deletion request failed.',
+								buttons: Ext.Msg.OK,
+								icon: Ext.MessageBox.ERROR
+							});
+						
+							return ;
+						}
+						
+						document.location.href = '/admin/hardware-server/list';
+					},
+					params: { id: selectedItem.get('id') }
+				});
+			}
+		});
 	}
 	
     var hwServersJsonData = <?php echo $this->hwServersJsonData; ?>;
 
-    // create the data store
     var store = new Ext.data.SimpleStore({
         fields: [
            { name: 'id' },
@@ -27,10 +62,10 @@ Ext.onReady(function(){
     
     store.loadData(hwServersJsonData);
 
-    var selectionModel = new Ext.grid.CheckboxSelectionModel();
+    var selectionModel = new Ext.grid.CheckboxSelectionModel({ singleSelect: true });
     
-    // create the Grid
     var grid = new Ext.grid.GridPanel({
+    	id: 'hwServersGrid',
         store: store,
         cm: new Ext.grid.ColumnModel([
         	selectionModel, 
@@ -53,9 +88,7 @@ Ext.onReady(function(){
         	cls: 'x-btn-text-icon removeHwServer'
 		}]
     });
-
+    
     grid.render('hwServersList');
-
-    grid.getSelectionModel().selectFirstRow();
 });
 </script>
