@@ -38,7 +38,8 @@ Ext.onReady(function(event) {
 			}, {
 				region: 'center',
 				margins: '5 5 5 0',
-				contentEl: 'panelContent'
+				contentEl: 'panelContent',
+				bodyStyle: 'background: #FFFFFF url(/skins/win_xp/images/openvz-big-logo.gif) no-repeat scroll right bottom'
 			}
 		]
 	});
