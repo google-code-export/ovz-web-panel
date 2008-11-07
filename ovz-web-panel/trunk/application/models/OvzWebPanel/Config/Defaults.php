@@ -77,13 +77,13 @@ class OvzWebPanel_Config_Defaults {
 					'items' => array(
 						array(
 							'title' => 'Documentation',
-							'link' => 'http://link-here',
+							'link' => 'http://code.google.com/p/ovz-web-panel/w/list',
 							'external' => true,
 							'icon' => 'menu_icon_help.png',
 						),
 						array(
 							'title' => 'Support',
-							'link' => 'http://link-here',
+							'link' => 'http://code.google.com/p/ovz-web-panel/issues/list',
 							'external' => true,
 							'icon' => 'menu_icon_docs.png',
 						),
