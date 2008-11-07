@@ -90,3 +90,7 @@ div#errorWindow .x-window-body th {
 .removeHwServer .x-btn-text {
     background-image: url(images/delete.png);
 }
+
+.loginButton .x-btn-text {
+	background-image: url(images/key.png);
+}

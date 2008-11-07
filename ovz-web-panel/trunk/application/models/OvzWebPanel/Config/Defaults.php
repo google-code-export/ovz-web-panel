@@ -14,8 +14,12 @@ class OvzWebPanel_Config_Defaults {
 	public static function getDefaults() {
 		$defaults = array(
 			'general' => array(
-				'productName'    => 'OpenVZ Web Panel',
+				'productName' => 'OpenVZ Web Panel',
 				'productVersion' => '0.2',
+			),
+			
+			'debug' => array(
+				'enabled' => false, 
 			),
 
 			'routes' => array(							
