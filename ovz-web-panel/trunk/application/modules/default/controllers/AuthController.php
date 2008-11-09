@@ -4,7 +4,7 @@
  *
  * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
-class AuthController extends OvzWebPanel_Controller_Action_Simple {
+class AuthController extends Owp_Controller_Action_Simple {
 		
 	/**
 	 * Login action

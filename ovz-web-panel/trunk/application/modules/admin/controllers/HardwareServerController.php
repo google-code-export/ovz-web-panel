@@ -4,7 +4,7 @@
  *
  * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
-class Admin_HardwareServerController extends OvzWebPanel_Controller_Action_Admin {
+class Admin_HardwareServerController extends Owp_Controller_Action_Admin {
 
 	/**
 	 * Default action
@@ -21,7 +21,7 @@ class Admin_HardwareServerController extends OvzWebPanel_Controller_Action_Admin
 	public function listAction() {
 		$this->view->pageTitle = "Hardware servers";
 		
-		$hwServers = new OvzWebPanel_Table_HwServers();
+		$hwServers = new Owp_Table_HwServers();
 			
 		$select = $hwServers->select();
 		$hwServersData = $hwServers->fetchAll($select);
@@ -42,7 +42,7 @@ class Admin_HardwareServerController extends OvzWebPanel_Controller_Action_Admin
 	public function deleteAction() {
 		$id = $this->_request->getParam('id');
 		
-		$hwServers = new OvzWebPanel_Table_HwServers();
+		$hwServers = new Owp_Table_HwServers();
 		$hwServer = $hwServers->fetchRow($hwServers->select()->where('id = ?', $id));
 		
 		$hwServer->delete();

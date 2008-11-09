@@ -4,7 +4,7 @@
  *
  * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
-abstract class OvzWebPanel_Controller_Action_Admin extends OvzWebPanel_Controller_Action_Abstract {
+abstract class Owp_Controller_Action_Admin extends Owp_Controller_Action_Abstract {
 	
 	/**
 	 * Action init

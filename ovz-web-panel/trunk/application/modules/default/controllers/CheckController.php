@@ -4,7 +4,7 @@
  *
  * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
-class CheckController extends OvzWebPanel_Controller_Action_Simple {
+class CheckController extends Owp_Controller_Action_Simple {
 	
 	/**
 	 * Default action

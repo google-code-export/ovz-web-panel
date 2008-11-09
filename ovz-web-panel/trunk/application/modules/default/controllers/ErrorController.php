@@ -4,7 +4,7 @@
  *
  * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
-class ErrorController extends OvzWebPanel_Controller_Action_Simple {
+class ErrorController extends Owp_Controller_Action_Simple {
 		
 	/**
 	 * Error handling

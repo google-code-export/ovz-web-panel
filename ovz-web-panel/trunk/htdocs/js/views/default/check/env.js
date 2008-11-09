@@ -1,4 +1,4 @@
-OvzWebPanel.Views.Default.Check.Env.renderCheckEnvWindow = function(phpExtensionsJsonData) {
+Owp.Views.Default.Check.Env.renderCheckEnvWindow = function(phpExtensionsJsonData) {
 	function columnStateRenderer(state) {
 		return (state)
 			? '<img src="/skins/win_xp/images/ok.png">'

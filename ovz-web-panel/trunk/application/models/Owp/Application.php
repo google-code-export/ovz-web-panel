@@ -4,7 +4,7 @@
  *
  * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
-class OvzWebPanel_Application {
+class Owp_Application {
 	
 	/**
 	 * Run application
@@ -25,7 +25,7 @@ class OvzWebPanel_Application {
 	 *
 	 */
 	private function _initConfig() {
-		$config = new Zend_Config(OvzWebPanel_Config_Defaults::getDefaults(), true);
+		$config = new Zend_Config(Owp_Config_Defaults::getDefaults(), true);
 		$configFromFile = new Zend_Config_Ini(ROOT_PATH . '/config.ini');
 		
 		$config->merge($configFromFile);

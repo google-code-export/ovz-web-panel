@@ -4,7 +4,7 @@
  *
  * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
-class Admin_DashboardController extends OvzWebPanel_Controller_Action_Admin {
+class Admin_DashboardController extends Owp_Controller_Action_Admin {
 		
 	public function indexAction() {
 		$this->view->pageTitle = "Dashboard";

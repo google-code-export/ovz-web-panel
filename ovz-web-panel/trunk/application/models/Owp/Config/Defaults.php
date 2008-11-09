@@ -4,7 +4,7 @@
  *
  * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
-class OvzWebPanel_Config_Defaults {
+class Owp_Config_Defaults {
 	
 	/**
 	 * Get config defaults
@@ -49,7 +49,7 @@ class OvzWebPanel_Config_Defaults {
 						),
 						array(
 							'title' => 'Logout',
-							'link' => 'javascript: OvzWebPanel.Layouts.Admin.onLogoutLinkClick();',
+							'link' => 'javascript: Owp.Layouts.Admin.onLogoutLinkClick();',
 							'icon' => 'menu_icon_logout.png',
 						),
 					),

@@ -4,7 +4,7 @@
  *
  * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
-abstract class OvzWebPanel_Controller_Action_Abstract extends Zend_Controller_Action {
+abstract class Owp_Controller_Action_Abstract extends Zend_Controller_Action {
 	
 	protected $_config;
 	protected $_session;

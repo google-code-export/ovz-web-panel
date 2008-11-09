@@ -2,5 +2,5 @@
 
 require_once('../application/init.php');
 
-$application = new OvzWebPanel_Application();
+$application = new Owp_Application();
 $application->run();

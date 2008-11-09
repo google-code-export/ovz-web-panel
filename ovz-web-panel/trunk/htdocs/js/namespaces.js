@@ -1,10 +1,10 @@
-OvzWebPanel = {};
+Owp = {};
 
-OvzWebPanel.Layouts = {};
-OvzWebPanel.Layouts.Admin = {};
-OvzWebPanel.Layouts.Simple = {};
+Owp.Layouts = {};
+Owp.Layouts.Admin = {};
+Owp.Layouts.Simple = {};
 
-OvzWebPanel.Views = {};
-OvzWebPanel.Views.Default = {};
-OvzWebPanel.Views.Default.Check = {};
-OvzWebPanel.Views.Default.Check.Env = {};
+Owp.Views = {};
+Owp.Views.Default = {};
+Owp.Views.Default.Check = {};
+Owp.Views.Default.Check.Env = {};
