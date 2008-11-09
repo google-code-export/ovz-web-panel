@@ -36,7 +36,7 @@ class Admin_HardwareServerController extends Owp_Controller_Action_Admin {
 	}
 	
 	/**
-	 * Delete server
+	 * Disconnect server
 	 *
 	 */
 	public function deleteAction() {
@@ -46,6 +46,24 @@ class Admin_HardwareServerController extends Owp_Controller_Action_Admin {
 		$hwServer = $hwServers->fetchRow($hwServers->select()->where('id = ?', $id));
 		
 		$hwServer->delete();
+		
+		$this->_helper->json(array('success' => true));
+	}
+	
+	/**
+	 * Connect new server
+	 *
+	 */
+	public function addAction() {
+		$hostName = $this->_request->getParam('hostName');
+		$authKey = $this->_request->getParam('authKey');
+		
+		$hwServers = new Owp_Table_HwServers();
+		
+		$hwServer = $hwServers->createRow();
+		$hwServer->hostName = $hostName;
+		$hwServer->authKey = $authKey;
+		$hwServer->save();
 		
 		$this->_helper->json(array('success' => true));
 	}
