@@ -1,8 +1,3 @@
-OvzWebPanel.Views = {};
-OvzWebPanel.Views.Default = {};
-OvzWebPanel.Views.Default.Check = {};
-OvzWebPanel.Views.Default.Check.Env = {};
-
 OvzWebPanel.Views.Default.Check.Env.renderCheckEnvWindow = function(phpExtensionsJsonData) {
 	function columnStateRenderer(state) {
 		return (state)

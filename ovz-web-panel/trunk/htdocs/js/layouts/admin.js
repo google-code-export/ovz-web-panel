@@ -1,5 +1,3 @@
-OvzWebPanel.Layouts.Admin = {};
-
 OvzWebPanel.Layouts.Admin.onLogoutLinkClick = function() {
 	Ext.MessageBox.confirm('Confirm', 'Are you sure you want to log out?', function(button, text) {
 		if ('yes' == button) {
