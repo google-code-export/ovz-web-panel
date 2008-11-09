@@ -5,14 +5,14 @@
 	<title><?php echo $this->escape($this->pageTitle) . " - $this->productName $this->productVersion "; ?></title>
 	<link rel="shortcut icon" href="/images/favicon.ico"/>	
 
-	<script type="text/javascript" src="/ext/adapter/ext/ext-base.js"></script>
-	<script type="text/javascript" src="/ext/ext-all.js"></script>
-	<link rel="stylesheet" type="text/css" href="/ext/resources/css/ext-all.css">
+	<?php echo $this->jsFile('/ext/adapter/ext/ext-base.js'); ?>
+	<?php echo $this->jsFile('/ext/ext-all.js'); ?>
+	<?php echo $this->cssFile('/ext/resources/css/ext-all.css'); ?>
 
-	<link rel="stylesheet" type="text/css" href="/skins/common.css?2"/>
-	<link rel="stylesheet" type="text/css" href="/skins/win_xp/styles.css?2"/>
-	<script type="text/javascript" src="/js/namespaces.js"></script>
-	<script type="text/javascript" src="/js/layouts/abstract.js"></script>
+	<?php echo $this->cssFile('/skins/common.css'); ?>
+	<?php echo $this->cssFile('/skins/win_xp/styles.css'); ?>
+	<?php echo $this->jsFile('/js/namespaces.js'); ?>
+	<?php echo $this->jsFile('/js/layouts/abstract.js'); ?>
 </head>
 <body>
 

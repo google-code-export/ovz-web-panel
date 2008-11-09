@@ -1,6 +1,6 @@
 <?php echo $this->render('_header.phtml'); ?>
 
-	<script type="text/javascript" src="/js/layouts/simple.js"></script>
+	<?php echo $this->jsFile('/js/layouts/simple.js'); ?>
 		
 	<div id="panelContent">
 		<?php echo $this->layout()->content; ?>

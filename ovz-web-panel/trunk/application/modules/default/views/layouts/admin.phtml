@@ -1,6 +1,6 @@
 <?php echo $this->render('_header.phtml'); ?>
 	
-	<script type="text/javascript" src="/js/layouts/admin.js"></script>
+	<?php echo $this->jsFile('/js/layouts/admin.js'); ?>
 
 	<div id="panelMenu">
 		<?php echo $this->layout()->menu; ?>

@@ -23,6 +23,8 @@ abstract class Owp_Controller_Action_Abstract extends Zend_Controller_Action {
 		$this->_auth = Zend_Auth::getInstance();
 		$this->_authAdapter = $this->_getAuthAdapter($this->_db);
 		
+		$this->view->addHelperPath("Owp/View/Helper", "Owp_View_Helper");
+		
 		$this->view->productName = $this->_config->general->productName;
 		$this->view->productVersion = $this->_config->general->productVersion;
 	}
