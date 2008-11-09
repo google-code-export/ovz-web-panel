@@ -20,7 +20,13 @@ class Admin_HardwareServerController extends Owp_Controller_Action_Admin {
 	 */
 	public function listAction() {
 		$this->view->pageTitle = "Hardware servers";
-		
+	}
+	
+	/**
+	 * Json data of list of servers
+	 *
+	 */
+	public function listDataAction() {
 		$hwServers = new Owp_Table_HwServers();
 			
 		$select = $hwServers->select();
@@ -29,10 +35,10 @@ class Admin_HardwareServerController extends Owp_Controller_Action_Admin {
 		$hwServersJsonData = array();
 		
 		foreach ($hwServersData as $hwServerData) {
-			$hwServersJsonData[] = array($hwServerData->id, $hwServerData->hostName);
+			$hwServersJsonData[] = array('id' => $hwServerData->id, 'hostName' => $hwServerData->hostName);
 		}
 		
-		$this->view->hwServersJsonData = Zend_Json::encode($hwServersJsonData);
+		$this->_helper->json($hwServersJsonData);
 	}
 	
 	/**

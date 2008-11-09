@@ -50,7 +50,8 @@ Ext.onReady(function(){
 						formAddServer.form.submit({
 							waitMsg: 'Loading...',
 							success: function() {
-								document.location.href = '/admin/hardware-server/list';
+								gridHwServers.store.reload();
+								windowAddServer.hide();
 							},
 							failure: function(form, action) {
 								var resultMessage = ('client' == action.failureType)
@@ -110,7 +111,7 @@ Ext.onReady(function(){
 							return ;
 						}
 						
-						document.location.href = '/admin/hardware-server/list';
+						gridHwServers.store.reload();
 					},
 					params: { id: selectedItem.get('id') }
 				});
@@ -118,20 +119,19 @@ Ext.onReady(function(){
 		});
 	}
 	
-    var hwServersJsonData = <?php echo $this->hwServersJsonData; ?>;
-
-    var store = new Ext.data.SimpleStore({
+    var store = new Ext.data.JsonStore({
+    	url: '/admin/hardware-server/list-data',
         fields: [
            { name: 'id' },
            { name: 'hostName' }
         ]
     });
     
-    store.loadData(hwServersJsonData);
-
+    store.load();
+    
     var selectionModel = new Ext.grid.CheckboxSelectionModel({ singleSelect: true });
     
-    var grid = new Ext.grid.GridPanel({
+    var gridHwServers = new Ext.grid.GridPanel({
     	id: 'hwServersGrid',
         store: store,
         cm: new Ext.grid.ColumnModel([
@@ -156,6 +156,6 @@ Ext.onReady(function(){
 		}]
     });
     
-    grid.render('hwServersList');
+    gridHwServers.render('hwServersList');
 });
 </script>
