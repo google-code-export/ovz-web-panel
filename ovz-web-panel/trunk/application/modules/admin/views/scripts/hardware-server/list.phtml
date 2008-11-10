@@ -74,6 +74,10 @@ Ext.onReady(function(){
 					}
 				}]
 			});
+			
+			windowAddServer.on('show', function() {
+				formAddServer.getForm().reset();
+			});
 		}
 		
 		windowAddServer.show();		
