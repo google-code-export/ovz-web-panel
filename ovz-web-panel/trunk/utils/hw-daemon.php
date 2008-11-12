@@ -234,10 +234,17 @@ class HwDaemon {
 			// child process
 			socket_close($socket);
 			
-			if (false === ($request = socket_read($connection, 4096, PHP_NORMAL_READ))) {
-				$this->_fatalError("Function socket_read() failed."); 
+			$request = '';
+			
+			while (true) {
+				$buffer = socket_read($connection, 4096, PHP_NORMAL_READ);
+				$request .= $buffer;
+				
+				if (false !== strpos($request, "\n\n")) {
+					break;
+				}
 			}
-						
+									
 			$response = $this->_getResonse($request);			
 			socket_write($connection, $response, strlen($response));			
 			socket_close($connection);
@@ -265,7 +272,7 @@ class HwDaemon {
 			$responseXml->code = 255;
 			return $responseXml->asXml();
 		}
-		
+				
 		if ($this->_authKey != $requestXml->authKey) {
 			$responseXml->fault = 'Invalid auth key.';
 			$responseXml->code = 255;

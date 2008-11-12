@@ -32,6 +32,10 @@ class Owp_Config_Defaults {
 					),
 				),
 			),
+			
+			'hwDaemon' => array(
+				'defaultPort' => 7766,
+			),
 					
 			'menu' => array(
 				'general' => array(
