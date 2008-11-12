@@ -32,7 +32,6 @@ Ext.onReady(function(){
 				title: 'Connect new hardware server',
 				width: 350,
 				height: 130,
-				y: 150,
 				modal: true,
 				layout: 'fit',
 				plain: true,
