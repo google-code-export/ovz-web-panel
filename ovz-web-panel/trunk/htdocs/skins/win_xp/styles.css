@@ -83,11 +83,11 @@ div#errorWindow .x-window-body th {
 	color: #385F95;
 }
 
-.addHwServer .x-btn-text {
+.addServer .x-btn-text {
     background-image: url(images/add.png);
 }
 
-.removeHwServer .x-btn-text {
+.removeServer .x-btn-text {
     background-image: url(images/delete.png);
 }
 

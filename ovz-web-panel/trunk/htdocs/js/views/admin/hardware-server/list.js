@@ -133,6 +133,7 @@ Ext.onReady(function(){
     
     var gridHwServers = new Ext.grid.GridPanel({
     	id: 'hwServersGrid',
+    	title: 'Hardware servers list',
         store: store,
         cm: new Ext.grid.ColumnModel([
         	selectionModel, 
@@ -148,11 +149,11 @@ Ext.onReady(function(){
         tbar: [{
         	text: 'Connect new server',
         	handler: addHwServer,
-        	cls: 'x-btn-text-icon addHwServer'
+        	cls: 'x-btn-text-icon addServer'
 		}, {
         	text: 'Disconnect server',
         	handler: removeHwServer,
-        	cls: 'x-btn-text-icon removeHwServer'
+        	cls: 'x-btn-text-icon removeServer'
 		}]
     });
     

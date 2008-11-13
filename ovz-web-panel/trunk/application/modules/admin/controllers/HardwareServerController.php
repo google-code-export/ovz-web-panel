@@ -71,7 +71,36 @@ class Admin_HardwareServerController extends Owp_Controller_Action_Admin {
 		$hwServer->authKey = $authKey;
 		$hwServer->save();
 		
+		$virtualServers = new Owp_Table_VirtualServers();
+		$vzlistRawData = $hwServer->execDaemonRequest('vzlist -a -H -o veid,hostname,ip,status');
+		$vzlist = explode("\n", $vzlistRawData);
+		
+		foreach ($vzlist as $vzlistEntry) {
+			list($veId, $hostName, $ipAddress, $status) = preg_split("/\s+/", trim($vzlistEntry));
+			$virtualServer = $virtualServers->createRow();
+			$virtualServer->veId = $veId;
+			$virtualServer->ipAddress = $ipAddress;
+			$virtualServer->hostName = $hostName;
+			$virtualServer->veState = $virtualServer->getVeStateByName($status);
+			$virtualServer->hwServerId = $hwServer->id;
+			$virtualServer->save();
+		}
+		
 		$this->_helper->json(array('success' => true));
+	}
+		
+	/**
+	 * Show server settings and VPS list
+	 *
+	 */
+	public function showAction() {
+		$id = $this->_request->getParam('id');
+		
+		$hwServers = new Owp_Table_HwServers();
+		$hwServer = $hwServers->fetchRow($hwServers->select()->where('id = ?', $id));
+		
+		$this->view->pageTitle = "Hardware server - $hwServer->hostName";
+		$this->view->hwServerId = $id;
 	}
 	
 }

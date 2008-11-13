@@ -1,8 +1,5 @@
 BEGIN TRANSACTION;
 
-DELETE FROM sqlite_sequence;
-INSERT INTO "sqlite_sequence" VALUES('users', 1);
-
 CREATE TABLE users (
 	id INTEGER NOT NULL PRIMARY KEY autoincrement,
 	userName VARCHAR(255) UNIQUE NOT NULL,
@@ -15,6 +12,15 @@ CREATE TABLE hwServers (
 	id INTEGER NOT NULL PRIMARY KEY autoincrement,
 	hostName VARCHAR(255) UNIQUE NOT NULL,
 	authKey VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE virtualServers (
+	id INTEGER NOT NULL PRIMARY KEY autoincrement,
+	veId INTEGER NOT NULL,
+	ipAddress VARCHAR(255) NOT NULL,
+	hostName VARCHAR(255) NOT NULL,
+	veState INTEGER NOT NULL,
+	hwServerId INTEGER NOT NULL
 );
 
 COMMIT;
