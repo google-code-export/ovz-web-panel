@@ -15,7 +15,7 @@ class Owp_Config_Defaults {
 		$defaults = array(
 			'general' => array(
 				'productName' => 'OpenVZ Web Panel',
-				'productVersion' => '0.2',
+				'productVersion' => '0.3',
 			),
 			
 			'debug' => array(
