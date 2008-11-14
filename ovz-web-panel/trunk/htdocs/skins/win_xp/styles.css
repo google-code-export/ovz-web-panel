@@ -33,6 +33,15 @@
 	padding-top: 5px;
 }
 
+#layoutCopyrightInner a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#layoutCopyrightInner a:hover {
+	color: #F0F0F0;
+}
+
 #panelContentInner {
 	padding: 10px;
 }

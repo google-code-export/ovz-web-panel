@@ -1,6 +1,7 @@
 Owp = {};
 
 Owp.Layouts = {};
+Owp.Layouts.Abstract = {};
 Owp.Layouts.Admin = {};
 Owp.Layouts.Simple = {};
 
