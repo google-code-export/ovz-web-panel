@@ -20,9 +20,14 @@ Ext.onReady(function(){
 					name: 'hostName',
 					allowBlank: false,
 					anchor: '100%'
-				},{
+				}, {
 					fieldLabel: 'Auth key',
 					name: 'authKey',
+					allowBlank: false,
+					anchor: '100%'
+				}, {
+					fieldLabel: 'Description',
+					name: 'description',
 					allowBlank: false,
 					anchor: '100%'
 				}]
@@ -30,8 +35,8 @@ Ext.onReady(function(){
 			
 			windowAddServer = new Ext.Window({
 				title: 'Connect new hardware server',
-				width: 350,
-				height: 130,
+				width: 400,
+				height: 155,
 				modal: true,
 				layout: 'fit',
 				plain: true,
@@ -123,7 +128,8 @@ Ext.onReady(function(){
     	url: '/admin/hardware-server/list-data',
         fields: [
            { name: 'id' },
-           { name: 'hostName' }
+           { name: 'hostName' },
+           { name: 'description' }
         ]
     });
     
@@ -137,11 +143,12 @@ Ext.onReady(function(){
         store: store,
         cm: new Ext.grid.ColumnModel([
         	selectionModel, 
-        	{ id: 'hostName', header: "Host name", renderer: columnHostNameRenderer, sortable: true, dataIndex: 'hostName' }
+        	{ id: 'hostName', header: "Host name", renderer: columnHostNameRenderer, sortable: true, dataIndex: 'hostName' },
+        	{ id: 'description', header: "Description", sortable: true, dataIndex: 'description' }
         ]),
         sm: selectionModel,
         stripeRows: true,
-        autoExpandColumn: 'hostName',
+        autoExpandColumn: 'description',
         autoHeight: true,
         autoWidth: true,
         stripeRows: true,

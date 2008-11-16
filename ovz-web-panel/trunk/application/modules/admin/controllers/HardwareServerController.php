@@ -45,7 +45,11 @@ class Admin_HardwareServerController extends Owp_Controller_Action_Admin {
 		$hwServersJsonData = array();
 		
 		foreach ($hwServersData as $hwServerData) {
-			$hwServersJsonData[] = array('id' => $hwServerData->id, 'hostName' => $hwServerData->hostName);
+			$hwServersJsonData[] = array(
+				'id' => $hwServerData->id, 
+				'hostName' => $hwServerData->hostName,
+				'description' => $hwServerData->description,
+			);
 		}
 		
 		$this->_helper->json($hwServersJsonData);
@@ -71,14 +75,12 @@ class Admin_HardwareServerController extends Owp_Controller_Action_Admin {
 	 *
 	 */
 	public function addAction() {
-		$hostName = $this->_request->getParam('hostName');
-		$authKey = $this->_request->getParam('authKey');
-		
 		$hwServers = new Owp_Table_HwServers();
 		
 		$hwServer = $hwServers->createRow();
-		$hwServer->hostName = $hostName;
-		$hwServer->authKey = $authKey;
+		$hwServer->hostName = $this->_request->getParam('hostName');
+		$hwServer->authKey = $this->_request->getParam('authKey');
+		$hwServer->description = $this->_request->getParam('description');
 		$hwServer->save();
 		
 		$virtualServers = new Owp_Table_VirtualServers();

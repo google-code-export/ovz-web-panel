@@ -11,7 +11,8 @@ INSERT INTO "users" VALUES(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
 CREATE TABLE hwServers (
 	id INTEGER NOT NULL PRIMARY KEY autoincrement,
 	hostName VARCHAR(255) UNIQUE NOT NULL,
-	authKey VARCHAR(255) NOT NULL
+	authKey VARCHAR(255) NOT NULL,
+	description VARCHAR(255) NULL
 );
 
 CREATE TABLE virtualServers (
