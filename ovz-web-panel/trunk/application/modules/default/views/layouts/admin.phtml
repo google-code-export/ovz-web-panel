@@ -6,8 +6,11 @@
 		<?php echo $this->layout()->menu; ?>
 	</div>
 	
+	<script type="text/javascript">
+		Owp.Layouts.Admin.pageTitle = '<?php echo $this->escape($this->pageTitle); ?>';
+	</script>
+	
 	<div id="panelContent">
-		<div class="x-panel-header" id="rightPanelHeader"><?php echo $this->escape($this->pageTitle); ?></div>
 		<div id="panelContentInner">
 			<?php echo $this->layout()->content; ?>
 		</div>

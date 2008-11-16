@@ -10,7 +10,7 @@ Ext.onReady(function(event) {
 		
 	var layout = new Ext.Viewport({
 		layout:'border',
-		items:[
+		items: [
 			new Ext.BoxComponent({
 				region: 'north',
 				el: 'panelHeader',
@@ -37,6 +37,16 @@ Ext.onReady(function(event) {
 				region: 'center',
 				margins: '5 5 5 0',
 				contentEl: 'panelContent',
+				xtype: 'panel',
+				title: Owp.Layouts.Admin.pageTitle,
+				id: 'rightPanelHeader',
+				tbar: [{
+					text: 'Shortcut',
+					handler: function() {
+						alert('implement shortcut adding');
+					},
+					cls: 'x-btn-text-icon addShortcut'
+				}],
 				bodyStyle: 'background: #FFFFFF url(/skins/win_xp/images/openvz-big-logo.gif) no-repeat scroll right bottom'
 			}
 		]
