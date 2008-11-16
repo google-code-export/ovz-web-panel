@@ -32,5 +32,23 @@ class Admin_VirtualServerController extends Owp_Controller_Action_Admin {
 		
 		$this->_helper->json($virtualServersJsonData);
 	}
+
+	/**
+	 * Remove virtual server
+	 *
+	 */
+	public function deleteAction() {
+		$id = $this->_request->getParam('id');
 		
+		$virtualServers = new Owp_Table_VirtualServers();
+		$virtualServer = $virtualServers->find($id)->current();
+		
+		$hwServer = $virtualServer->findParentRow('Owp_Table_HwServers', 'HwServer');
+		$hwServer->execDaemonRequest('vzctl', "destroy $virtualServer->veId");
+		
+		$virtualServer->delete();
+		
+		$this->_helper->json(array('success' => true));
+	}
+	
 }

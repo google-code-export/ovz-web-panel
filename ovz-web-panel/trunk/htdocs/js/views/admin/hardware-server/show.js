@@ -11,9 +11,47 @@ Ext.onReady(function(){
 	function addVirtualServer() {
 		alert('implement addVirtualServer');
 	}
-	
+		
 	function removeVirtualServer() {
-		alert('implement removeVirtualServer');
+		var selectedItem = Ext.getCmp('virtualServersGrid').getSelectionModel().getSelected();
+		
+		if (!selectedItem) {
+			Ext.MessageBox.show({
+				title: 'Error',
+				msg: 'Please select a virtual server.',
+				buttons: Ext.Msg.OK,
+				icon: Ext.MessageBox.ERROR
+			});
+			
+			return ;
+		}
+		
+		Ext.MessageBox.confirm('Confirm', 'Are you sure you want to remove virtual server with id <b>' + selectedItem.get('veId') + '</b>?', function(button, text) {
+			if ('yes' == button) {				
+				Ext.Ajax.request({
+					url: '/admin/virtual-server/delete',
+					success: function(response) {
+						var result = Ext.util.JSON.decode(response.responseText);
+						
+						if (!result.success) {
+							Ext.MessageBox.show({
+								title: 'Error',
+								msg: 'Server deletion request failed.',
+								buttons: Ext.Msg.OK,
+								icon: Ext.MessageBox.ERROR
+							});
+						
+							return ;
+						}
+						
+						gridVirtualServers.store.reload();
+					},
+					params: { 
+						id: selectedItem.get('id')
+					}
+				});
+			}
+		});
 	}
 	
 	var store = new Ext.data.JsonStore({
@@ -32,6 +70,7 @@ Ext.onReady(function(){
 	var selectionModel = new Ext.grid.CheckboxSelectionModel({ singleSelect: true });
 
 	var gridVirtualServers = new Ext.grid.GridPanel({
+		id: 'virtualServersGrid',
 		title: 'Virtual servers list',
 		store: store,
 		cm: new Ext.grid.ColumnModel([

@@ -10,8 +10,9 @@ class Owp_Table_Row_HwServer extends Zend_Db_Table_Row_Abstract {
 	 * Execute command on HW server via daemon
 	 *
 	 * @param string $command
+	 * @param string $arguments
 	 */
-	public function execDaemonRequest($command) {
+	public function execDaemonRequest($command, $arguments = '') {
 		$port = Zend_Registry::get('config')->hwDaemon->defaultPort;
 		
 		$handler = fsockopen($this->hostName, $port, $errorCode, $errorString, 30);
@@ -21,7 +22,7 @@ class Owp_Table_Row_HwServer extends Zend_Db_Table_Row_Abstract {
 		} else {			
 			$requestXml = simplexml_load_string('<?xml version="1.0" encoding="UTF-8"?><request/>');
 			$requestXml->authKey = $this->authKey;
-			$requestXml->command = $command;
+			$requestXml->command = "$command $arguments";
 						
 			fwrite($handler, $requestXml->asXml() . "\n\n");
 			
