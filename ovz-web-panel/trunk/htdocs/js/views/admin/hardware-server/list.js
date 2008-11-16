@@ -93,7 +93,7 @@ Ext.onReady(function(){
 			return ;
 		}
 		
-		Ext.MessageBox.confirm('Confirm', 'Are you sure you want to remove server <b>' + selectedItem.get('hostName') + '</b>?', function(button, text) {
+		Ext.MessageBox.confirm('Confirm', 'Are you sure you want to disconnect server <b>' + selectedItem.get('hostName') + '</b>?', function(button, text) {
 			if ('yes' == button) {				
 				Ext.Ajax.request({
 					url: '/admin/hardware-server/delete',
