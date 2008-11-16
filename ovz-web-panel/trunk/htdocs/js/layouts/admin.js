@@ -7,7 +7,25 @@ Owp.Layouts.Admin.onLogoutLinkClick = function() {
 }
 
 Ext.onReady(function(event) {
-		
+
+	var topBar = [{
+		text: 'Shortcut',
+		handler: function() {
+			alert('implement shortcut adding');
+		},
+		cls: 'x-btn-text-icon addShortcut'
+	}];
+	
+	if ('' != Owp.Layouts.Admin.upLevelLink) {
+		topBar.push({
+			text: 'Up Level',
+			handler: function() {
+				document.location.href = Owp.Layouts.Admin.upLevelLink;
+			},
+			cls: 'x-btn-text-icon upLevelLink'
+		});
+	}
+	
 	var layout = new Ext.Viewport({
 		layout:'border',
 		items: [
@@ -40,13 +58,7 @@ Ext.onReady(function(event) {
 				xtype: 'panel',
 				title: Owp.Layouts.Admin.pageTitle,
 				id: 'rightPanelHeader',
-				tbar: [{
-					text: 'Shortcut',
-					handler: function() {
-						alert('implement shortcut adding');
-					},
-					cls: 'x-btn-text-icon addShortcut'
-				}],
+				tbar: topBar,
 				bodyStyle: 'background: #FFFFFF url(/skins/win_xp/images/openvz-big-logo.gif) no-repeat scroll right bottom'
 			}
 		]

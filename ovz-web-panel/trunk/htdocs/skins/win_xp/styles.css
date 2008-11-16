@@ -107,3 +107,7 @@ div#errorWindow .x-window-body th {
 .addShortcut .x-btn-text {
 	background-image: url(images/star.png);
 }
+
+.upLevelLink .x-btn-text {
+	background-image: url(images/arrow_up.png);
+}

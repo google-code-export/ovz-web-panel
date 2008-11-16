@@ -7,6 +7,16 @@
 class Admin_HardwareServerController extends Owp_Controller_Action_Admin {
 
 	/**
+	 * Action init
+	 *
+	 */
+	public function init() {
+		parent::init();
+		
+		$this->view->upLevelLink = '/admin/dashboard';
+	}
+	
+	/**
 	 * Default action
 	 *
 	 */
@@ -100,6 +110,7 @@ class Admin_HardwareServerController extends Owp_Controller_Action_Admin {
 		$hwServer = $hwServers->fetchRow($hwServers->select()->where('id = ?', $id));
 		
 		$this->view->pageTitle = "Hardware server - $hwServer->hostName";
+		$this->view->upLevelLink = '/admin/hardware-server/list';
 		$this->view->hwServerId = $id;
 	}
 	
