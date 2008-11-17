@@ -28,7 +28,6 @@ Ext.onReady(function(){
 				}, {
 					fieldLabel: 'Description',
 					name: 'description',
-					allowBlank: false,
 					anchor: '100%'
 				}]
 			});
