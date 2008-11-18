@@ -1,3 +1,10 @@
+<?php echo $this->jsFile('/js/views/admin/dashboard/index.js'); ?>
+
+
+<script type="text/javascript">
+	Owp.Views.Admin.Dashboard.Index.shortcuts = <?php echo $this->shortcuts; ?>;
+</script>
+
 <div id="dashboardIntro">
 	<div class="x-panel-body" style="padding: 10px;">
 		OpenVZ Web Panel is a GUI web-based frontend for controlling of hardware 
@@ -19,36 +26,4 @@
 	</div>
 </div>
 
-<div id="dashboardShortcuts" style="padding-top: 10px;">
-	<div class="x-panel-body" style="padding: 10px;">
-		<ul style="list-style-type: disc; padding-left: 20px;">
-			<li>Hardware servers list</li>
-			<li>Add hardware server</li>
-			<li>VPS list</li>
-			<li>Add VPS</li>
-			<li>Configure VPS parameters</li>
-		</ul>
-	</div>
-</div>
-
-<script type="text/javascript">
-Ext.onReady(function() {
-	var dashboardIntro = new Ext.Panel({
-		title: 'Intro',
-		applyTo: 'dashboardIntro',
-		collapsible: true
-	});
-	
-	var dashboardFirstSteps = new Ext.Panel({
-		title: 'First steps',
-		applyTo: 'dashboardFirstSteps',
-		collapsible: true
-	});
-	
-	var dashboardShortcuts = new Ext.Panel({
-		title: 'Shortcuts',
-		applyTo: 'dashboardShortcuts',
-		collapsible: true
-	});
-});
-</script>
+<div id="dashboardShortcuts" style="padding-top: 10px;"></div>

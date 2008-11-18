@@ -12,3 +12,5 @@ Owp.Views.Default.Check.Env = {};
 Owp.Views.Admin = {};
 Owp.Views.Admin.HardwareServer = {};
 Owp.Views.Admin.HardwareServer.Show = {};
+Owp.Views.Admin.Dashboard = {};
+Owp.Views.Admin.Dashboard.Index = {};

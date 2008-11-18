@@ -108,6 +108,16 @@ div#errorWindow .x-window-body th {
 	background-image: url(images/star.png);
 }
 
+.deleteShortcut .x-btn-text {
+	background-image: url(images/delete.png);
+}
+
 .upLevelLink .x-btn-text {
 	background-image: url(images/arrow_up.png);
+}
+
+.shortcutButton {
+	float: left;
+	padding-right: 10px;
+	padding-bottom: 10px;
 }

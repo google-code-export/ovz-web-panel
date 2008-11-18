@@ -24,4 +24,11 @@ CREATE TABLE virtualServers (
 	hwServerId INTEGER NOT NULL
 );
 
+CREATE TABLE shortcuts (
+	id INTEGER NOT NULL PRIMARY KEY autoincrement,
+	name VARCHAR(255) NOT NULL,
+	link VARCHAR(255) NOT NULL
+);
+INSERT INTO "shortcuts" VALUES(1, 'Hardware servers', '/admin/hardware-server/list');
+
 COMMIT;
