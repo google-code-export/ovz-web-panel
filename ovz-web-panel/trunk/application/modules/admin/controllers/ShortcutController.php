@@ -14,7 +14,7 @@ class Admin_ShortcutController extends Owp_Controller_Action_Admin {
 		$id = $this->_request->getParam('id');
 		
 		$shortcuts = new Owp_Table_Shortcuts();
-		$shortcut = $shortcuts->fetchRow($shortcuts->select()->where('id = ?', $id));
+		$shortcut = $shortcuts->find($id)->current();
 		
 		$shortcut->delete();
 		
@@ -50,5 +50,30 @@ class Admin_ShortcutController extends Owp_Controller_Action_Admin {
 				
 		$this->_helper->json(array('success' => true));
 	}
+	
+	/**
+	 * Json data of list of shortcuts
+	 *
+	 */
+	public function listDataAction() {
+		$shortcuts = new Owp_Table_Shortcuts();
+			
+		$select = $shortcuts->select();
+		$shortcutsData = $shortcuts->fetchAll($select);
+		
+		$shortcutsJsonData = array();
+		
+		foreach ($shortcutsData as $shortcutData) {
+			$shortcutsJsonData[] = array(
+				'id' => $shortcutData->id, 
+				'name' => $shortcutData->name,
+				'link' => $shortcutData->link,
+			);
+		}
+				
+		$this->_helper->json($shortcutsJsonData);
+	}
+	
+	
 	
 }
