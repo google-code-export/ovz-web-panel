@@ -31,6 +31,12 @@ Ext.onReady(function() {
 		collapsible: true,
 		items: shortcutsButtons,
 		tbar: [{
+			text: 'Add shortcut',
+			handler: function() {
+				Owp.Layouts.Admin.addShortcut(true);
+			},
+			cls: 'x-btn-text-icon addShortcut'
+		}, {
 			text: 'Delete shortcut',
 			handler: function() {
 				alert('implement shortcut removing');

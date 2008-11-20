@@ -6,89 +6,93 @@ Owp.Layouts.Admin.onLogoutLinkClick = function() {
 	});
 }
 
-Ext.onReady(function(event) {
+Owp.Layouts.Admin.windowAddShortcut = null;
 
-	var windowAddShortcut;
+Owp.Layouts.Admin.addShortcut = function(reloadNeeded) {
+	var currentLocation = window.location.pathname;
 	
-	function addShortcut() {
-		var currentLocation = window.location.pathname;
-		
-		if (!windowAddShortcut) {
-			var formAddShortcut = new Ext.form.FormPanel({
-				baseCls: 'x-plain',
-				labelWidth: 100,
-				url: '/admin/shortcut/add',
-				defaultType: 'textfield',
-				waitMsgTarget: true,
-				
-				items: [{
-					fieldLabel: 'Title',
-					name: 'name',
-					value: Owp.Layouts.Admin.pageTitle,
-					allowBlank: false,
-					anchor: '100%'
-				}, {
-					fieldLabel: 'Link',
-					name: 'link',
-					value: currentLocation,
-					allowBlank: false,
-					anchor: '100%'
-				}]
-			});
+	if (!Owp.Layouts.Admin.windowAddShortcut) {
+		var formAddShortcut = new Ext.form.FormPanel({
+			baseCls: 'x-plain',
+			labelWidth: 100,
+			url: '/admin/shortcut/add',
+			defaultType: 'textfield',
+			waitMsgTarget: true,
 			
-			windowAddShortcut = new Ext.Window({
-				title: 'Add shortcut to page',
-				width: 400,
-				height: 130,
-				modal: true,
-				layout: 'fit',
-				plain: true,
-				bodyStyle: 'padding:5px;',
-				resizable: false,
-				items: formAddShortcut,
-				closeAction: 'hide',
-				
-				buttons: [{
-					text: 'Add',
-					handler: function() {
-						formAddShortcut.form.submit({
-							waitMsg: 'Loading...',
-							success: function() {
-								windowAddShortcut.hide();
-							},
-							failure: function(form, action) {
-								var resultMessage = ('client' == action.failureType)
-									? 'Please, fill the form.'
-									: action.result.errors.message;
-								
-								Ext.MessageBox.show({
-									title: 'Error',
-									msg: resultMessage,
-									buttons: Ext.MessageBox.OK,
-									icon: Ext.MessageBox.ERROR
-								});
+			items: [{
+				fieldLabel: 'Title',
+				name: 'name',
+				value: Owp.Layouts.Admin.pageTitle,
+				allowBlank: false,
+				anchor: '100%'
+			}, {
+				fieldLabel: 'Link',
+				name: 'link',
+				value: currentLocation,
+				allowBlank: false,
+				anchor: '100%'
+			}]
+		});
+		
+		Owp.Layouts.Admin.windowAddShortcut = new Ext.Window({
+			title: 'Add shortcut to page',
+			width: 400,
+			height: 130,
+			modal: true,
+			layout: 'fit',
+			plain: true,
+			bodyStyle: 'padding:5px;',
+			resizable: false,
+			items: formAddShortcut,
+			closeAction: 'hide',
+			
+			buttons: [{
+				text: 'Add',
+				handler: function() {
+					formAddShortcut.form.submit({
+						waitMsg: 'Loading...',
+						success: function() {
+							Owp.Layouts.Admin.windowAddShortcut.hide();
+							
+							if (true == reloadNeeded) {
+								document.location.reload();
 							}
-						});
-					}
-				},{
-					text: 'Cancel',
-					handler: function() {
-						windowAddShortcut.hide();
-					}
-				}]
-			});
-			
-			windowAddShortcut.on('show', function() {
-				formAddShortcut.getForm().reset();
-			});
-		}
-		
-		windowAddShortcut.show();		
+						},
+						failure: function(form, action) {
+							var resultMessage = ('client' == action.failureType)
+								? 'Please, fill the form.'
+								: action.result.errors.message;
+							
+							Ext.MessageBox.show({
+								title: 'Error',
+								msg: resultMessage,
+								buttons: Ext.MessageBox.OK,
+								icon: Ext.MessageBox.ERROR
+							});
+						}
+					});
+				}
+			},{
+				text: 'Cancel',
+				handler: function() {
+					Owp.Layouts.Admin.windowAddShortcut.hide();
+				}
+			}]
+		});
+							
+		Owp.Layouts.Admin.windowAddShortcut.on('show', function() {
+			formAddShortcut.getForm().reset();
+		});
 	}
 	
+	Owp.Layouts.Admin.windowAddShortcut.show();
+}
+
+Ext.onReady(function(event) {	
+		
 	var topBar = [{
 		text: 'Shortcut',
-		handler: addShortcut,
+		handler: Owp.Layouts.Admin.addShortcut,
 		cls: 'x-btn-text-icon addShortcut'
 	}];
 	
