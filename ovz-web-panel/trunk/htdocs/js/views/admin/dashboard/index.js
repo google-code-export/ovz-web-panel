@@ -22,27 +22,12 @@ Ext.onReady(function() {
 	
 	shortcutsStore.load();
 		
-	shortcutsStore.on('load', function() {
-		var shortcutsButtons = [];
-		
-		shortcutsStore.each(function(shortcut) {
-			shortcutsButtons.push(new Ext.Button({
-					text: shortcut.data.name,
-					cls: 'shortcutButton',
-					minWidth: 200,
-					handler: function() {
-						document.location.href = shortcut.data.link;
-					}
-				})
-			);
-		});
-				
+	shortcutsStore.on('load', function() {			
 		var dashboardShortcuts = new Ext.Panel({
 			title: 'Shortcuts',
 			bodyStyle: 'padding-left: 10px; padding-top: 10px;',
 			renderTo: 'dashboardShortcuts',
 			collapsible: true,
-			items: shortcutsButtons,
 			tbar: [{
 				text: 'Add shortcut',
 				handler: function() {
@@ -52,9 +37,25 @@ Ext.onReady(function() {
 			}, {
 				text: 'Delete shortcut',
 				handler: deleteShortcut,
+				disabled: (0 == shortcutsStore.getCount()),
 				cls: 'x-btn-text-icon deleteShortcut'
 			}]
 		});
+				
+		shortcutsStore.each(function(shortcut) {
+			var shortcutButton = new Ext.Button({
+				text: shortcut.data.name,
+				cls: 'shortcutButton',
+				minWidth: 200,
+				handler: function() {
+					document.location.href = shortcut.data.link;
+				}
+			});
+			
+			dashboardShortcuts.add(shortcutButton);
+		});
+		
+		dashboardShortcuts.doLayout();
 	});
 	
 	var windowDeleteShortcut;
