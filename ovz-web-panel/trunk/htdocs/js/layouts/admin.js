@@ -6,6 +6,94 @@ Owp.Layouts.Admin.onLogoutLinkClick = function() {
 	});
 }
 
+Owp.Layouts.Admin.windowMyProfile = null;
+
+Owp.Layouts.Admin.onMyProfileClick = function() {
+	if (!Owp.Layouts.Admin.windowMyProfile) {
+		var formMyProfile = new Ext.form.FormPanel({
+			baseCls: 'x-plain',
+			labelWidth: 100,
+			url: '/admin/my-profile/save',
+			defaultType: 'textfield',
+			waitMsgTarget: true,
+			
+			items: [{
+				fieldLabel: 'User Name',
+				name: 'userName',
+				value: Owp.Layouts.Admin.loggedUser,
+				readOnly: true,
+				anchor: '100%'
+			}, {
+				fieldLabel: 'Current Password',
+				name: 'currentPassword',
+				inputType: 'password',
+				allowBlank: false,
+				anchor: '100%'
+			}, {
+				fieldLabel: 'New Password',
+				name: 'newPassword',
+				inputType: 'password',
+				allowBlank: false,
+				anchor: '100%'
+			}, {
+				fieldLabel: 'Confirm Password',
+				name: 'confirmPassword',
+				inputType: 'password',
+				allowBlank: false,
+				anchor: '100%'
+			}]
+		});
+		
+		Owp.Layouts.Admin.windowMyProfile = new Ext.Window({
+			title: 'My profile',
+			width: 400,
+			height: 180,
+			modal: true,
+			layout: 'fit',
+			plain: true,
+			bodyStyle: 'padding: 5px;',
+			resizable: false,
+			items: formMyProfile,
+			closeAction: 'hide',
+			
+			buttons: [{
+				text: 'Save',
+				handler: function() {
+					formMyProfile.form.submit({
+						waitMsg: 'Loading...',
+						success: function() {
+							Owp.Layouts.Admin.windowMyProfile.hide();
+						},
+						failure: function(form, action) {
+							var resultMessage = ('client' == action.failureType)
+								? 'Please, fill the form.'
+								: action.result.errors.message;
+							
+							Ext.MessageBox.show({
+								title: 'Error',
+								msg: resultMessage,
+								buttons: Ext.MessageBox.OK,
+								icon: Ext.MessageBox.ERROR
+							});
+						}
+					});
+				}
+			},{
+				text: 'Cancel',
+				handler: function() {
+					Owp.Layouts.Admin.windowMyProfile.hide();
+				}
+			}]
+		});
+		
+		Owp.Layouts.Admin.windowMyProfile.on('show', function() {
+			formMyProfile.getForm().reset();
+		});
+	}
+	
+	Owp.Layouts.Admin.windowMyProfile.show();
+}
+
 Owp.Layouts.Admin.windowAddShortcut = null;
 
 Owp.Layouts.Admin.addShortcut = function(reloadNeeded) {

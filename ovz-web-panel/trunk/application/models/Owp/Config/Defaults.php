@@ -52,6 +52,11 @@ class Owp_Config_Defaults {
 							'icon' => 'menu_icon_host.png',
 						),
 						array(
+							'title' => 'My profile',
+							'link' => 'javascript: Owp.Layouts.Admin.onMyProfileClick();',
+							'icon' => 'menu_icon_profile.png',
+						),
+						array(
 							'title' => 'Logout',
 							'link' => 'javascript: Owp.Layouts.Admin.onLogoutLinkClick();',
 							'icon' => 'menu_icon_logout.png',

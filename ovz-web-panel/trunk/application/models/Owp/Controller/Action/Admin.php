@@ -17,6 +17,8 @@ abstract class Owp_Controller_Action_Admin extends Owp_Controller_Action_Abstrac
 			$this->_redirect('/login');
 		}
 		
+		$this->view->loggedUser = $this->_auth->getIdentity()->userName;
+		
 		$this->_helper->layout->setLayout('admin');
 	}
 	
