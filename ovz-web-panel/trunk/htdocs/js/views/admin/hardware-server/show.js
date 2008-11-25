@@ -8,10 +8,89 @@ Ext.onReady(function(){
 		}
 	}
 	
+	var windowAddVirtualServer;
+	
 	function addVirtualServer() {
-		alert('implement addVirtualServer');
-	}
+		if (!windowAddVirtualServer) {
+			var formAddVirtualServer = new Ext.form.FormPanel({
+				baseCls: 'x-plain',
+				labelWidth: 100,
+				url: '/admin/virtual-server/add/hw-server-id/' + Owp.Views.Admin.HardwareServer.Show.hwServerId,
+				defaultType: 'textfield',
+				waitMsgTarget: true,
+				
+				items: [{
+					fieldLabel: 'VE ID',
+					name: 'veId',
+					allowBlank: false,
+					anchor: '100%'
+				}, {
+					fieldLabel: 'IP Address',
+					name: 'ipAddress',
+					anchor: '100%'
+				}, {
+					fieldLabel: 'Host Name',
+					name: 'hostName',
+					anchor: '100%'
+				}, {
+					fieldLabel: 'OS Template',
+					name: 'osTemplate',
+					allowBlank: false,
+					anchor: '100%'
+				}]
+			});
+			
+			windowAddVirtualServer = new Ext.Window({
+				title: 'Create new virtual server',
+				width: 400,
+				height: 180,
+				modal: true,
+				layout: 'fit',
+				plain: true,
+				bodyStyle: 'padding: 5px;',
+				resizable: false,
+				items: formAddVirtualServer,
+				closeAction: 'hide',
+				
+				buttons: [{
+					text: 'Create',
+					handler: function() {
+						formAddVirtualServer.form.submit({
+							waitMsg: 'Loading...',
+							success: function() {
+								gridVirtualServers.store.reload();
+								windowAddVirtualServer.hide();
+							},
+							failure: function(form, action) {
+								var resultMessage = ('client' == action.failureType)
+									? 'Please, fill the form.'
+									: action.result.errors.message;
+								
+								Ext.MessageBox.show({
+									title: 'Error',
+									msg: resultMessage,
+									buttons: Ext.MessageBox.OK,
+									icon: Ext.MessageBox.ERROR
+								});
+							}
+						});
+					}
+				},{
+					text: 'Cancel',
+					handler: function() {
+						windowAddVirtualServer.hide();
+					}
+				}]
+			});
+			
+			windowAddVirtualServer.on('show', function() {
+				formAddVirtualServer.getForm().reset();
+			});
+		}
 		
+		windowAddVirtualServer.show();		
+	}
+			
 	function removeVirtualServer() {
 		var selectedItem = Ext.getCmp('virtualServersGrid').getSelectionModel().getSelected();
 		
