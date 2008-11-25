@@ -224,6 +224,7 @@ Ext.onReady(function(event) {
 				margins: '5 5 5 0',
 				contentEl: 'panelContent',
 				xtype: 'panel',
+				autoScroll: true,
 				title: Owp.Layouts.Admin.pageTitle,
 				id: 'rightPanelHeader',
 				tbar: topBar,
