@@ -42,6 +42,11 @@ class Admin_VirtualServerController extends Owp_Controller_Action_Admin {
 		$virtualServer = $virtualServers->find($id)->current();
 		
 		$hwServer = $virtualServer->findParentRow('Owp_Table_HwServers', 'HwServer');
+		
+		if (Owp_Table_Row_VirtualServer::STATE_STOPPED != $virtualServer->veState) {
+			$hwServer->execDaemonRequest('vzctl', "stop $virtualServer->veId");
+		}
+		
 		$hwServer->execDaemonRequest('vzctl', "destroy $virtualServer->veId");
 		
 		$virtualServer->delete();
