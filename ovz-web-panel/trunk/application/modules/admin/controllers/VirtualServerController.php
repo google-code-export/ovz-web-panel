@@ -74,7 +74,17 @@ class Admin_VirtualServerController extends Owp_Controller_Action_Admin {
 		$osTemplate = $this->_request->getParam('osTemplate');
 		
 		$hwServer = $this->_getHwServer($hwServerId);
+		
 		$hwServer->execDaemonRequest('vzctl', "create $virtualServer->veId --ostemplate $osTemplate");
+		
+		if ($virtualServer->ipAddress) {
+			$hwServer->execDaemonRequest('vzctl', "set $virtualServer->veId --ipadd $virtualServer->ipAddress --save");
+		}
+		
+		if ($virtualServer->hostName) {
+			$hwServer->execDaemonRequest('vzctl', "set $virtualServer->veId --hostname $virtualServer->hostName --save");
+		}
+		
 		$hwServer->execDaemonRequest('vzctl', "start $virtualServer->veId");
 		
 		$this->_helper->json(array('success' => true));
