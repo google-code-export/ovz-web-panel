@@ -18,8 +18,8 @@ CREATE TABLE hwServers (
 CREATE TABLE virtualServers (
 	id INTEGER NOT NULL PRIMARY KEY autoincrement,
 	veId INTEGER NOT NULL,
-	ipAddress VARCHAR(255) NOT NULL,
-	hostName VARCHAR(255) NOT NULL,
+	ipAddress VARCHAR(255) NULL,
+	hostName VARCHAR(255) NULL,
 	veState INTEGER NOT NULL,
 	hwServerId INTEGER NOT NULL
 );
