@@ -83,18 +83,41 @@ class Admin_HardwareServerController extends Owp_Controller_Action_Admin {
 		$hwServer->description = $this->_request->getParam('description');
 		$hwServer->save();
 		
+		$osTemplatesRawData = $hwServer->execDaemonRequest('ls', '/vz/template/cache/');
+		
+		$osTemplates = new Owp_Table_OsTemplates();
+		$osTemplatesRawData = $hwServer->execDaemonRequest('ls', '/vz/template/cache/');
+		$osTemplatesArray = explode("\n", $osTemplatesRawData);
+		
+		foreach ($osTemplatesArray as $osTemplateRecord) {
+			$osTemplateRecord = str_replace('.tar.gz', '', $osTemplateRecord);
+			$osTemplate = $osTemplates->createRow();
+			$osTemplate->name = $osTemplateRecord;
+			$osTemplate->hwServerId = $hwServer->id;
+			$osTemplate->save();
+		}
+				
 		$virtualServers = new Owp_Table_VirtualServers();
 		$vzlistRawData = $hwServer->execDaemonRequest('vzlist', '-a -H -o veid,hostname,ip,status');
 		$vzlist = explode("\n", $vzlistRawData);
 		
 		foreach ($vzlist as $vzlistEntry) {
 			list($veId, $hostName, $ipAddress, $status) = preg_split("/\s+/", trim($vzlistEntry));
+			
+			$virtualServerConfigData = $hwServer->execDaemonRequest('cat', "/etc/vz/conf/$veId.conf");			
+			$iniParser = new Owp_Config_IniParser($virtualServerConfigData);			
+			$osTemplateName = $iniParser->get('OSTEMPLATE');
+			
+			$osTemplates = new Owp_Table_OsTemplates();
+			$osTemplate = $osTemplates->fetchRow($osTemplates->select()->where('name = ?', $osTemplateName));
+						
 			$virtualServer = $virtualServers->createRow();
 			$virtualServer->veId = $veId;
 			$virtualServer->ipAddress = $ipAddress;
 			$virtualServer->hostName = $hostName;
 			$virtualServer->veState = $virtualServer->getVeStateByName($status);
 			$virtualServer->hwServerId = $hwServer->id;
+			$virtualServer->osTemplateId = $osTemplate->id;
 			$virtualServer->save();
 		}
 		

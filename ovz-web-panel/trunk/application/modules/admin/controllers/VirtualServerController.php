@@ -14,17 +14,25 @@ class Admin_VirtualServerController extends Owp_Controller_Action_Admin {
 		$hwServerId = $this->_request->getParam('hw-server-id');
 		$hwServer = $this->_getHwServer($hwServerId);
 		
-		$virtualServers = $hwServer->findDependentRowset('Owp_Table_VirtualServers');
-				
+		$virtualServers = new Owp_Table_VirtualServers();
+		
+		$virtualServersData = $virtualServers->fetchAll($virtualServers->select()
+			->setIntegrityCheck(false)
+			->from('virtualServers')
+			->join('osTemplates', 'osTemplates.id = virtualServers.osTemplateId', array('osTemplateName' => 'name'))
+			->where('virtualServers.hwServerId = ?', $hwServer->id)		
+		);
+						
 		$virtualServersJsonData = array();
 		
-		foreach ($virtualServers as $virtualServer) {
+		foreach ($virtualServersData as $virtualServerData) {
 			$virtualServersJsonData[] = array(
-				'id' => $virtualServer->id,
-				'veId' => $virtualServer->veId,
-				'ipAddress' => $virtualServer->ipAddress,
-				'hostName' => $virtualServer->hostName,
-				'veState' => $virtualServer->veState,
+				'id' => $virtualServerData->id,
+				'veId' => $virtualServerData->veId,
+				'ipAddress' => $virtualServerData->ipAddress,
+				'hostName' => $virtualServerData->hostName,
+				'veState' => $virtualServerData->veState,
+				'osTemplateName' => $virtualServerData->osTemplateName,
 			);
 		}
 		
@@ -69,13 +77,14 @@ class Admin_VirtualServerController extends Owp_Controller_Action_Admin {
 		$virtualServer->hostName = $this->_request->getParam('hostName');
 		$virtualServer->veState = true;
 		$virtualServer->hwServerId = $hwServerId;
+		$virtualServer->osTemplateId = $this->_request->getParam('osTemplateId');
 		$virtualServer->save();
-		
-		$osTemplate = $this->_request->getParam('osTemplate');
+
+		$osTemplate = $virtualServer->findParentRow('Owp_Table_OsTemplates', 'OsTemplate');
 		
 		$hwServer = $this->_getHwServer($hwServerId);
 		
-		$hwServer->execDaemonRequest('vzctl', "create $virtualServer->veId --ostemplate $osTemplate");
+		$hwServer->execDaemonRequest('vzctl', "create $virtualServer->veId --ostemplate $osTemplate->name");
 		
 		if ($virtualServer->ipAddress) {
 			$hwServer->execDaemonRequest('vzctl', "set $virtualServer->veId --ipadd $virtualServer->ipAddress --save");

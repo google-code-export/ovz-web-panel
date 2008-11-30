@@ -1,5 +1,15 @@
 Ext.onReady(function(){
 
+	var osTemapltesStore = new Ext.data.JsonStore({
+		url: '/admin/os-template/list-data/hw-server-id/' + Owp.Views.Admin.HardwareServer.Show.hwServerId,
+		fields: [
+			{ name: 'id' },
+			{ name: 'name' }
+		]
+	});
+	
+	osTemapltesStore.load();
+	
 	function columnVeStateRenderer(veState) {
 		if (1 == veState) {
 			return '<img src="/skins/win_xp/images/on.gif"/>';
@@ -34,8 +44,18 @@ Ext.onReady(function(){
 					anchor: '100%'
 				}, {
 					fieldLabel: 'OS Template',
-					name: 'osTemplate',
+					xtype: 'combo',
+					hiddenName: 'osTemplateId',
+					valueField: 'id',
+					displayField: 'name',
+					name: 'osTemplateId',
+					forceSelection: true,
+					triggerAction: 'all',
+					emptyText: 'Select OS template',
+					mode: 'local',
 					allowBlank: false,
+					editable: false,
+					store: osTemapltesStore,
 					anchor: '100%'
 				}]
 			});
@@ -140,7 +160,8 @@ Ext.onReady(function(){
 			{ name: 'veId' },
 			{ name: 'ipAddress' },
 			{ name: 'hostName' },
-			{ name: 'veState' }
+			{ name: 'veState' },
+			{ name: 'osTemplateName' }
 		]
 	});
 
@@ -157,11 +178,12 @@ Ext.onReady(function(){
 			{ id: 'veState', header: "State", renderer: columnVeStateRenderer, width: 60, align: 'center', sortable: true, dataIndex: 'veState' },
 			{ id: 'veId', header: "Virtual Server ID", sortable: true, dataIndex: 'veId' },
 			{ id: 'ipAddress', header: "IP Address", sortable: true, dataIndex: 'ipAddress' },
-			{ id: 'hostName', header: "Host Name", sortable: true, dataIndex: 'hostName' }
+			{ id: 'hostName', header: "Host Name", sortable: true, dataIndex: 'hostName' },
+			{ id: 'osTemplateName', header: "OS Template", sortable: true, dataIndex: 'osTemplateName' }
 		]),
 		sm: selectionModel,
 		stripeRows: true,
-		autoExpandColumn: 'hostName',
+		autoExpandColumn: 'osTemplateName',
 		autoHeight: true,
 		autoWidth: true,
 		stripeRows: true,

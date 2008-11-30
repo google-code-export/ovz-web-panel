@@ -21,6 +21,13 @@ CREATE TABLE virtualServers (
 	ipAddress VARCHAR(255) NULL,
 	hostName VARCHAR(255) NULL,
 	veState INTEGER NOT NULL,
+	hwServerId INTEGER NOT NULL,
+	osTemplateId INTEGER NOT NULL
+);
+
+CREATE TABLE osTemplates (
+	id INTEGER NOT NULL PRIMARY KEY autoincrement,
+	name VARCHAR(255) NOT NULL,
 	hwServerId INTEGER NOT NULL
 );
 
