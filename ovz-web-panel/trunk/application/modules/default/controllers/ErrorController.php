@@ -2,7 +2,7 @@
 /**
  * Errors controller actions
  *
- * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
+ * @author Alexei Yuzhakov <alex@softunity.com.ru> 
  */
 class ErrorController extends Owp_Controller_Action_Simple {
 		

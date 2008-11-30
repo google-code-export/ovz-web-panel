@@ -2,7 +2,7 @@
 /**
  * Virtual server table row gateway
  *
- * @author Alexei Yuzhakov <ayuzhakov@parallels.com> 
+ * @author Alexei Yuzhakov <alex@softunity.com.ru> 
  */
 class Owp_Table_Row_VirtualServer extends Zend_Db_Table_Row_Abstract {
 	

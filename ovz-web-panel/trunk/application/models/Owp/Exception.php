@@ -2,7 +2,7 @@
 /**
  * Generic exception
  *
- * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
+ * @author Alexei Yuzhakov <alex@softunity.com.ru> 
  */
 class Owp_Exception extends Zend_Exception {
 

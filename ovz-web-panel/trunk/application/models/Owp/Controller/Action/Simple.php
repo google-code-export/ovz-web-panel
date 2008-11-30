@@ -2,7 +2,7 @@
 /**
  * Simple (by layout) controller
  *
- * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
+ * @author Alexei Yuzhakov <alex@softunity.com.ru> 
  */
 abstract class Owp_Controller_Action_Simple extends Owp_Controller_Action_Abstract {
 	

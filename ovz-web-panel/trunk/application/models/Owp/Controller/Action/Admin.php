@@ -2,7 +2,7 @@
 /**
  * Admin controller
  *
- * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
+ * @author Alexei Yuzhakov <alex@softunity.com.ru> 
  */
 abstract class Owp_Controller_Action_Admin extends Owp_Controller_Action_Abstract {
 	

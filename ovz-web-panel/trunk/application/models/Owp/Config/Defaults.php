@@ -2,7 +2,7 @@
 /**
  * Config defaults
  *
- * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
+ * @author Alexei Yuzhakov <alex@softunity.com.ru> 
  */
 class Owp_Config_Defaults {
 	

@@ -2,7 +2,7 @@
 /**
  * Auth controller actions
  *
- * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
+ * @author Alexei Yuzhakov <alex@softunity.com.ru> 
  */
 class AuthController extends Owp_Controller_Action_Simple {
 		

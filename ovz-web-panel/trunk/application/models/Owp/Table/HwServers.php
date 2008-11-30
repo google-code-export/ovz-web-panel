@@ -2,7 +2,7 @@
 /**
  * HW-servers table gateway
  *
- * @author Alexei Yuzhakov <ayuzhakov@parallels.com> 
+ * @author Alexei Yuzhakov <alex@softunity.com.ru> 
  */
 class Owp_Table_HwServers extends Zend_Db_Table_Abstract {
 		

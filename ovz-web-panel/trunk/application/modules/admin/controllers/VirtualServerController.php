@@ -2,7 +2,7 @@
 /**
  * VPS-nodes controller
  *
- * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
+ * @author Alexei Yuzhakov <alex@softunity.com.ru> 
  */
 class Admin_VirtualServerController extends Owp_Controller_Action_Admin {
 		

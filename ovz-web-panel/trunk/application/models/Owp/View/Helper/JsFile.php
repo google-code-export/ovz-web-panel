@@ -2,7 +2,7 @@
 /**
  * View helper for inclusion of JS files
  *
- * @author Alexei Yuzhakov <ayuzhakov@parallels.com> 
+ * @author Alexei Yuzhakov <alex@softunity.com.ru> 
  */
 class Owp_View_Helper_JsFile extends Zend_View_Helper_Abstract {
 	

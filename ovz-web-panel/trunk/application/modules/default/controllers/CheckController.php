@@ -2,7 +2,7 @@
 /**
  * Controller for various checks
  *
- * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
+ * @author Alexei Yuzhakov <alex@softunity.com.ru> 
  */
 class CheckController extends Owp_Controller_Action_Simple {
 	

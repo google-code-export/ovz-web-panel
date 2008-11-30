@@ -2,7 +2,7 @@
 /**
  * View helper for inclusion of CSS files
  *
- * @author Alexei Yuzhakov <ayuzhakov@parallels.com> 
+ * @author Alexei Yuzhakov <alex@softunity.com.ru> 
  */
 class Owp_View_Helper_CssFile extends Zend_View_Helper_Abstract {
 	

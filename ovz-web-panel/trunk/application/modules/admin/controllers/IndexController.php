@@ -2,7 +2,7 @@
 /**
  * Default controller
  *
- * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
+ * @author Alexei Yuzhakov <alex@softunity.com.ru> 
  */
 class Admin_IndexController extends Owp_Controller_Action_Admin {
 		
