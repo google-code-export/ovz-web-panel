@@ -28,4 +28,51 @@ class Owp_Table_Row_VirtualServer extends Zend_Db_Table_Row_Abstract {
 		return self::STATE_UNKNOWN;
 	}
 	
+	/**
+	 * Delete virtual server
+	 *
+	 */
+	public function delete() {
+		$hwServer = $this->findParentRow('Owp_Table_HwServers', 'HwServer');
+		
+		if (self::STATE_STOPPED != $this->veState) {
+			$hwServer->execDaemonRequest('vzctl', "stop $this->veId");
+		}
+		
+		$hwServer->execDaemonRequest('vzctl', "destroy $this->veId");
+				
+		parent::delete();
+	}
+	
+	/**
+	 * Create virtual server
+	 *
+	 */
+	public function save() {
+		$isNew = empty($this->_cleanData);
+		
+		parent::save();
+		
+		if (!$isNew) {
+			return ;
+		}
+		
+		$osTemplate = $this->findParentRow('Owp_Table_OsTemplates', 'OsTemplate');
+		
+		$hwServers = new Owp_Table_HwServers();
+		$hwServer = $hwServers->find($this->hwServerId)->current();
+		
+		$hwServer->execDaemonRequest('vzctl', "create $this->veId --ostemplate $osTemplate->name");
+		
+		if ($this->ipAddress) {
+			$hwServer->execDaemonRequest('vzctl', "set $this->veId --ipadd $this->ipAddress --save");
+		}
+		
+		if ($this->hostName) {
+			$hwServer->execDaemonRequest('vzctl', "set $this->veId --hostname $this->hostName --save");
+		}
+		
+		$hwServer->execDaemonRequest('vzctl', "start $this->veId");
+	}
+	
 }

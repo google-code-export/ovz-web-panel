@@ -48,15 +48,6 @@ class Admin_VirtualServerController extends Owp_Controller_Action_Admin {
 		
 		$virtualServers = new Owp_Table_VirtualServers();
 		$virtualServer = $virtualServers->find($id)->current();
-		
-		$hwServer = $virtualServer->findParentRow('Owp_Table_HwServers', 'HwServer');
-		
-		if (Owp_Table_Row_VirtualServer::STATE_STOPPED != $virtualServer->veState) {
-			$hwServer->execDaemonRequest('vzctl', "stop $virtualServer->veId");
-		}
-		
-		$hwServer->execDaemonRequest('vzctl', "destroy $virtualServer->veId");
-		
 		$virtualServer->delete();
 		
 		$this->_helper->json(array('success' => true));
@@ -79,22 +70,6 @@ class Admin_VirtualServerController extends Owp_Controller_Action_Admin {
 		$virtualServer->hwServerId = $hwServerId;
 		$virtualServer->osTemplateId = $this->_request->getParam('osTemplateId');
 		$virtualServer->save();
-
-		$osTemplate = $virtualServer->findParentRow('Owp_Table_OsTemplates', 'OsTemplate');
-		
-		$hwServer = $this->_getHwServer($hwServerId);
-		
-		$hwServer->execDaemonRequest('vzctl', "create $virtualServer->veId --ostemplate $osTemplate->name");
-		
-		if ($virtualServer->ipAddress) {
-			$hwServer->execDaemonRequest('vzctl', "set $virtualServer->veId --ipadd $virtualServer->ipAddress --save");
-		}
-		
-		if ($virtualServer->hostName) {
-			$hwServer->execDaemonRequest('vzctl', "set $virtualServer->veId --hostname $virtualServer->hostName --save");
-		}
-		
-		$hwServer->execDaemonRequest('vzctl', "start $virtualServer->veId");
 		
 		$this->_helper->json(array('success' => true));
 	}
