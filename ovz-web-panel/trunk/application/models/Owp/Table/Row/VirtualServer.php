@@ -29,34 +29,24 @@ class Owp_Table_Row_VirtualServer extends Zend_Db_Table_Row_Abstract {
 	}
 	
 	/**
-	 * Delete virtual server
+	 * Remove virtual server physically
 	 *
 	 */
-	public function delete() {
+	public function removePhysically() {
 		$hwServer = $this->findParentRow('Owp_Table_HwServers', 'HwServer');
-		
+			
 		if (self::STATE_STOPPED != $this->veState) {
 			$hwServer->execDaemonRequest('vzctl', "stop $this->veId");
 		}
 		
 		$hwServer->execDaemonRequest('vzctl', "destroy $this->veId");
-				
-		parent::delete();
 	}
-	
+
 	/**
-	 * Create virtual server
+	 * Create virtual server physically
 	 *
 	 */
-	public function save() {
-		$isNew = empty($this->_cleanData);
-		
-		parent::save();
-		
-		if (!$isNew) {
-			return ;
-		}
-		
+	public function createPhysically() {
 		$osTemplate = $this->findParentRow('Owp_Table_OsTemplates', 'OsTemplate');
 		
 		$hwServers = new Owp_Table_HwServers();

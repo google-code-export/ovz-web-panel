@@ -48,6 +48,7 @@ class Admin_VirtualServerController extends Owp_Controller_Action_Admin {
 		
 		$virtualServers = new Owp_Table_VirtualServers();
 		$virtualServer = $virtualServers->find($id)->current();
+		$virtualServer->removePhysically();
 		$virtualServer->delete();
 		
 		$this->_helper->json(array('success' => true));
@@ -70,6 +71,7 @@ class Admin_VirtualServerController extends Owp_Controller_Action_Admin {
 		$virtualServer->hwServerId = $hwServerId;
 		$virtualServer->osTemplateId = $this->_request->getParam('osTemplateId');
 		$virtualServer->save();
+		$virtualServer->createPhysically();
 		
 		$this->_helper->json(array('success' => true));
 	}
