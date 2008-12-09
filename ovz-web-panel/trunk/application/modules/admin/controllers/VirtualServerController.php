@@ -89,4 +89,53 @@ class Admin_VirtualServerController extends Owp_Controller_Action_Admin {
 		return $hwServer;
 	}
 	
+	/**
+	 * Start virtual server
+	 *
+	 */
+	public function startAction() {
+		$this->_changeVirtualServerState('start');
+	}
+	
+	/**
+	 * Stop virtual server
+	 *
+	 */
+	public function stopAction() {
+		$this->_changeVirtualServerState('stop');
+	}
+	
+	/**
+	 * Restart virtual server
+	 *
+	 */
+	public function restartAction() {
+		$this->_changeVirtualServerState('restart');
+	}
+	
+	/**
+	 * Change virtual server state
+	 *
+	 * @param string $command
+	 */
+	private function _changeVirtualServerState($command) {
+		$id = (int) $this->_request->getParam('id');
+		
+		$virtualServers = new Owp_Table_VirtualServers();
+		$virtualServer = $virtualServers->find($id)->current();
+		
+		$hwServer = $virtualServer->findParentRow('Owp_Table_HwServers', 'HwServer');
+		$hwServer->execDaemonRequest('vzctl', "$command $virtualServer->veId");
+		
+		if ('stop' == $command) {
+			$virtualServer->veState = Owp_Table_Row_VirtualServer::STATE_STOPPED;
+		} else {
+			$virtualServer->veState = Owp_Table_Row_VirtualServer::STATE_RUNNING;
+		}
+		
+		$virtualServer->save();
+		
+		$this->_helper->json(array('success' => true));
+	}
+	
 }

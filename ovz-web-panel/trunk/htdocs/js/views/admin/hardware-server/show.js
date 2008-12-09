@@ -1,3 +1,59 @@
+Owp.Views.Admin.HardwareServer.Show.windowChangeVirtualServerState = null;
+Owp.Views.Admin.HardwareServer.Show.gridVirtualServers = null;
+
+Owp.Views.Admin.HardwareServer.Show.changeVirtualServerStateRequest = function(veKeyId, command) {
+	Ext.Ajax.request({
+		url: '/admin/virtual-server/' + command + '/id/' + veKeyId,
+		success: function(response) {
+			var result = Ext.util.JSON.decode(response.responseText);
+			
+			if (!result.success) {
+				Ext.MessageBox.show({
+					title: 'Error',
+					msg: 'Change virtual server state request failed.',
+					buttons: Ext.Msg.OK,
+					icon: Ext.MessageBox.ERROR
+				});
+			
+				return ;
+			}
+			
+			Owp.Views.Admin.HardwareServer.Show.gridVirtualServers.store.reload();
+			Owp.Views.Admin.HardwareServer.Show.windowChangeVirtualServerState.close();
+		}
+	});
+}
+
+Owp.Views.Admin.HardwareServer.Show.changeVirtualServerState = function(veKeyId, veId) {
+	Owp.Views.Admin.HardwareServer.Show.windowChangeVirtualServerState = new Ext.Window({
+		title: 'Virtual server #' + veId,
+		modal: true,
+		plain: true,
+		resizable: false,
+		bodyStyle: 'padding:5px;',
+		html: 'You can change virtual server #' + veId + ' state.',
+		
+		buttons: [{
+			text: 'Start',
+			handler: function() {
+				Owp.Views.Admin.HardwareServer.Show.changeVirtualServerStateRequest(veKeyId, 'start');
+			}
+		}, {
+			text: 'Stop',
+			handler: function() {
+				Owp.Views.Admin.HardwareServer.Show.changeVirtualServerStateRequest(veKeyId, 'stop');
+			}
+		}, {
+			text: 'Restart',
+			handler: function() {
+				Owp.Views.Admin.HardwareServer.Show.changeVirtualServerStateRequest(veKeyId, 'restart');
+			}
+		}]
+	});
+	
+	Owp.Views.Admin.HardwareServer.Show.windowChangeVirtualServerState.show();
+}
+
 Ext.onReady(function(){
 
 	var osTemapltesStore = new Ext.data.JsonStore({
@@ -10,12 +66,17 @@ Ext.onReady(function(){
 	
 	osTemapltesStore.load();
 	
-	function columnVeStateRenderer(veState) {
+	function columnVeStateRenderer(veState, metadata, record) {
+		var stateImage;
+		
 		if (1 == veState) {
-			return '<img src="/skins/win_xp/images/on.gif"/>';
+			stateImage = 'on.gif';
 		} else {
-			return '<img src="/skins/win_xp/images/off.gif"/>';
+			stateImage = 'off.gif';
 		}
+		
+		return '<a href="#" onclick="Owp.Views.Admin.HardwareServer.Show.changeVirtualServerState(' + 
+			record.data.id + ', ' + record.data.veId + ');"><img border="0" src="/skins/win_xp/images/' + stateImage + '"/></a>';
 	}
 	
 	var windowAddVirtualServer;
@@ -78,7 +139,7 @@ Ext.onReady(function(){
 						formAddVirtualServer.form.submit({
 							waitMsg: 'Loading...',
 							success: function() {
-								gridVirtualServers.store.reload();
+								Owp.Views.Admin.HardwareServer.Show.gridVirtualServers.store.reload();
 								windowAddVirtualServer.hide();
 							},
 							failure: function(form, action) {
@@ -143,7 +204,7 @@ Ext.onReady(function(){
 							return ;
 						}
 						
-						gridVirtualServers.store.reload();
+						Owp.Views.Admin.HardwareServer.Show.gridVirtualServers.store.reload();
 					},
 					params: { 
 						id: selectedItem.get('id')
@@ -169,7 +230,7 @@ Ext.onReady(function(){
 	
 	var selectionModel = new Ext.grid.CheckboxSelectionModel({ singleSelect: true });
 
-	var gridVirtualServers = new Ext.grid.GridPanel({
+	Owp.Views.Admin.HardwareServer.Show.gridVirtualServers = new Ext.grid.GridPanel({
 		id: 'virtualServersGrid',
 		title: 'Virtual servers list',
 		store: store,
@@ -199,5 +260,5 @@ Ext.onReady(function(){
 		}]
 	});
 	
-	gridVirtualServers.render('virtualServersList');
+	Owp.Views.Admin.HardwareServer.Show.gridVirtualServers.render('virtualServersList');
 });
