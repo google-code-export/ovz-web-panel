@@ -12,7 +12,7 @@ class Owp_View_Helper_JsFile extends Zend_View_Helper_Abstract {
 	 * @return string
 	 */
 	public function jsFile($fileName) {
-		$htdocsPath = ROOT_PATH . '/../htdocs/';
+		$htdocsPath = ROOT_PATH . '/htdocs/';
 		$cacheIdent = filemtime($htdocsPath . $fileName);
 		
 		return '<script type="text/javascript" src="' . htmlspecialchars($fileName) . "?$cacheIdent" . '"></script>';
