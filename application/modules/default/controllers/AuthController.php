@@ -2,9 +2,9 @@
 /**
  * Auth controller actions
  *
- * @author Alexei Yuzhakov <alex@softunity.com.ru> 
+ * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
-class AuthController extends Owp_Controller_Action_Simple {
+class AuthController extends OvzWebPanel_Controller_Action_Simple {
 		
 	/**
 	 * Login action
@@ -16,8 +16,8 @@ class AuthController extends Owp_Controller_Action_Simple {
 		}
 		
 		if ($this->_request->isPost()) {
-			$userName = $this->_getParam('userName', '*');
-			$userPassword = $this->_getParam('userPassword');
+			$userName = $this->_getParam('login', '*');
+			$userPassword = $this->_getParam('password');
 			
 			$this->_authAdapter
 				->setIdentity($userName)
@@ -32,18 +32,15 @@ class AuthController extends Owp_Controller_Action_Simple {
 					'roleId',
 				)));
 				
-				$this->_helper->json(array('success' => true));
-			} else {		
-				$this->_helper->json(array(
-					'success' => false,
-					'errors' => array(
-						'message' => implode(' ', $result->getMessages())
-					)
-				));
+				$this->_redirect('/admin/dashboard');
+			} else {
+				$this->_helper->flashMessenger(implode(' ', $result->getMessages()));
+				$this->_redirect('/login');
 			}
 		}
 		
 		$this->view->pageTitle = "Login";
+		$this->view->error = implode(' ', $this->_helper->flashMessenger->getMessages());
 	}
 	
 	/**

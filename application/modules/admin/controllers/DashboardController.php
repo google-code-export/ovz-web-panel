@@ -2,16 +2,12 @@
 /**
  * Dashboard controller
  *
- * @author Alexei Yuzhakov <alex@softunity.com.ru> 
+ * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
-class Admin_DashboardController extends Owp_Controller_Action_Admin {
-
-	/**
-	 * Default action
-	 *
-	 */
+class Admin_DashboardController extends OvzWebPanel_Controller_Action_Admin {
+		
 	public function indexAction() {
 		$this->view->pageTitle = "Dashboard";
 	}
-	
+			
 }

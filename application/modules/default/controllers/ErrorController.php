@@ -2,9 +2,9 @@
 /**
  * Errors controller actions
  *
- * @author Alexei Yuzhakov <alex@softunity.com.ru> 
+ * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
-class ErrorController extends Owp_Controller_Action_Simple {
+class ErrorController extends OvzWebPanel_Controller_Action_Simple {
 		
 	/**
 	 * Error handling

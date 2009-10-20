@@ -2,9 +2,9 @@
 /**
  * Index controller
  *
- * @author Alexei Yuzhakov <alex@softunity.com.ru> 
+ * @author Alexei Yuzhakov <sibprogrammer@mail.ru> 
  */
-class IndexController extends Owp_Controller_Action_Simple {
+class IndexController extends OvzWebPanel_Controller_Action_Simple {
 		
 	public function indexAction() {
 		$this->_redirect('/login');
