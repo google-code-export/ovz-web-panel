@@ -1,0 +1,11 @@
+#summary Helpful links related to project.
+
+= Links =
+
+Helpful links related to project are shown below:
+  * [http://openvz.org/ OpenVZ home - http://openvz.org/]
+  * [http://wiki.openvz.org/Control_panels OpenVZ Control Panels - http://wiki.openvz.org/Control_panels]
+  * [http://framework.zend.com/ Zend Framework - http://framework.zend.com/]
+  * [http://code.google.com/hosting/ Projects hosting at Google - http://code.google.com/hosting/]
+  * [http://extjs.com/ ExtJS - http://extjs.com/]
+  * [http://www.sqlite.org/ SQLite - http://www.sqlite.org/]
