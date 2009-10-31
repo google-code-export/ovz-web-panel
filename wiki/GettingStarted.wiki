@@ -1,4 +1,5 @@
 #summary Getting Started Information
+#labels Featured
 
 = Description =
 
