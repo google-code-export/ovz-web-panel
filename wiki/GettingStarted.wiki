@@ -1,0 +1,33 @@
+#summary Getting Started Information
+
+= Description =
+
+OpenVZ Web Panel is a GUI web-based frontend for controlling of the hardware 
+and virtual servers with the OpenVZ virtualization technology.
+
+= License =
+
+This software is licensed under the terms of the GPL 2.0 license. 
+Additional information can be found at http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+= Features =
+
+  * Web-based control of OpenVZ contaniers
+  * Ability to control several hardware servers
+  * Separate hardware server daemon
+  * Ability to set up panel inside VE
+
+= Download = 
+
+Visit downloads page http://code.google.com/p/ovz-web-panel/downloads/list to download latest build.
+
+= Installation =
+
+Visit [Installation] page for installation instructions.
+
+
+= Usage =
+
+Visit `http://<you-host>` to see the web panel. Login page should be shown. 
+Default administrator's login and password are: admin/admin. Don't forget to
+change default password after login (using "My Profile" link).
