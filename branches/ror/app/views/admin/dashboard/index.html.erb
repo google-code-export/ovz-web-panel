@@ -1,3 +1,19 @@
 <% @page_title = 'Dashboard' %>
 
-Dashboard
+<% javascript_tag do -%>
+Ext.onReady(function() {
+
+  new Ext.Panel({
+    title: '<%= escape_javascript t('admin.dashboard.intro.title') %>',
+    collapsible: true,
+    renderTo: 'panel-intro',
+    html: '<p>' + '<%= escape_javascript t('admin.dashboard.intro.text') %>' + '</p>'
+  });
+
+});
+<% end -%>
+
+<div id="panel-intro"></div>
+
+<div id="panel-first-panel"></div>
+

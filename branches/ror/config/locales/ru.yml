@@ -19,3 +19,7 @@ ru:
     button_login: "Вход"
   admin:
     dashboard:
+      intro:
+        title: "Введение"
+        text: "OpenVZ Web Panel - это веб-фронтэнд для управления серверами на технологии виртуализации OpenVZ."
+ 

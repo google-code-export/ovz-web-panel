@@ -19,5 +19,8 @@ en:
     button_login: "Log in"
   admin:
     dashboard:
+      intro:
+        title: "Intro"
+        text: "OpenVZ Web Panel is a GUI web-based frontend for controlling of hardware servers with OpenVZ virtualization technology."
     
     
