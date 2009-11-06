@@ -1,0 +1,87 @@
+<% @page_title = t('login.page_title') %>
+
+<% javascript_tag do -%>
+Ext.onReady(function() {     
+
+	var loginFormSubmitAction = function() {
+		loginForm.getForm().submit({
+			waitMsg: '<%= escape_javascript t('form.loading') %>',
+			success: function() {
+		    document.location.href = '/admin/dashboard';
+			},
+			failure: function(form, action) {
+				var resultMessage = ('client' == action.failureType)
+					? '<%= escape_javascript t('form.error.fill_form') %>'
+					: action.result.message;
+					
+				Ext.MessageBox.show({
+					title: '<%= escape_javascript t('form.error.title') %>',
+					msg: resultMessage,
+					buttons: Ext.MessageBox.OK,
+					icon: Ext.MessageBox.ERROR,
+					fn: function() {
+            Ext.get('login').focus();
+					}
+				});
+			}
+	 });
+	}
+
+	var loginForm = new Ext.FormPanel({
+	  baseCls: 'x-plain',
+	  labelWidth: 100,
+	  url: '/session',
+	  bodyStyle: 'padding: 15px 15px 0',
+	  width: 350,
+	  defaultType: 'textfield',
+	  waitMsgTarget: true,
+	  
+	  keys: [{
+	    key: Ext.EventObject.ENTER,
+	    fn: loginFormSubmitAction
+	  }],
+	      
+	  items: [{
+	    fieldLabel: '<%= escape_javascript t('login.username') %>',
+	    name: 'login',
+	    id: 'login',
+			width: 210,
+	    allowBlank: false
+	  },{
+	    fieldLabel: '<%= escape_javascript t('login.password') %>',
+	    name: 'password',
+			width: 210,
+	    inputType: 'password',
+	    allowBlank: false
+	  },{
+      fieldLabel: '<%= escape_javascript t('login.remember_me') %>',
+      name: 'remeber_me',
+      xtype: 'checkbox',
+			checked: true
+    }],
+	
+	  buttons: [{
+	    text: '<%= escape_javascript t('login.button_login') %>',
+	    type: 'submit',
+	    handler: loginFormSubmitAction
+	  }]
+	});
+	
+	var loginWindow = new Ext.Window({
+	  applyTo: 'login-window',
+		title: '<%= escape_javascript t('login.window_title', :product => PRODUCT_NAME + ' ' + PRODUCT_VERSION) %>',
+		width: 370,
+		height: 170,
+		y: 150,
+		closable: false,
+		resizable: false,
+		draggable: false,
+		items: loginForm
+  });
+
+  loginWindow.show();
+	
+});
+<% end -%>
+
+<div id='login-window'></div>

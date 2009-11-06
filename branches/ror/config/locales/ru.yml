@@ -1,0 +1,21 @@
+ru:
+  form:
+    loading: "Загрузка..."
+    error:
+      title: "Ошибка"
+      fill_form: "Пожалуйста, заполните форму."
+  about:
+    copyright: "Авторское право 2008-2009 SoftUnity."
+    right_reserved: "Все права зарезервированы."
+    about_program: "О программе"
+    author: "Автор"
+    web_site: "Веб-сайт"
+  login:
+    page_title: "Вход"
+    window_title: "Вход в {{product}}"
+    username: "Логин"
+    password: "Пароль"
+    remember_me: "Запомнить"
+    button_login: "Вход"
+  admin:
+    dashboard:

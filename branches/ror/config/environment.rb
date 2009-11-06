@@ -48,7 +48,7 @@ Rails::Initializer.run do |config|
   # The internationalization framework can be changed to have another default locale (standard is :en) or more load paths.
   # All files from config/locales/*.rb,yml are added automatically.
   # config.i18n.load_path << Dir[File.join(RAILS_ROOT, 'my', 'locales', '*.{rb,yml}')]
-  # config.i18n.default_locale = :de
+  # config.i18n.default_locale = :ru
 
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!
@@ -56,7 +56,7 @@ Rails::Initializer.run do |config|
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
     :session_key => '_owp_session',
-    :secret      => '120ad7853124d610dacc6956406c3fc15a451bb133767a809e0253c79d786859d647990590c20d0801902672eb03c5d62ab2c4897456faba7185939deb575add'
+    :secret      => 'de4d2a8a66ed013966673a0633d8153f8290d018efd9e5c6d307291879c6b3b8d2b59e03d1466878e7c89c217836c618598ecfbb911b881d42732d95354dd774'
   }
 
   # Use the database for sessions instead of the cookie-based default,
@@ -73,3 +73,6 @@ Rails::Initializer.run do |config|
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 end
+
+PRODUCT_NAME = 'OpenVZ Web Panel'
+PRODUCT_VERSION = '0.4'

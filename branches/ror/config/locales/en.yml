@@ -1,5 +1,23 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  form:
+    loading: "Loading..."
+    error:
+      title: "Error"
+      fill_form: "Please, fill the form."
+  about:
+    copyright: "Copyright 2008-2009 SoftUnity."
+    right_reserved: "All Rights Reserved."
+    about_program: "About program"
+    author: "Author"
+    web_site: "Web site"
+  login:
+    page_title: "Login"
+    window_title: "Log in to {{product}}"
+    username: "User name"
+    password: "Password"
+    remember_me: "Remember me"
+    button_login: "Log in"
+  admin:
+    dashboard:
+    
+    
