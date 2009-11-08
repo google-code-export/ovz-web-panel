@@ -7,6 +7,18 @@ en:
     error:
       title: "Error"
       fill_form: "Please, fill the form."
+    button:
+      save: "Save"
+      cancel: "Cancel"
+      create: "Create"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              confirmation: "Password and confirmation are not equal."
+              too_short: "Password is too short (minimum symbols: {{count}})."
   about:
     copyright: "Copyright 2008-2009 SoftUnity."
     right_reserved: "All Rights Reserved."
@@ -38,6 +50,13 @@ en:
     operations:
       shortcut: "Shortcut"
     logout: "Are you sure you want to log out?"
+    my_profile:
+      title: "My profile"
+      user_name: "User Name"
+      current_password: "Current Password"
+      new_password: "New Password"
+      confirm_password: "Confirm Password"
+      bad_current_password: "Invalid current password."
     dashboard:
       title: "Dashboard"
       intro:

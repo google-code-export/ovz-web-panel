@@ -4,11 +4,11 @@ ActionController::Routing::Routes.draw do |map|
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   
-  map.resources :users
   map.resource :session
   
   map.namespace :admin do |admin|
     admin.dashboard '/dashboard', :controller => 'dashboard'
+    admin.connect '/users/:action', :controller => 'users'
   end
 
   map.root :controller => 'sessions', :action => 'new'

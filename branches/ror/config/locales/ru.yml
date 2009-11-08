@@ -7,6 +7,18 @@ ru:
     error:
       title: "Ошибка"
       fill_form: "Пожалуйста, заполните форму."
+    button:
+      save: "Сохранить"
+      cancel: "Отмена"
+      create: "Создать"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              confirmation: "Пароль и подтверждение не совпадают."
+              too_short: "Пароль слишком короткий (минимум символов: {{count}})."
   about:
     copyright: "Авторское право 2008-2009 SoftUnity."
     right_reserved: "Все права зарезервированы."
@@ -38,6 +50,13 @@ ru:
     operations:
       shortcut: "Закладка"
     logout: "Вы действительно хотите выйти?"
+    my_profile:
+      title: "Мой профиль"
+      user_name: "Логин"
+      current_password: "Текущий пароль"
+      new_password: "Новый пароль"
+      confirm_password: "Подтверждение пароля"
+      bad_current_password: "Неверный текущий пароль."
     dashboard:
       title: "Рабочий стол"
       intro:

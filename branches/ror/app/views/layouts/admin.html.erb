@@ -2,6 +2,93 @@
   
   <% javascript_tag do -%>
     Ext.onReady(function() {
+      var formMyProfile = new Ext.form.FormPanel({
+        baseCls: 'x-plain',
+        labelWidth: 150,
+        url: '/admin/users/save_profile',
+        defaultType: 'textfield',
+        waitMsgTarget: true,
+        
+        items: [{
+          fieldLabel: '<%= tjs('admin.my_profile.user_name') %>',
+          name: 'user_name',
+          value: '<%= escape_javascript @current_user.login %>',
+          disabled: true,
+          anchor: '100%'
+        }, {
+          fieldLabel: '<%= tjs('admin.my_profile.current_password') %>',
+          name: 'current_password',
+          inputType: 'password',
+          anchor: '100%'
+        }, {
+          fieldLabel: '<%= tjs('admin.my_profile.new_password') %>',
+          name: 'new_password',
+          inputType: 'password',
+          anchor: '100%'
+        }, {
+          fieldLabel: '<%= tjs('admin.my_profile.confirm_password') %>',
+          name: 'confirm_password',
+          inputType: 'password',
+          anchor: '100%'
+        }]
+      });  
+      
+      var windowMyProfile = new Ext.Window({
+        title: '<%= tjs('admin.my_profile.title') %>',
+        width: 400,
+        modal: true,
+        layout: 'fit',
+        plain: true,
+        bodyStyle: 'padding: 5px;',
+        resizable: false,
+        items: formMyProfile,
+        closeAction: 'hide',
+        
+        buttons: [{
+          text: '<%= tjs('form.button.save') %>',
+          handler: function() {
+            formMyProfile.form.submit({
+              waitMsg: '<%= tjs('form.loading') %>',
+              success: function() {
+                windowMyProfile.hide();
+              },
+              failure: function(form, action) {
+                var resultMessage = ('client' == action.failureType)
+                  ? '<%= tjs('form.error.fill_form') %>'
+                  : '';
+                  
+                if (action.result.errors) {
+                  Ext.each(action.result.errors, function(message) {
+                    console.dir(message);
+                    messageField = message[0];
+                    messageContent = message[1];
+                    resultMessage += messageContent + "<br/>";
+                  });
+                } else {
+                  resultMessage = action.result.message
+                }
+          
+                Ext.MessageBox.show({
+                  title: '<%= tjs('form.error.title') %>',
+                  msg: resultMessage,
+                  buttons: Ext.MessageBox.OK,
+                  icon: Ext.MessageBox.ERROR
+                });
+              }
+            });
+          }
+        }, {
+          text: '<%= tjs('form.button.cancel') %>',
+          handler: function() {
+            windowMyProfile.hide();
+          }
+        }]
+      });
+      
+      windowMyProfile.on('show', function() {
+        formMyProfile.getForm().reset();
+      });  
+    
       var mainMenu = new Ext.tree.AsyncTreeNode({
         expandable: false,
         expanded: true,
@@ -26,7 +113,12 @@
             cls: 'menu-item',
             text: '<%= tjs('admin.menu.general.my_profile') %>',
             icon: '/images/menu_icon_profile.png',
-            leaf: true
+            leaf: true,
+            listeners: {
+              click: function() {
+                windowMyProfile.show();
+              }
+            }
           }, {
             cls: 'menu-item',
             text: '<%= tjs('admin.menu.general.logout') %>',
