@@ -6,4 +6,8 @@ module ApplicationHelper
   end
   alias :t :translate
   
+  def tjs(key, options = {})
+    escape_javascript t(key, options)
+  end
+  
 end
