@@ -1,135 +1,135 @@
 <%= render :partial => 'layouts/header' %>   
-	
+  
   <% javascript_tag do -%>
     Ext.onReady(function() {
-			var mainMenu = new Ext.tree.AsyncTreeNode({
-				expandable: false,
-				expanded: true,
-				children: [{
-					expanded: true,
-					expandable: false,
-					cls: 'menu-title',
-					text: 'General',
-					children: [{
-						cls: 'menu-item',
-						text: 'Dashboard',
-						href: '/admin/dashboard',
-						icon: '/images/menu_icon_dashboard.png',
-						leaf: true
-				  }, {
-						cls: 'menu-item',
-						text: 'Hardware servers',
-						href: '/admin/hardware-server/list',
-						icon: '/images/menu_icon_host.png',
-						leaf: true
-					}, {
-						cls: 'menu-item',
-						text: 'My profile',
-						icon: '/images/menu_icon_profile.png',
-						leaf: true
-					}, {
-						cls: 'menu-item',
-						text: 'Logout',
-						icon: '/images/menu_icon_logout.png',
-						leaf: true,
-						listeners: {
-						  click: function() {
-								Ext.MessageBox.confirm('Confirm', 'Are you sure you want to log out?', function(button, text) {
-									if ('yes' == button) {
-									  window.location.href = '/logout';
-									}
-								});
-							}
-						}
-					}]
-				}, {
-					expanded: true,
-					expandable: false,
-					cls: 'menu-title',
-					text: 'Help',
-					children: [{
-						cls: 'menu-item',
-						text: 'Documentation',
-						href: 'http://code.google.com/p/ovz-web-panel/w/list',
-						icon: '/images/menu_icon_help.png',
-						leaf: true
-					}, {
-						cls: 'menu-item',
-						text: 'Support',
-						href: 'http://code.google.com/p/ovz-web-panel/issues/list',
-						icon: '/images/menu_icon_docs.png',
-						leaf: true
-					}]
-				}]
-			});
+      var mainMenu = new Ext.tree.AsyncTreeNode({
+        expandable: false,
+        expanded: true,
+        children: [{
+          expanded: true,
+          expandable: false,
+          cls: 'menu-title',
+          text: '<%= tjs('admin.menu.general.title') %>',
+          children: [{
+            cls: 'menu-item',
+            text: '<%= tjs('admin.menu.general.dashboard') %>',
+            href: '/admin/dashboard',
+            icon: '/images/menu_icon_dashboard.png',
+            leaf: true
+          }, {
+            cls: 'menu-item',
+            text: '<%= tjs('admin.menu.general.hardware_servers') %>',
+            href: '/admin/hardware-server/list',
+            icon: '/images/menu_icon_host.png',
+            leaf: true
+          }, {
+            cls: 'menu-item',
+            text: '<%= tjs('admin.menu.general.my_profile') %>',
+            icon: '/images/menu_icon_profile.png',
+            leaf: true
+          }, {
+            cls: 'menu-item',
+            text: '<%= tjs('admin.menu.general.logout') %>',
+            icon: '/images/menu_icon_logout.png',
+            leaf: true,
+            listeners: {
+              click: function() {
+                Ext.MessageBox.confirm('<%= tjs('form.confirmation') %>', '<%= tjs('admin.logout') %>', function(button, text) {
+                  if ('yes' == button) {
+                    window.location.href = '/logout';
+                  }
+                });
+              }
+            }
+          }]
+        }, {
+          expanded: true,
+          expandable: false,
+          cls: 'menu-title',
+          text: '<%= tjs('admin.menu.help.title') %>',
+          children: [{
+            cls: 'menu-item',
+            text: '<%= tjs('admin.menu.help.documentation') %>',
+            href: 'http://code.google.com/p/ovz-web-panel/w/list',
+            icon: '/images/menu_icon_help.png',
+            leaf: true
+          }, {
+            cls: 'menu-item',
+            text: '<%= tjs('admin.menu.help.support') %>',
+            href: 'http://code.google.com/p/ovz-web-panel/issues/list',
+            icon: '/images/menu_icon_docs.png',
+            leaf: true
+          }]
+        }]
+      });
 
-			var viewport = new Ext.Viewport({
-				layout: 'border',
-				items: [
-					new Ext.BoxComponent({
-						region: 'north',
-						el: 'top-header',
-						cls: 'x-panel-header',
-						height: 50
-					}), {
-						region: 'west',
-						title: 'Menu',
-						contentEl: 'main-menu',
-						split: true,
-						width: 250,
-						minSize: 200,
-						maxSize: 400,
-						collapsible: true,
-						margins: '5 0 5 5',
-						layout: 'accordion',
-						layoutConfig: { animate: true },                
-						xtype: 'treepanel',
-						loader: new Ext.tree.TreeLoader(),
-						rootVisible: false,
-						lines: false,
-						root: mainMenu,
-						listeners: {
-						  click: function(node) {
-								var href = node.attributes.href;
-								if ('undefined' != typeof href) {
-								  if (href.indexOf('http') === 0) {
-									  window.open(href);
-										return false;
-									} else {
-								    window.location.href = href;
-									}
-								}
-							}
-						}
-					}, {
-						region: 'center',
-						margins: '5 5 5 0',
-						contentEl: 'main-content',
-						xtype: 'panel',
-						autoScroll: true,
-						title: '<%= escape_javascript(@page_title) %>',
-						id: 'main-content-wrapper',
-						bodyStyle: 'background: #FFFFFF url(/images/openvz-big-logo.gif) no-repeat scroll right bottom',
-						tbar: [{
-              text: 'Shortcut'
-				    }], 
-						bbar: [{
-						  xtype: 'box',
+      var viewport = new Ext.Viewport({
+        layout: 'border',
+        items: [
+          new Ext.BoxComponent({
+            region: 'north',
+            el: 'top-header',
+            cls: 'x-panel-header',
+            height: 50
+          }), {
+            region: 'west',
+            title: '<%= tjs('admin.menu.title') %>',
+            contentEl: 'main-menu',
+            split: true,
+            width: 250,
+            minSize: 200,
+            maxSize: 400,
+            collapsible: true,
+            margins: '5 0 5 5',
+            layout: 'accordion',
+            layoutConfig: { animate: true },                
+            xtype: 'treepanel',
+            loader: new Ext.tree.TreeLoader(),
+            rootVisible: false,
+            lines: false,
+            root: mainMenu,
+            listeners: {
+              click: function(node) {
+                var href = node.attributes.href;
+                if ('undefined' != typeof href) {
+                  if (href.indexOf('http') === 0) {
+                    window.open(href);
+                    return false;
+                  } else {
+                    window.location.href = href;
+                  }
+                }
+              }
+            }
+          }, {
+            region: 'center',
+            margins: '5 5 5 0',
+            contentEl: 'main-content',
+            xtype: 'panel',
+            autoScroll: true,
+            title: '<%= escape_javascript(@page_title) %>',
+            id: 'main-content-wrapper',
+            bodyStyle: 'background: #FFFFFF url(/images/openvz-big-logo.gif) no-repeat scroll right bottom',
+            tbar: [{
+              text: '<%= tjs('admin.operations.shortcut') %>'
+            }], 
+            bbar: [{
+              xtype: 'box',
               height: 22,
-							id: 'statusbar'
-						}]
-					}
-				]
-			});
-		});
+              id: 'statusbar'
+            }]
+          }
+        ]
+      });
+    });
   <% end -%>
-	
-	<%= render :partial => 'layouts/top_header' %>
-	
-	<div id='main-menu'></div>
-	
+  
+  <%= render :partial => 'layouts/top_header' %>
+  
+  <div id='main-menu'></div>
+  
   <div id='main-content'>
-  	<%= yield %>
+    <%= yield %>
   </div>
-	
+  
 <%= render :partial => 'layouts/footer' %>

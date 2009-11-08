@@ -5,17 +5,17 @@ Ext.onReady(function() {
 
   var loginFormSubmitAction = function() {
     loginForm.getForm().submit({
-      waitMsg: '<%= escape_javascript t('form.loading') %>',
+      waitMsg: '<%= tjs('form.loading') %>',
       success: function() {
         document.location.href = '/admin/dashboard';
       },
       failure: function(form, action) {
         var resultMessage = ('client' == action.failureType)
-          ? '<%= escape_javascript t('form.error.fill_form') %>'
+          ? '<%= tjs('form.error.fill_form') %>'
           : action.result.message;
           
         Ext.MessageBox.show({
-          title: '<%= escape_javascript t('form.error.title') %>',
+          title: '<%= tjs('form.error.title') %>',
           msg: resultMessage,
           buttons: Ext.MessageBox.OK,
           icon: Ext.MessageBox.ERROR,
@@ -42,19 +42,19 @@ Ext.onReady(function() {
     }],
         
     items: [{
-      fieldLabel: '<%= escape_javascript t('login.username') %>',
+      fieldLabel: '<%= tjs('login.username') %>',
       name: 'login',
       id: 'login',
       width: 210,
       allowBlank: false
     }, {
-      fieldLabel: '<%= escape_javascript t('login.password') %>',
+      fieldLabel: '<%= tjs('login.password') %>',
       name: 'password',
       width: 210,
       inputType: 'password',
       allowBlank: false
     }, {
-      fieldLabel: '<%= escape_javascript t('login.locale') %>',
+      fieldLabel: '<%= tjs('login.locale') %>',
       name: 'locale',
       xtype: 'combo',
       mode: 'local',      
@@ -70,14 +70,14 @@ Ext.onReady(function() {
         data: <%= @available_locales.to_json %>
       })
     }, {
-      fieldLabel: '<%= escape_javascript t('login.remember_me') %>',
+      fieldLabel: '<%= tjs('login.remember_me') %>',
       name: 'remeber_me',
       xtype: 'checkbox',
       checked: true
     }],
   
     buttons: [{
-      text: '<%= escape_javascript t('login.button_login') %>',
+      text: '<%= tjs('login.button_login') %>',
       type: 'submit',
       handler: loginFormSubmitAction
     }]
@@ -85,7 +85,7 @@ Ext.onReady(function() {
   
   var loginWindow = new Ext.Window({
     applyTo: 'login-window',
-    title: '<%= escape_javascript t('login.window_title', :product => PRODUCT_NAME + ' ' + PRODUCT_VERSION) %>',
+    title: '<%= tjs('login.window_title', :product => PRODUCT_NAME + ' ' + PRODUCT_VERSION) %>',
     width: 370,
     height: 190,
     y: 150,

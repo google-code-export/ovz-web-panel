@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       render :json => { :success => true }  
     else
       logger.warn "Failed login for '#{params[:login]}' from #{request.remote_ip} at #{Time.now.utc}"
-      render :json => { :success => false, :message => "Invalid login/password." } 
+      render :json => { :success => false, :message => t('login.bad_login') } 
     end
   end
 

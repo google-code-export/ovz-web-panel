@@ -3,6 +3,7 @@ en:
     title: "English"
   form:
     loading: "Loading..."
+    confirmation: "Confirm"
     error:
       title: "Error"
       fill_form: "Please, fill the form."
@@ -20,8 +21,25 @@ en:
     remember_me: "Remember me"
     button_login: "Log in"
     locale: "Language"
+    bad_login: "Invalid login or password."
   admin:
+    menu:
+      title: "Menu"
+      general:
+        title: "General"
+        dashboard: "Dashboard"
+        hardware_servers: "Hardware servers"
+        my_profile: "My profile"
+        logout: "Logout"
+      help:
+        title: "Help"
+        documentation: "Documentation"
+        support: "Support"
+    operations:
+      shortcut: "Shortcut"
+    logout: "Are you sure you want to log out?"
     dashboard:
+      title: "Dashboard"
       intro:
         title: "Intro"
         text: "OpenVZ Web Panel is a GUI web-based frontend for controlling of hardware servers with OpenVZ virtualization technology."

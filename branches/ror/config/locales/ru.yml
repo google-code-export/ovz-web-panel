@@ -3,6 +3,7 @@ ru:
     title: "Русский"
   form:
     loading: "Загрузка..."
+    confirmation: "Подтверждение"
     error:
       title: "Ошибка"
       fill_form: "Пожалуйста, заполните форму."
@@ -20,8 +21,25 @@ ru:
     remember_me: "Запомнить"
     button_login: "Вход"
     locale: "Язык"
+    bad_login: "Неверный логин или пароль."
   admin:
+    menu:
+      title: "Меню"  
+      general:
+        title: "Общее"
+        dashboard: "Рабочий стол"
+        hardware_servers: "Физические сервера"
+        my_profile: "Мой профиль"
+        logout: "Выход" 
+      help:
+        title: "Помощь"
+        documentation: "Документация"
+        support: "Тех. поддержка"
+    operations:
+      shortcut: "Закладка"
+    logout: "Вы действительно хотите выйти?"
     dashboard:
+      title: "Рабочий стол"
       intro:
         title: "Введение"
         text: "OpenVZ Web Panel - это веб-фронтэнд для управления серверами на технологии виртуализации OpenVZ."
