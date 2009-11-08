@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
 
   def new
+    @available_locales = I18n.available_locales.map { 
+      |locale| [locale.to_s, I18n.t('language.title', :locale => locale) + " (#{locale})"]
+    }.sort
   end
 
   def create

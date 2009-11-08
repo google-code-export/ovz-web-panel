@@ -1,4 +1,6 @@
 en:
+  language:
+    title: "English"
   form:
     loading: "Loading..."
     error:
@@ -17,6 +19,7 @@ en:
     password: "Password"
     remember_me: "Remember me"
     button_login: "Log in"
+    locale: "Language"
   admin:
     dashboard:
       intro:

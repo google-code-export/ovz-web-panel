@@ -14,4 +14,18 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
+    
+  before_filter :set_locale
+    
+  protected  
+  
+    def set_locale
+      if params[:locale] && I18n.available_locales.include?(params[:locale].to_sym)
+        cookies['locale'] = { :value => params[:locale], :expires => 1.year.from_now }
+        I18n.locale = params[:locale].to_sym
+      elsif cookies['locale'] && I18n.available_locales.include?(cookies['locale'].to_sym)
+        I18n.locale = cookies['locale'].to_sym
+      end
+    end
+  
 end

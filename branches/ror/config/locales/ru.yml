@@ -1,4 +1,6 @@
 ru:
+  language:
+    title: "Русский"
   form:
     loading: "Загрузка..."
     error:
@@ -17,6 +19,7 @@ ru:
     password: "Пароль"
     remember_me: "Запомнить"
     button_login: "Вход"
+    locale: "Язык"
   admin:
     dashboard:
       intro:
