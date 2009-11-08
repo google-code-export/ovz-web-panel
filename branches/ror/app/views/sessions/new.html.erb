@@ -3,7 +3,7 @@
 <% javascript_tag do -%>
 Ext.onReady(function() {     
 
-	var loginFormSubmitAction = function() {
+  var loginFormSubmitAction = function() {
     loginForm.getForm().submit({
       waitMsg: '<%= escape_javascript t('form.loading') %>',
       success: function() {
@@ -24,7 +24,7 @@ Ext.onReady(function() {
           }
         });
       }
-   });
+    });
   }
 
   var loginForm = new Ext.FormPanel({
