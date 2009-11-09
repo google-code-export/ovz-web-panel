@@ -43,6 +43,7 @@
         resizable: false,
         items: formMyProfile,
         closeAction: 'hide',
+        stateId: 'windowMyProfile',
         
         buttons: [{
           text: '<%= tjs('form.button.save') %>',
@@ -165,6 +166,7 @@
             height: 50
           }), {
             region: 'west',
+            stateId: 'adminWestPanel',
             title: '<%= tjs('admin.menu.title') %>',
             contentEl: 'main-menu',
             split: true,
