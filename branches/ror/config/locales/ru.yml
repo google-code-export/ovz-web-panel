@@ -48,7 +48,6 @@ ru:
         documentation: "Документация"
         support: "Тех. поддержка"
     operations:
-      shortcut: "Закладка"
     logout: "Вы действительно хотите выйти?"
     my_profile:
       title: "Мой профиль"

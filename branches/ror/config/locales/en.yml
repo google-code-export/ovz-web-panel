@@ -48,7 +48,6 @@ en:
         documentation: "Documentation"
         support: "Support"
     operations:
-      shortcut: "Shortcut"
     logout: "Are you sure you want to log out?"
     my_profile:
       title: "My profile"
