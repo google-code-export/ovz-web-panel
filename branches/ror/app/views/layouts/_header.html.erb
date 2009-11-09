@@ -10,14 +10,6 @@
     <%= javascript_include_tag '../ext/adapter/ext/ext-base.js' %>
     <%= javascript_include_tag '../ext/ext-all.js' %>
     <%= javascript_include_tag 'application' %>
-    <% javascript_tag do -%>
-      var locale = '<%= I18n.locale %>';
-      var head = Ext.fly(document.getElementsByTagName('head')[0]);
-      Ext.DomHelper.append(head, {
-        tag: 'script',
-        type: 'text/javascript',
-        src: '/ext/locale/ext-lang-' + locale + '.js'
-      });
-    <% end -%>
+    <%= javascript_include_tag '/ext/locale/ext-lang-' + I18n.locale.to_s + '.js' %>
   </head>
 <body>
