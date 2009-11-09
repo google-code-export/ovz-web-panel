@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:login], params[:password])
     if user
       self.current_user = user
-      new_cookie_flag = (params[:remember_me] == "1")
+      new_cookie_flag = (params[:remember_me] == "on")
       handle_remember_cookie! new_cookie_flag
       render :json => { :success => true }  
     else
