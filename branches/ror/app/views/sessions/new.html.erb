@@ -9,19 +9,11 @@ Ext.onReady(function() {
       success: function() {
         document.location.href = '/admin/dashboard';
       },
-      failure: function(form, action) {
-        var resultMessage = ('client' == action.failureType)
-          ? '<%= tjs('form.error.fill_form') %>'
-          : action.result.message;
-          
-        Ext.MessageBox.show({
-          title: '<%= tjs('form.error.title') %>',
-          msg: resultMessage,
-          buttons: Ext.MessageBox.OK,
-          icon: Ext.MessageBox.ERROR,
-          fn: function() {
+      failure: function(form, action) { 
+        Owp.form.errorHandler(form, action, { 
+          fn: function() { 
             Ext.get('login').focus();
-          }
+          } 
         });
       }
     });
@@ -32,7 +24,6 @@ Ext.onReady(function() {
     labelWidth: 100,
     url: '/session',
     bodyStyle: 'padding: 15px 15px 0',
-    width: 350,
     defaultType: 'textfield',
     waitMsgTarget: true,
     
@@ -86,7 +77,7 @@ Ext.onReady(function() {
   var loginWindow = new Ext.Window({
     applyTo: 'login-window',
     title: '<%= tjs('login.window_title', :product => PRODUCT_NAME + ' ' + PRODUCT_VERSION) %>',
-    width: 370,
+    width: 380,
     height: 190,
     y: 150,
     closable: false,
