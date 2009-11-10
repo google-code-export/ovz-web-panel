@@ -65,16 +65,10 @@ Ext.onReady(function() {
       name: 'remember_me',
       xtype: 'checkbox',
       checked: true
-    }],
-  
-    buttons: [{
-      text: '<%= tjs('login.button_login') %>',
-      type: 'submit',
-      handler: loginFormSubmitAction
     }]
   });
   
-  var loginWindow = new Ext.Window({
+  var loginWindow = new Owp.form.BasicFormWindow({
     applyTo: 'login-window',
     title: '<%= tjs('login.window_title', :product => PRODUCT_NAME + ' ' + PRODUCT_VERSION) %>',
     width: 380,
@@ -83,9 +77,14 @@ Ext.onReady(function() {
     closable: false,
     resizable: false,
     draggable: false,
-    items: loginForm
+    plain: true,
+    items: loginForm,
+    buttons: [{
+      text: '<%= tjs('login.button_login') %>',
+      handler: loginFormSubmitAction
+    }]
   });
-
+    
   loginWindow.show();
   
 });

@@ -1,13 +1,8 @@
-(function() {  
-  Ext.BLANK_IMAGE_URL = '/images/blank.gif';
-
-  Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
-  
-  Ext.QuickTips.init();
-  
-  // turn on validation errors beside the field globally
-  Ext.form.Field.prototype.msgTarget = 'side';
-})();
+Ext.BLANK_IMAGE_URL = '/images/blank.gif';
+Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
+Ext.QuickTips.init();
+// turn on validation errors beside the field globally
+Ext.form.Field.prototype.msgTarget = 'side';
 
 Ext.ns('Owp.form');
 
@@ -51,5 +46,25 @@ Owp.form.errorHandler = function(form, action, params) {
         field.markInvalid(errorsHash[field.name])
     }
   }
-    
 }
+
+Owp.form.BasicFormWindow = Ext.extend(Ext.Window, {
+  findFirst: function(item) {
+    if (item instanceof Ext.form.Field && !(item instanceof Ext.form.DisplayField)
+      && !item.hidden && !item.disabled
+    ) {
+      item.focus(false, 50); // delayed focus by 50 ms
+      return true;
+    }
+    
+    if (item.items && item.items.find) {
+      return item.items.find(this.findFirst, this);
+    }
+    
+    return false;
+  },
+  
+  focus: function() {
+    this.items.find(this.findFirst, this);
+  }
+});
