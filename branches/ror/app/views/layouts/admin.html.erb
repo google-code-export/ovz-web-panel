@@ -34,7 +34,8 @@
       
       var windowMyProfile = new Ext.Window({
         title: '<%= tjs('admin.my_profile.title') %>',
-        width: 400,
+        width: 410,
+        height: 185,
         modal: true,
         layout: 'fit',
         plain: true,
@@ -42,7 +43,6 @@
         resizable: false,
         items: formMyProfile,
         closeAction: 'hide',
-        stateId: 'windowMyProfile',
         
         buttons: [{
           text: '<%= tjs('form.button.save') %>',
