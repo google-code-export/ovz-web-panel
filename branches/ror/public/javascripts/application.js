@@ -35,17 +35,11 @@ Owp.form.errorHandler = function(form, action, params) {
       : messageContent;
   });
     
-  for (var index in form.items.items) {
-    if ('function' == typeof errorsHash[index]) {
-      continue
-    }
- 
-    var field = form.items.items[index];
-    
+  Ext.each(form.items.items, function(field) {    
     if (('undefined' != field.name) && ('undefined' != typeof errorsHash[field.name])) {
-        field.markInvalid(errorsHash[field.name])
+      field.markInvalid(errorsHash[field.name])
     }
-  }
+  });
 }
 
 Owp.form.BasicFormWindow = Ext.extend(Ext.Window, {
