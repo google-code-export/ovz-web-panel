@@ -86,7 +86,7 @@
           }, {
             cls: 'menu-item',
             text: '<%= tjs('admin.menu.general.hardware_servers') %>',
-            href: '/admin/hardware-server/list',
+            href: '/admin/hardware-servers/list',
             icon: '/images/menu_icon_host.png',
             leaf: true
           }, {
@@ -134,6 +134,31 @@
           }]
         }]
       });
+      
+      function getTopBar() {
+        var topBar = [];
+      
+        var upLevelLink = '<%= @up_level %>';
+        
+        if (upLevelLink) {
+          topBar.push({
+            text: '<%= tjs('admin.operations.up_level') %>',
+            handler: function() {
+              document.location.href = upLevelLink;
+            },
+            cls: 'x-btn-text-icon up-level-link'
+          });
+        }
+        
+        if (!topBar.length) {
+          topBar = [{
+            xtype: 'box',
+            height: 22
+          }];
+        }
+        
+        return topBar;
+      }
 
       var viewport = new Ext.Viewport({
         layout: 'border',
@@ -183,10 +208,7 @@
             title: '<%= escape_javascript(@page_title) %>',
             id: 'main-content-wrapper',
             bodyStyle: 'background: #FFFFFF url(/images/openvz-big-logo.gif) no-repeat scroll right bottom',
-            tbar: [{
-              xtype: 'box',
-              height: 22
-            }], 
+            tbar: getTopBar(), 
             bbar: [{
               xtype: 'box',
               height: 22,

@@ -19,6 +19,10 @@ ru:
             password:
               confirmation: "Пароль и подтверждение не совпадают."
               too_short: "Пароль слишком короткий (минимум символов: {{count}})."
+        hardware_server:
+          attributes:
+            host:
+              taken: "Сервер с таким именем уже присутствует."
   about:
     copyright: "Авторское право 2008-2009 SoftUnity."
     right_reserved: "Все права зарезервированы."
@@ -48,6 +52,7 @@ ru:
         documentation: "Документация"
         support: "Тех. поддержка"
     operations:
+      up_level: "Вверх"
     logout: "Вы действительно хотите выйти?"
     my_profile:
       title: "Мой профиль"
@@ -61,4 +66,26 @@ ru:
       intro:
         title: "Введение"
         text: "OpenVZ Web Panel - это веб-фронтэнд для управления серверами на технологии виртуализации OpenVZ."
- 
+    hardware_servers:
+      title: "Физические сервера"
+      grid:
+        title: "Список физических серверов"
+        column:
+          host_name: "Имя хоста"
+          description: "Описание"
+        button:
+          connect: "Подключить новый сервер"
+          reconnect: "Переподключить сервер"
+          disconnect: "Отключить сервер"
+      form:
+        connect_server:
+          title: "Подключить новый физический сервер"
+          button_connect: "Подключить"
+          field:
+            host_name: "Имя хоста"
+            auth_key: "Ключ авторизации"
+            description: "Описание"
+        disconnect_server:
+          select_server: "Пожалуйста, выберите сервер."
+          sure_to_disconnect: "Вы действительно хотите отключить сервер?"
+          deletion_failed: "Во время отключения сервера произошла ошибка."

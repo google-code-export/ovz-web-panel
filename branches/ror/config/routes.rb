@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.dashboard '/dashboard', :controller => 'dashboard'
     admin.connect '/users/:action', :controller => 'users'
+    admin.connect '/hardware-servers/:action', :controller => 'hardware_servers'
   end
 
   map.root :controller => 'sessions', :action => 'new'

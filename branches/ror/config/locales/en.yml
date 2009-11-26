@@ -19,6 +19,10 @@ en:
             password:
               confirmation: "Password and confirmation are not equal."
               too_short: "Password is too short (minimum symbols: {{count}})."
+        hardware_server:
+          attributes:
+            host:
+              taken: "Server with such name is already present."
   about:
     copyright: "Copyright 2008-2009 SoftUnity."
     right_reserved: "All Rights Reserved."
@@ -48,6 +52,7 @@ en:
         documentation: "Documentation"
         support: "Support"
     operations:
+      up_level: "Up Level"
     logout: "Are you sure you want to log out?"
     my_profile:
       title: "My profile"
@@ -61,5 +66,26 @@ en:
       intro:
         title: "Intro"
         text: "OpenVZ Web Panel is a GUI web-based frontend for controlling of hardware servers with OpenVZ virtualization technology."
-    
-    
+    hardware_servers:
+      title: "Hardware Servers"
+      grid:
+        title: "Hardware servers list"
+        column:
+          host_name: "Host name"
+          description: "Description"
+        button:
+          connect: "Connect new server"
+          reconnect: "Reconnect server"
+          disconnect: "Disconnect server"
+      form:
+        connect_server:
+          title: "Connect new hardware server"
+          button_connect: "Connect"
+          field:
+            host_name: "Host name"
+            auth_key: "Auth key"
+            description: "Description"
+        disconnect_server:
+          select_server: "Please select a server."
+          sure_to_disconnect: "Are you sure you want to disconnect server?"
+          deletion_failed: "Server disconnection request failed."

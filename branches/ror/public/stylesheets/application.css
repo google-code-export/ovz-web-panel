@@ -21,4 +21,9 @@ html, body { margin: 0px; padding: 0px; font-family: Arial; font-size: 11px; bac
 .menu-item .x-tree-node-icon { height: 16px; padding-right: 5px; }
 .x-tree-node div.menu-item { padding: 5px; }
 
+.up-level-link .x-btn-text { background-image: url(/images/arrow_up.png); }
+.add-server .x-btn-text { background-image: url(/images/add.png); }
+.remove-server .x-btn-text { background-image: url(/images/delete.png); }
+.reconnect-server .x-btn-text { background-image: url(/images/refresh.png); }
+
 

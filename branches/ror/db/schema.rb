@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091102162214) do
+ActiveRecord::Schema.define(:version => 20091125153737) do
+
+  create_table "hardware_servers", :force => true do |t|
+    t.string "host"
+    t.string "auth_key"
+    t.string "description"
+  end
+
+  add_index "hardware_servers", ["host"], :name => "index_hardware_servers_on_host", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40
