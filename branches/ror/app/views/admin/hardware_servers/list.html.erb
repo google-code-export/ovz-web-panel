@@ -163,11 +163,13 @@ Ext.onReady(function() {
     tbar: [{
       text: '<%= tjs('admin.hardware_servers.grid.button.connect') %>',
       handler: addHwServer,
-      cls: 'x-btn-text-icon add-server'
+      cls: 'x-btn-text-icon',
+      icon: '/images/add.png'
     }, {
       text: '<%= tjs('admin.hardware_servers.grid.button.disconnect') %>',
       handler: removeHwServer,
-      cls: 'x-btn-text-icon remove-server',
+      cls: 'x-btn-text-icon',
+      icon: '/images/delete.png',
       ref: '../removeButton',
       disabled: true
     }]
