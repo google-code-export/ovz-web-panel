@@ -71,6 +71,7 @@ Ext.onReady(function() {
   var loginWindow = new Owp.form.BasicFormWindow({
     applyTo: 'login-window',
     title: '<%= tjs('login.window_title', :product => PRODUCT_NAME + ' ' + PRODUCT_VERSION) %>',
+    iconCls: 'icon-window-login',
     width: 380,
     height: 190,
     y: 150,
@@ -81,6 +82,7 @@ Ext.onReady(function() {
     items: loginForm,
     buttons: [{
       text: '<%= tjs('login.button_login') %>',
+      iconCls: 'icon-button-login',
       handler: loginFormSubmitAction
     }]
   });

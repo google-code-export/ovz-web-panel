@@ -34,6 +34,7 @@
       
       var windowMyProfile = new Owp.form.BasicFormWindow({
         title: '<%= tjs('admin.my_profile.title') %>',
+        iconCls: 'icon-window-my-profile',
         width: 410,
         height: 185,
         modal: true,
@@ -46,6 +47,7 @@
         
         buttons: [{
           text: '<%= tjs('form.button.save') %>',
+          iconCls: 'icon-button-save',
           handler: function() {
             formMyProfile.form.submit({
               waitMsg: '<%= tjs('form.loading') %>',
@@ -59,6 +61,7 @@
           }
         }, {
           text: '<%= tjs('form.button.cancel') %>',
+          iconCls: 'icon-button-cancel',
           handler: function() {
             windowMyProfile.hide();
           }
@@ -81,18 +84,18 @@
             cls: 'menu-item',
             text: '<%= tjs('admin.menu.general.dashboard') %>',
             href: '/admin/dashboard',
-            icon: '/images/menu_icon_dashboard.png',
+            icon: '/images/application.png',
             leaf: true
           }, {
             cls: 'menu-item',
             text: '<%= tjs('admin.menu.general.hardware_servers') %>',
             href: '/admin/hardware-servers/list',
-            icon: '/images/menu_icon_host.png',
+            icon: '/images/server.png',
             leaf: true
           }, {
             cls: 'menu-item',
             text: '<%= tjs('admin.menu.general.my_profile') %>',
-            icon: '/images/menu_icon_profile.png',
+            icon: '/images/vcard.png',
             leaf: true,
             listeners: {
               click: function() {
@@ -102,7 +105,7 @@
           }, {
             cls: 'menu-item',
             text: '<%= tjs('admin.menu.general.logout') %>',
-            icon: '/images/menu_icon_logout.png',
+            icon: '/images/key_go.png',
             leaf: true,
             listeners: {
               click: function() {
@@ -123,13 +126,13 @@
             cls: 'menu-item',
             text: '<%= tjs('admin.menu.help.documentation') %>',
             href: 'http://code.google.com/p/ovz-web-panel/w/list',
-            icon: '/images/menu_icon_help.png',
+            icon: '/images/help.png',
             leaf: true
           }, {
             cls: 'menu-item',
             text: '<%= tjs('admin.menu.help.support') %>',
             href: 'http://code.google.com/p/ovz-web-panel/issues/list',
-            icon: '/images/menu_icon_docs.png',
+            icon: '/images/bug.png',
             leaf: true
           }]
         }]
