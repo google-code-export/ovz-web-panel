@@ -136,27 +136,19 @@
       });
       
       function getTopBar() {
-        var topBar = [];
-      
         var upLevelLink = '<%= @up_level %>';
-        
-        if (upLevelLink) {
-          topBar.push({
-            text: '<%= tjs('admin.operations.up_level') %>',
-            handler: function() {
-              document.location.href = upLevelLink;
-            },
-            cls: 'x-btn-text-icon up-level-link'
-          });
-        }
-        
-        if (!topBar.length) {
-          topBar = [{
-            xtype: 'box',
-            height: 22
-          }];
-        }
-        
+      
+        var topBar = [{ 
+          xtype: 'tbfill'
+        }, {
+          text: '<%= tjs('admin.operations.up_level') %>',
+          handler: function() {
+            document.location.href = upLevelLink;
+          },
+          disabled: ('' == upLevelLink),
+          cls: 'x-btn-text-icon up-level-link'
+        }];
+      
         return topBar;
       }
 
