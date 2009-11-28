@@ -86,6 +86,5 @@ en:
             auth_key: "Auth key"
             description: "Description"
         disconnect_server:
-          select_server: "Please select a server."
-          sure_to_disconnect: "Are you sure you want to disconnect server?"
-          deletion_failed: "Server disconnection request failed."
+          sure_to_disconnect: "Are you sure you want to disconnect selected servers?"
+          deletion_failed: "Servers disconnection request failed."

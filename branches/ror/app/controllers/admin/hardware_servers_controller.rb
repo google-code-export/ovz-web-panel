@@ -25,13 +25,17 @@ class Admin::HardwareServersController < AdminController
   end
   
   def disconnect
-    @hardware_server = HardwareServer.find(params[:id])  
-   
-    if @hardware_server.disconnect  
-      render :json => { :success => true }  
-    else  
-      render :json => { :success => false }  
-    end  
+    params[:ids].split(',').each { |id|
+      hardware_server = HardwareServer.find(id)  
+      logger.info "Disconnecting hardware server with id: #{id}"
+      
+      if !hardware_server.disconnect
+        render :json => { :success => false }  
+        return
+      end
+    }
+    
+    render :json => { :success => true }  
   end
   
 end
