@@ -13,5 +13,5 @@ else
   puts result.faultString
 end
 
-ok, result = server.call2("hwDaemon.exec", "cat /etc/issue")
+ok, result = server.call2('hwDaemon.exec', 'cat', '/etc/issue')
 puts "Exec code: #{result['exit_code']}; result: #{result['output']}"

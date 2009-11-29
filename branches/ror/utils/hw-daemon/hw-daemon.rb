@@ -18,10 +18,10 @@ class HwDaemonApiHandler < XMLRPC::WEBrickServlet
      DAEMON_VERSION
   end
   
-  def exec(command)
-    output = `#{command}`
+  def exec(command, args = '')
+    output = `#{command} #{args}`
     exit_code = $?
-    $LOG.debug("Exec command: #{command}; code: #{exit_code}; output:\n#{output}")
+    $LOG.debug("Exec command: #{command} #{args}; code: #{exit_code}; output:\n#{output}")
     { 'exit_code' => exit_code.to_i, 'output' => output }
   end
   
