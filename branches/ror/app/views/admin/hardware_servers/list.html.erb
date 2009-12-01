@@ -125,7 +125,7 @@ Ext.onReady(function() {
   
   var selectionModel = new Ext.grid.CheckboxSelectionModel({ 
     listeners: {
-      selectionchange: function(sm) {
+      selectionchange: function(selectionModel) {
         if (selectionModel.getCount()) {
           hwServersGrid.removeButton.enable();
         } else {
@@ -145,7 +145,7 @@ Ext.onReady(function() {
         id: 'host',
         header: '<%= tjs('admin.hardware_servers.grid.column.host_name') %>',
         renderer: function(host, metadata, record) {
-          return "<a href='/admin/hardware-servers/show/id/" + record.data.id + "'>" + host + "</a>";
+          return "<a href='/admin/hardware-servers/show?id=" + record.data.id + "'>" + host + "</a>";
         },
         sortable: true,
         dataIndex: 'host'

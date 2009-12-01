@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.dashboard '/dashboard', :controller => 'dashboard'
     admin.connect '/users/:action', :controller => 'users'
     admin.connect '/hardware-servers/:action', :controller => 'hardware_servers'
+    admin.connect '/virtual-servers/:action', :controller => 'virtual_servers'
   end
 
   map.root :controller => 'sessions', :action => 'new'

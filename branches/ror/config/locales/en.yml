@@ -76,7 +76,7 @@ en:
         button:
           connect: "Connect new server"
           reconnect: "Reconnect server"
-          disconnect: "Disconnect server"
+          disconnect: "Disconnect server"      
       form:
         connect_server:
           title: "Connect new hardware server"
@@ -88,3 +88,17 @@ en:
         disconnect_server:
           sure_to_disconnect: "Are you sure you want to disconnect selected servers?"
           deletion_failed: "Servers disconnection request failed."
+      show:
+        title: "Hardware Server - {{name}}"
+    virtual_servers:
+      grid:
+        title: "Virtual servers list"
+        column:
+          state: "State"
+          identity: "Virtual Server ID"
+          ip_address: "IP Address"
+          host_name: "Host Name"
+          os_template: "OS Template"
+        button:
+          create: "Create virtual server"
+          destroy: "Remove virtual server"

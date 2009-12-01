@@ -88,3 +88,17 @@ ru:
         disconnect_server:
           sure_to_disconnect: "Вы действительно хотите отключить выбранные сервера?"
           deletion_failed: "Во время отключения произошла ошибка."
+      show:
+        title: "Физический сервер - {{name}}"
+    virtual_servers:
+      grid:
+        title: "Список виртуальных серверов"
+        column:
+          state: "Статус"
+          identity: "ID сервера"
+          ip_address: "IP адрес"
+          host_name: "Имя хоста"
+          os_template: "Шаблон OS"
+        button:
+          create: "Создать вирутальный сервер"
+          destroy: "Удалить вирутальный сервер"
