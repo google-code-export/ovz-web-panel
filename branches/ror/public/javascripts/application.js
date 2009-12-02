@@ -62,3 +62,16 @@ Owp.form.BasicFormWindow = Ext.extend(Ext.Window, {
     this.items.find(this.findFirst, this);
   }
 });
+
+Ext.ns('Owp.list');
+
+Owp.list.getSelectedIds = function(gridName) {
+  var selectedItems = Ext.getCmp(gridName).getSelectionModel().getSelections();
+    
+  var selectedIds = [];    
+  Ext.each(selectedItems, function(item) {    
+    selectedIds.push(item.data.id);
+  });
+  
+  return selectedIds;
+}

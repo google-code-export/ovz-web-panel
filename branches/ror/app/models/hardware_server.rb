@@ -16,6 +16,11 @@ class HardwareServer < ActiveRecord::Base
     destroy
   end
   
+  def exec_command(command, args = '')
+    rpc_client = HwDaemonClient.new(self.host, self.auth_key)
+    rpc_client.exec(command, args)
+  end
+  
   private
   
   def add_os_templates(rpc_client)

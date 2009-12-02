@@ -14,4 +14,18 @@ class Admin::VirtualServersController < ApplicationController
     render :json => { :data => virtual_servers }  
   end
   
+  def change_state    
+    params[:ids].split(',').each { |id|
+      virtual_server = VirtualServer.find_by_id(id)
+      
+      case params[:command]  
+        when 'start' then virtual_server.start
+        when 'stop' then virtual_server.stop
+        when 'restart' then virtual_server.restart
+      end
+    }
+    
+    render :json => { :success => true }  
+  end
+  
 end

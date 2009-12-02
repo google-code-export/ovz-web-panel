@@ -9,6 +9,7 @@ class HwDaemonClient
   end
   
   def exec(command, args = '')
+    RAILS_DEFAULT_LOGGER.info "Executing command: #{command} #{args}"
     rpc_call('hwDaemon.exec', command, args)
   end  
   
@@ -24,7 +25,7 @@ class HwDaemonClient
     if ok then
       return result
     else
-      logger.err "XML-RPC call error: #{result.faultCode}; #{result.faultString}"
+      RAILS_DEFAULT_LOGGER.err "XML-RPC call error: #{result.faultCode}; #{result.faultString}"
     end
   end
   

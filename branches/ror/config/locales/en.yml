@@ -102,3 +102,11 @@ en:
         button:
           create: "Create virtual server"
           destroy: "Remove virtual server"
+          change_state: "Change state"
+          start: "Start"
+          restart: "Restart"
+          stop: "Stop"
+      form:
+        performing_task: "Please wait. Performing task..."
+        change_state:
+          failed: "Unable to change virtual server state."

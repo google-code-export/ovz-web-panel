@@ -30,3 +30,7 @@ html, body { margin: 0px; padding: 0px; font-family: Arial; font-size: 11px; bac
 .icon-button-save { background-image: url(/images/accept.png) !important; }
 .icon-button-add { background-image: url(/images/add.png) !important; }
 .icon-button-cancel { background-image: url(/images/cancel.png) !important; }
+.icon-button-change-state { background-image: url(/images/control_equalizer_blue.png) !important; }
+.icon-button-start-server { background-image: url(/images/control_play_blue.png) !important; }
+.icon-button-stop-server { background-image: url(/images/control_stop_blue.png) !important; }
+.icon-button-restart-server { background-image: url(/images/control_repeat_blue.png) !important; }

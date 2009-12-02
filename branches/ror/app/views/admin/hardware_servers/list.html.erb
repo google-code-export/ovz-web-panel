@@ -74,14 +74,7 @@ Ext.onReady(function() {
     windowAddServer.show();   
   }
   
-  function removeHwServer() {
-    var selectedItems = Ext.getCmp('hwServersGrid').getSelectionModel().getSelections();
-    
-    var selectedIds = [];    
-    Ext.each(selectedItems, function(item) {    
-      selectedIds.push(item.data.id);
-    });
-            
+  function removeHwServer() {            
     Ext.MessageBox.confirm(
       '<%= tjs('form.confirmation') %>',
       '<%= tjs('admin.hardware_servers.form.disconnect_server.sure_to_disconnect') %>',
@@ -105,7 +98,7 @@ Ext.onReady(function() {
               
               hwServersGrid.store.reload();
             },
-            params: { ids: [selectedIds] }
+            params: { ids: [Owp.list.getSelectedIds('hwServersGrid')] }
           });
         }
       }
