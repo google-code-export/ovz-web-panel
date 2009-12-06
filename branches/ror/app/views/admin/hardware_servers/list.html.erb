@@ -80,25 +80,14 @@ Ext.onReady(function() {
       '<%= tjs('admin.hardware_servers.form.disconnect_server.sure_to_disconnect') %>',
       function(button, text) {
         if ('yes' == button) { 
-          Ext.Ajax.request({
+          Owp.list.groupAction({
+            gridName: 'hwServersGrid',
             url: '/admin/hardware-servers/disconnect',
-            success: function(response) {
-              var result = Ext.util.JSON.decode(response.responseText);
-              
-              if (!result.success) {
-                Ext.MessageBox.show({
-                  title: '<%= tjs('form.error.title') %>',
-                  msg: '<%= tjs('admin.hardware_servers.form.disconnect_server.deletion_failed') %>',
-                  buttons: Ext.Msg.OK,
-                  icon: Ext.MessageBox.ERROR
-                });
-              
-                return ;
-              }
-              
-              hwServersGrid.store.reload();
-            },
-            params: { ids: [Owp.list.getSelectedIds('hwServersGrid')] }
+            waitMsg: '<%= tjs('form.performing_task') %>',
+            failure: {
+              title: '<%= tjs('form.error.title') %>',
+              msg: '<%= tjs('admin.hardware_servers.form.disconnect_server.deletion_failed') %>'
+            }
           });
         }
       }

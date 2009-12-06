@@ -28,4 +28,17 @@ class Admin::VirtualServersController < ApplicationController
     render :json => { :success => true }  
   end
   
+  def delete
+    params[:ids].split(',').each { |id|
+      virtual_server = VirtualServer.find(id) 
+      
+      if !virtual_server.delete_physically
+        render :json => { :success => false }  
+        return
+      end
+    }
+    
+    render :json => { :success => true }
+  end
+  
 end

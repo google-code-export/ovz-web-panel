@@ -20,4 +20,9 @@ class VirtualServer < ActiveRecord::Base
     save
   end
   
+  def delete_physically
+    self.hardware_server.exec_command('vzctl', 'destroy ' + self.identity.to_s)
+    destroy
+  end
+  
 end

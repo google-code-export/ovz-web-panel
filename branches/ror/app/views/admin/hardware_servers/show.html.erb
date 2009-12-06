@@ -4,35 +4,37 @@
 Ext.onReady(function() {
 
   var changeStateAction = function(action) {
-    var progressBar = Ext.Msg.wait('<%= tjs('admin.virtual_servers.form.performing_task') %>');
-  
-    Ext.Ajax.request({
+    Owp.list.groupAction({
+      gridName: 'virtualServersGrid',
       url: '/admin/virtual-servers/change_state',
-      callback: function() {
-        progressBar.hide();
-      },
-      success: function(response) {
-        var result = Ext.util.JSON.decode(response.responseText);
-        
-        if (!result.success) {
-          Ext.MessageBox.show({
-            title: '<%= tjs('form.error.title') %>',
-            msg: '<%= tjs('admin.virtual_servers.form.change_state.failed') %>',
-            buttons: Ext.Msg.OK,
-            icon: Ext.MessageBox.ERROR
-          });
-        
-          return ;
-        }
-        
-        virtualServersGrid.store.reload();
-      },
-      params: { 
-        ids: [Owp.list.getSelectedIds('virtualServersGrid')],
-        command: action
+      command: action,
+      waitMsg: '<%= tjs('form.performing_task') %>',
+      failure: {
+        title: '<%= tjs('form.error.title') %>',
+        msg: '<%= tjs('admin.virtual_servers.form.change_state.failed') %>'
       }
     });
-  };
+  }
+  
+  function removeVirtaulServer() {            
+    Ext.MessageBox.confirm(
+      '<%= tjs('form.confirmation') %>',
+      '<%= tjs('admin.virtual_servers.form.remove_server.sure_to_remove') %>',
+      function(button, text) {
+        if ('yes' == button) { 
+          Owp.list.groupAction({
+            gridName: 'virtualServersGrid',
+            url: '/admin/virtual-servers/delete',
+            waitMsg: '<%= tjs('form.performing_task') %>',
+            failure: {
+              title: '<%= tjs('form.error.title') %>',
+              msg: '<%= tjs('admin.virtual_servers.form.remove_server.deletion_failed') %>'
+            }
+          });
+        }
+      }
+    );
+  }
 
   var store = new Ext.data.JsonStore({
     url: '/admin/virtual-servers/list_data?hardware_server_id=<%= @hardware_server.id %>',
@@ -119,8 +121,7 @@ Ext.onReady(function() {
       text: '<%= tjs('admin.virtual_servers.grid.button.destroy') %>', 
       cls: 'x-btn-text-icon',
       icon: '/images/delete.png',     
-      handler: function() {
-      },
+      handler: removeVirtaulServer,
       ref: '../removeButton',
       disabled: true
     }, '-', {      

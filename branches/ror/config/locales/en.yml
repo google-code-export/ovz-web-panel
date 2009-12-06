@@ -4,6 +4,7 @@ en:
   form:
     loading: "Loading..."
     confirmation: "Confirm"
+    performing_task: "Please wait. Performing task..."
     error:
       title: "Error"
       fill_form: "Please, fill the form."
@@ -107,6 +108,8 @@ en:
           restart: "Restart"
           stop: "Stop"
       form:
-        performing_task: "Please wait. Performing task..."
         change_state:
           failed: "Unable to change virtual server state."
+        remove_server:
+          sure_to_remove: "Are you sure you want to remove selected virtual servers?"
+          deletion_failed: "Unable to delete some virtual servers."

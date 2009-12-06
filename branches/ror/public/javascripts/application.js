@@ -75,3 +75,61 @@ Owp.list.getSelectedIds = function(gridName) {
   
   return selectedIds;
 }
+
+Owp.list.groupAction = function(config) {
+  config = Ext.apply({
+    gridName: '',
+    url: '',
+    command: '',
+    waitMsg: '',
+    failure: {
+      title: '',
+      msg: ''
+    }
+  }, config);
+  
+  function showError() {
+    Ext.MessageBox.show({
+      title: config.failure.title,
+      msg: config.failure.msg,
+      buttons: Ext.Msg.OK,
+      icon: Ext.MessageBox.ERROR
+    });
+  }  
+  
+  var progressBar = Ext.Msg.wait(config.waitMsg);
+  
+  Ext.Ajax.request({
+    url: config.url,
+    timeout: 120000,
+    success: function(response) {
+      progressBar.hide();
+         
+      var result = Ext.util.JSON.decode(response.responseText);
+      
+      if (!result.success) {
+        Ext.MessageBox.show({
+          title: config.failure.title,
+          msg: config.failure.msg,
+          buttons: Ext.Msg.OK,
+          icon: Ext.MessageBox.ERROR
+        });
+      } else {
+        Ext.getCmp(config.gridName).store.reload();
+      }      
+    },
+    failure: function() {
+      Ext.MessageBox.show({
+        title: config.failure.title,
+        msg: 'Internal error occured. See logs for details.',
+        buttons: Ext.Msg.OK,
+        icon: Ext.MessageBox.ERROR
+      });
+    },
+    params: { 
+      ids: [Owp.list.getSelectedIds(config.gridName)],
+      command: config.command
+    },
+    scope: this
+  });
+}
