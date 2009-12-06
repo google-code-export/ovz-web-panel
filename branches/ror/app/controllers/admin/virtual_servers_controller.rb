@@ -1,4 +1,4 @@
-class Admin::VirtualServersController < ApplicationController
+class Admin::VirtualServersController < AdminController
   
   def list_data
     hardware_server = HardwareServer.find_by_id(params[:hardware_server_id])
