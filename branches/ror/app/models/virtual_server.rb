@@ -1,4 +1,5 @@
 class VirtualServer < ActiveRecord::Base
+  attr_accessible :identity, :ip_address, :host_name, :hardware_server_id, :os_template_id
   belongs_to :hardware_server
   belongs_to :os_template
   
@@ -23,6 +24,16 @@ class VirtualServer < ActiveRecord::Base
   def delete_physically
     self.hardware_server.exec_command('vzctl', 'destroy ' + self.identity.to_s)
     destroy
+  end
+  
+  def create_physically    
+    self.hardware_server.exec_command('vzctl', "create #{self.identity.to_s}" +
+      " --ostemplate #{self.os_template.name}" +
+      " --ipadd #{self.ip_address}" +
+      " --hostname #{self.host_name}"
+    )
+    self.state = 'stopped'
+    save
   end
   
 end

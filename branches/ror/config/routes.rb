@@ -11,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.connect '/users/:action', :controller => 'users'
     admin.connect '/hardware-servers/:action', :controller => 'hardware_servers'
     admin.connect '/virtual-servers/:action', :controller => 'virtual_servers'
+    admin.connect '/os-templates/:action', :controller => 'os_templates'
   end
 
   map.root :controller => 'sessions', :action => 'new'

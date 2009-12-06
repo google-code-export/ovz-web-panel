@@ -2,7 +2,7 @@ en:
   language:
     title: "English"
   form:
-    loading: "Loading..."
+    loading: "Please wait..."
     confirmation: "Confirm"
     performing_task: "Please wait. Performing task..."
     error:
@@ -90,13 +90,13 @@ en:
           sure_to_disconnect: "Are you sure you want to disconnect selected servers?"
           deletion_failed: "Servers disconnection request failed."
       show:
-        title: "Hardware Server - {{name}}"
+        title: "Hardware Server {{name}}"
     virtual_servers:
       grid:
         title: "Virtual servers list"
         column:
           state: "State"
-          identity: "Virtual Server ID"
+          identity: "VEID"
           ip_address: "IP Address"
           host_name: "Host Name"
           os_template: "OS Template"
@@ -113,3 +113,12 @@ en:
         remove_server:
           sure_to_remove: "Are you sure you want to remove selected virtual servers?"
           deletion_failed: "Unable to delete some virtual servers."
+        create_server:
+          title: "Create new virtual server"
+          button_create: "Create"
+          field:
+            identity: "Server ID (VEID)"
+            os_template: "OS Template"
+            select_os_template: "Select OS template"
+            ip_address: "IP Address"
+            host_name: "Host Name"

@@ -1,8 +1,9 @@
 Ext.BLANK_IMAGE_URL = '/images/blank.gif';
 Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
 Ext.QuickTips.init();
-// turn on validation errors beside the field globally
 Ext.form.Field.prototype.msgTarget = 'side';
+Ext.Ajax.timeout = 5 * 60 * 1000;
+Ext.form.BasicForm.prototype.timeout = 5 * 60;
 
 Ext.ns('Owp.form');
 
@@ -101,7 +102,6 @@ Owp.list.groupAction = function(config) {
   
   Ext.Ajax.request({
     url: config.url,
-    timeout: 120000,
     success: function(response) {
       progressBar.hide();
          

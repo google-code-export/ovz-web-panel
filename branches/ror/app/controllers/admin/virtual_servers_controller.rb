@@ -41,4 +41,17 @@ class Admin::VirtualServersController < AdminController
     render :json => { :success => true }
   end
   
+  def create
+    hardware_server = HardwareServer.find_by_id(params[:hardware_server_id])    
+    redirect_to :controller => 'hardware_servers', :action => 'list' if !hardware_server
+    
+    virtual_server = VirtualServer.new(params)
+    
+    if virtual_server.create_physically
+      render :json => { :success => true }  
+    else
+      render :json => { :success => false, :errors => virtual_server.errors }
+    end    
+  end
+  
 end
