@@ -122,3 +122,12 @@ en:
             select_os_template: "Select OS template"
             ip_address: "IP Address"
             host_name: "Host Name"
+            password: "Root Password"
+            confirm_password: "Confirm Password"
+            start_on_boot: "Start on Boot"
+            start_after_creation: "Start after Creation"
+          fieldset:
+            general: "General"
+            network: "Network"
+            system_access: "System Access"
+            start_options: "Start Options"

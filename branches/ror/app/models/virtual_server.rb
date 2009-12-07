@@ -1,5 +1,6 @@
 class VirtualServer < ActiveRecord::Base
-  attr_accessible :identity, :ip_address, :host_name, :hardware_server_id, :os_template_id
+  attr_accessible :identity, :ip_address, :host_name, :hardware_server_id, :os_template_id, :password, :start_on_boot, :start_after_creation
+  attr_accessor :password, :start_on_boot, :start_after_creation
   belongs_to :hardware_server
   belongs_to :os_template
   
@@ -20,12 +21,13 @@ class VirtualServer < ActiveRecord::Base
     self.state = 'running'
     save
   end
-  
+    
   def delete_physically
+    stop
     self.hardware_server.exec_command('vzctl', 'destroy ' + self.identity.to_s)
     destroy
   end
-  
+     
   def create_physically    
     self.hardware_server.exec_command('vzctl', "create #{self.identity.to_s}" +
       " --ostemplate #{self.os_template.name}" +
@@ -33,7 +35,17 @@ class VirtualServer < ActiveRecord::Base
       " --hostname #{self.host_name}"
     )
     self.state = 'stopped'
-    save
+    result = save
+    tune_server_settings
+    result
+  end
+  
+  private
+  
+  def tune_server_settings    
+    self.hardware_server.exec_command('vzctl', "set #{self.identity.to_s} --userpasswd root:#{password}") if password
+    self.hardware_server.exec_command('vzctl', "set #{self.identity.to_s} --onboot yes --save") if start_on_boot
+    self.start if start_after_creation
   end
   
 end

@@ -32,47 +32,94 @@ Ext.onReady(function() {
     
       var formAddVirtualServer = new Ext.form.FormPanel({
         baseCls: 'x-plain',
-        labelWidth: 150,
-        url: '/admin/virtual-servers/create?hardware_server_id=<%= @hardware_server.id %>',
-        defaultType: 'textfield',
+        labelWidth: 180,
+        url: '/admin/virtual-servers/create?hardware_server_id=<%= @hardware_server.id %>',        
         waitMsgTarget: true,
-        defaults: { width: 200 },
         
         items: [{
-          fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.identity') %>',
-          name: 'identity',
-          allowBlank: false
+          xtype: 'fieldset',
+          title: '<%= tjs('admin.virtual_servers.form.create_server.fieldset.general') %>',
+          autoHeight: true,
+          defaults: { width: 170 },
+          defaultType: 'textfield',
+          items: [{        
+            fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.identity') %>',
+            name: 'identity',
+            allowBlank: false
+          }, {
+            fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.os_template') %>',
+            xtype: 'combo',
+            hiddenName: 'os_template_id',
+            valueField: 'id',
+            displayField: 'name',
+            name: 'os_template_id',
+            forceSelection: true,
+            triggerAction: 'all',
+            emptyText: '<%= tjs('admin.virtual_servers.form.create_server.field.select_os_template') %>',
+            mode: 'local',
+            allowBlank: false,
+            editable: false,
+            store: osTemapltesStore
+          }]
         }, {
-          fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.os_template') %>',
-          xtype: 'combo',
-          hiddenName: 'os_template_id',
-          valueField: 'id',
-          displayField: 'name',
-          name: 'os_template_id',
-          forceSelection: true,
-          triggerAction: 'all',
-          emptyText: '<%= tjs('admin.virtual_servers.form.create_server.field.select_os_template') %>',
-          mode: 'local',
-          allowBlank: false,
-          editable: false,
-          store: osTemapltesStore
+          xtype: 'fieldset',
+          title: '<%= tjs('admin.virtual_servers.form.create_server.fieldset.network') %>',
+          autoHeight: true,
+          defaults: { width: 170 },
+          defaultType: 'textfield',
+          items: [{
+            fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.ip_address') %>',
+            name: 'ip_address',
+            allowBlank: false
+          }, {
+            fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.host_name') %>',
+            name: 'host_name',
+            allowBlank: false
+          }]
         }, {
-          fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.ip_address') %>',
-          name: 'ip_address'
+          xtype: 'fieldset',
+          title: '<%= tjs('admin.virtual_servers.form.create_server.fieldset.system_access') %>',
+          autoHeight: true,
+          defaults: { width: 170 },
+          defaultType: 'textfield',
+          items: [{
+            fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.password') %>',
+            name: 'password',
+            inputType: 'password',
+            allowBlank: false
+          }, {
+            fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.confirm_password') %>',
+            name: 'confirm_password',
+            inputType: 'password',
+            allowBlank: false
+          }]
         }, {
-          fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.host_name') %>',
-          name: 'host_name'
+          xtype: 'fieldset',
+          title: '<%= tjs('admin.virtual_servers.form.create_server.fieldset.start_options') %>',
+          autoHeight: true,
+          defaultType: 'checkbox',
+          labelWidth: 180,
+          items: [{
+            fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.start_on_boot') %>',
+            checked: true,
+            name: 'start_on_boot'
+          }, {
+            fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.start_after_creation') %>',
+            checked: true,
+            name: 'start_after_creation'
+          }]
         }]
       });
       
       windowAddVirtualServer = new Ext.Window({
         title: '<%= tjs('admin.virtual_servers.form.create_server.title') %>',
         iconCls: 'icon-window-add',
-        width: 400,
-        height: 185,
+        width: 420,
+        height: 465,
         modal: true,
         layout: 'fit',
         plain: true,
+        border: false,
         bodyStyle: 'padding: 5px;',
         resizable: false,
         items: formAddVirtualServer,
