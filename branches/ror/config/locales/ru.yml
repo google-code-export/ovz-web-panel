@@ -67,6 +67,18 @@ ru:
       intro:
         title: "Введение"
         text: "OpenVZ Web Panel - это веб-фронтэнд для управления серверами на технологии виртуализации OpenVZ."
+      stats_grid:
+        title: "Статистика"
+        column:
+          parameter: "Параметр"
+          value: "Значение"
+        parameter:
+          panel_users: "Пользователи панели"
+          hardware_servers: "Физические сервера"
+          virtual_servers: "Виртуальные сервера"
+          virtual_servers_running: "Виртуальные сервера - запущенные"
+          virtual_servers_stopped: "Виртуальные сервера - остановленные"
+          os_templates: "Шаблоны OS"
     hardware_servers:
       title: "Физические сервера"
       grid:

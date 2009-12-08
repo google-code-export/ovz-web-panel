@@ -67,6 +67,18 @@ en:
       intro:
         title: "Intro"
         text: "OpenVZ Web Panel is a GUI web-based frontend for controlling of hardware servers with OpenVZ virtualization technology."
+      stats_grid:
+        title: "Statistics"
+        column:
+          parameter: "Parameter"
+          value: "Value"
+        parameter:
+          panel_users: "Panel users"
+          hardware_servers: "Hardware servers"
+          virtual_servers: "Virtual servers"
+          virtual_servers_running: "Virtual servers - running"
+          virtual_servers_stopped: "Virtual servers - stopped"
+          os_templates: "OS templates"
     hardware_servers:
       title: "Hardware Servers"
       grid:
