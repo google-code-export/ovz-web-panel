@@ -2,8 +2,8 @@ class DefaultAdmin < ActiveRecord::Migration
   def self.up
     user = User.new
     user.login = 'admin'
-    user.password = 'setup'
-    user.password_confirmation = 'setup'
+    user.password = 'admin'
+    user.password_confirmation = 'admin'
     user.save(false)
   end
 
