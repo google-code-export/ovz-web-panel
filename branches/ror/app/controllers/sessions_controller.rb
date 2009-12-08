@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
 
   def new
+    redirect_to :controller => 'admin/dashboard' if logged_in?
+    
     @available_locales = I18n.available_locales.map { 
       |locale| [locale.to_s, I18n.t('language.title', :locale => locale) + " (#{locale})"]
     }.sort
