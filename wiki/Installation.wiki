@@ -5,7 +5,7 @@
 
 The following software is required to be installed on server with panel:
   * Ruby 1.8.6+
-  * RubyGems
+  * !RubyGems
   * Ruby SQLite3 support
 
 The following software is required to be installed on hardware server, which 
