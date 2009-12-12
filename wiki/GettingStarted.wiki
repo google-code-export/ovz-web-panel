@@ -15,8 +15,9 @@ Additional information can be found at http://www.gnu.org/licenses/old-licenses/
 
   * Web-based control of OpenVZ contaniers
   * Ability to control several hardware servers
-  * Separate hardware server daemon
-  * Ability to set up panel inside VE
+  * Separate hardware server daemon (ability to set up panel inside VE)
+  * Pretty interface
+  * Multilanguage support
 
 = Download = 
 
@@ -29,6 +30,7 @@ Visit [Installation] page for installation instructions.
 
 = Usage =
 
-Visit `http://<you-host>` to see the web panel. Login page should be shown. 
+By default you can visit `http://<you-host>:3000` to see the web panel. Login 
+page should be shown.  
 Default administrator's login and password are: admin/admin. Don't forget to
 change default password after login (using "My Profile" link).
