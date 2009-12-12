@@ -1,4 +1,5 @@
 #summary Environment checker helps to detect common problems with panel installation.
+#labels Deprecated
 
 = Introduction =
 
