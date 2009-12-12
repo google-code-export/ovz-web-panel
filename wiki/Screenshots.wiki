@@ -1,0 +1,12 @@
+#summary Page contains screenshots of latest version.
+#labels Featured
+
+http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot1.png
+
+http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot2.png
+
+http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot3.png
+
+http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot4.png
+
+http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot5.png
