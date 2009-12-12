@@ -12,6 +12,7 @@ The following software is required to be installed on hardware server, which
 will be used for OpenVZ containers:
   * OpenVZ kernel
   * OpenVZ tools (vzctl, vzlist)
+  * Ruby 1.8.6+
 
 = Installation of the build = 
 
