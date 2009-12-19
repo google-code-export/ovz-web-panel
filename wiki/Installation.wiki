@@ -29,7 +29,7 @@ using apt:
   `apt-get install ruby rubygems libsqlite3-ruby`
 
 To start the panel run the command:
-  `ruby /opt/ovz-web-panel/script/server -e production -d`
+  `sudo ruby /opt/ovz-web-panel/script/server -e production -d`
 
 To shutdown application the following command can be used (be careful):
   {{{kill -9 `pidof ruby`}}}
