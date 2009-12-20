@@ -22,7 +22,7 @@ The most simple way to install OpenVZ Web Panel is to run the following command:
 After installation Panel should be available by the following URL: 
   `http://<you-host>:3000`
 
-Default administrator's credentials are: admin/admin.
+Default administrator's credentials are: admin/admin. Don't forget to change default password. 
 
 = Manual Installation of The Build = 
 
