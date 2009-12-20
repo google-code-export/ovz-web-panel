@@ -19,18 +19,16 @@ Additional information can be found at http://www.gnu.org/licenses/old-licenses/
   * Pretty interface
   * Multilanguage support
 
-= Download = 
-
-Visit downloads page http://code.google.com/p/ovz-web-panel/downloads/list to download latest build.
-
 = Installation =
 
-Visit [Installation] page for installation instructions.
+The most simple way to install OpenVZ Web Panel is to run the following command:
+  `wget -O - http://ovz-web-panel.googlecode.com/svn/installer/ai.sh | sudo sh`
 
+There are other possible way to install the Panel can be found at [Installation].
 
 = Usage =
 
-By default you can visit `http://<you-host>:3000` to see the web panel. Login 
-page should be shown.  
-Default administrator's login and password are: admin/admin. Don't forget to
-change default password after login (using "My Profile" link).
+After installation Panel should be available by the following URL: 
+  `http://<you-host>:3000`
+
+Default administrator's credentials are: admin/admin. Don't forget to change default password. 
