@@ -4,7 +4,7 @@
 = Requirements =
 
 The following software is required to be installed on server with panel:
-  * Ruby 1.8.6+
+  * Ruby 1.8.5+
   * !RubyGems
   * Ruby SQLite3 support
 
@@ -12,14 +12,24 @@ The following software is required to be installed on physical server, which
 will be used for OpenVZ containers:
   * OpenVZ kernel
   * OpenVZ tools (vzctl, vzlist)
-  * Ruby 1.8.6+
+  * Ruby 1.8.5+
 
-= Installation of the build = 
+= Automatic Installation =
+
+The most simple way to install OpenVZ Web Panel is to run the following command:
+  `wget -O - http://ovz-web-panel.googlecode.com/svn/installer/ai.sh | sudo sh`
+
+After installation Panel should be available by the following URL: 
+  `http://<you-host>:3000`
+
+Default administrator's credentials are: admin/admin.
+
+= Manual Installation of The Build = 
 
 Place build archive to the server where you plan to run the panel. Move 
 build archive content to destination directory, e.g. `/opt/ovz-web-panel/`.
 This can be achived using the following command:
-  `tar -xzvf ovz-web-panel-X.X.XXX.tgz -C /opt/`
+  `tar -xzvf ovz-web-panel-X.X.tgz -C /opt/`
 
 Panel is written on Ruby. So you need to have it to run the panel. Please check
 the Ruby version:
@@ -32,7 +42,7 @@ To start the panel run the command:
   `sudo ruby /opt/ovz-web-panel/script/server -e production -d`
 
 To shutdown application the following command can be used (be careful):
-  {{{kill -9 `pidof ruby`}}}
+  {{{sudo kill -9 `pidof ruby`}}}
 
 Then need to place hardware daemon on the server with OpenVZ. There are two
 possible scenarios: panel is installed on hardware node or panel is on separate
@@ -41,11 +51,11 @@ Copy content of directory to OpenVZ physical server. Then copy
 `hw-daemon.ini.sample` to `hw-daemon.ini`. Next step is to generate unique key, 
 which will be used for authorization between panel and daemon. Key can be 
 generated using the  following command for example:
-  `head -c 200 /dev/urandom | md5sum`
+  `head -c 200 /dev/urandom | md5sum | awk '{ print $2 }'`
 Key should be placed to hw-daemon.ini as a value of `key` parameter. Now daemon
-can be  started by the command:
+can be started by the command:
   `sudo ruby hw-daemon.rb start`
-Daemon should work  under root user to be able to manipulate with containers.
+Daemon should work under the root user to be able to manipulate with containers.
 
 To start the daemon run:
   `sudo ruby hw-daemon.rb start`
@@ -53,18 +63,16 @@ To start the daemon run:
 Daemon can be stopped using the following command
   `sudo ruby hw-daemon.rb stop`
 
-
-= Installation from SVN repository =
+= Installation from SVN Repository =
 
 Source code can be checked out anonymously via:
   `svn checkout http://ovz-web-panel.googlecode.com/svn/trunk/ owp`
 
 File http://code.google.com/p/ovz-web-panel/source/browse/trunk/build/build.sh
-contains information how to prepare working copy.
+contains information on how to prepare working copy.
  
+= Known Problems =
 
-= Known problems =
-
-Daemon expects that vz partition located at `/vz`. On Ubuntu it's need to create
-symlink:
+Daemon expects that vz partition located at `/vz` directory. On Ubuntu it's need to create
+a symlink:
   `ln -s /var/lib/vz /vz`
