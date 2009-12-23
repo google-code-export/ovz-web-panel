@@ -184,6 +184,9 @@ install_product()
     exec_cmd "Removing downloaded archive:" "rm -f $INSTALL_DIR/$ARCHIVE_NAME"
   fi
   
+  # temporary workaround for Debian/Ubuntu systems (should be removed after fixing the issue #19)
+  [ ! -e /vz -a -d /var/lib/vz ] && ln -s /var/lib/vz /vz
+  
   puts "Installation finished."
   puts "Product was installed into: $INSTALL_DIR"  
   puts_spacer
