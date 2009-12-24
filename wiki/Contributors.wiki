@@ -1,0 +1,8 @@
+#summary List of project contributors
+
+== Contributors ==
+
+Main developer: Alexei Yuzhakov [sibprogrammer@gmail.com]
+
+Contributors:
+  * [j.rechards@home.nl]
