@@ -3,4 +3,4 @@
 Main developer: Alexei Yuzhakov [mailto:sibprogrammer@gmail.com sibprogrammer@gmail.com]
 
 Contributors:
-  * [mailto:j.rechards@home.nl j.rechards@home.nl]
+  * Jef Rechards [mailto:j.rechards@home.nl j.rechards@home.nl]
