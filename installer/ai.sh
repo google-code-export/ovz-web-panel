@@ -13,6 +13,7 @@ AUTOSOLVER=1 # automatic solving of dependencies
 AUTOSTART=1 # start panel automatically after installation
 DISTRIB_ID=""
 DEBUG=0
+UPGRADE=0
 ERR_FATAL=1
 
 for PARAM in $@; do
@@ -147,9 +148,7 @@ check_environment() {
 
   detect_openvz
   
-  if [ "x$FORCE" = "x0" ]; then
-    [ -d $INSTALL_DIR ] && fatal_error "Install directory $INSTALL_DIR is not empty. Please remove it before installation."
-  fi
+  [ -d $INSTALL_DIR ] && UPGRADE=1
   
   puts_spacer
 }
@@ -178,7 +177,12 @@ install_product()
   [ $? -ne 0 ] && fatal_error "Failed to download distribution."
   
   ARCHIVE_NAME=`echo $DOWNLOAD_URL | sed 's/.\+\///g'`
-  exec_cmd "Unpacking:" "tar --strip 2 -C $INSTALL_DIR -xzf $INSTALL_DIR/$ARCHIVE_NAME"
+  
+  EXCLUDE_LIST=""
+  if [ "x$UPGRADE" = "x1" ]; then
+    EXCLUDE_LIST="--exclude=*.log --exclude=config/database.yml --exclude=db/*.sqlite3"
+  fi
+  exec_cmd "Unpacking:" "tar --strip 2 -C $INSTALL_DIR -xzf $INSTALL_DIR/$ARCHIVE_NAME $EXCLUDE_LIST"
   
   if [ "x$PRESERVE_ARCHIVE" != "x1" ]; then
     exec_cmd "Removing downloaded archive:" "rm -f $INSTALL_DIR/$ARCHIVE_NAME"
@@ -192,8 +196,22 @@ install_product()
   puts_spacer
 }
 
+stop_services()
+{
+  puts "Stopping services..."
+  
+  PANEL_APP_PID=`ps auxww | grep ruby | grep script/server | awk '{ print $2 }'`
+  [ -n "$PANEL_APP_PID" ] && kill -2 $PANEL_APP_PID
+  
+  if [ "$ENVIRONMENT" = "HW-NODE" ]; then
+    ruby $INSTALL_DIR/utils/hw-daemon/hw-daemon.rb stop
+  fi
+}
+
 start_services()
 {
+  [ "x$UPGRADE" = "x1" ] && stop_services
+
   puts "Starting services..."
   
   ruby $INSTALL_DIR/script/server -e production -d
@@ -202,28 +220,30 @@ start_services()
   else
     puts "Unable to start the panel. Please check the logs and try to start it manually."
   fi
-    
-  if [ "$ENVIRONMENT" = "HW-NODE" ]; then
-    HW_DAEMON_CONFIG="$INSTALL_DIR/utils/hw-daemon/hw-daemon.ini"
-    if [ ! -f $HW_DAEMON_CONFIG ]; then
-      echo "address = 127.0.0.1" >> $HW_DAEMON_CONFIG
-      echo "port = 7767" >> $HW_DAEMON_CONFIG
-      RAND_KEY=`head -c 200 /dev/urandom | md5sum | awk '{ print \$1 }'`
-      echo "key = $RAND_KEY" >> $HW_DAEMON_CONFIG
-    fi
-    ruby $INSTALL_DIR/utils/hw-daemon/hw-daemon.rb start
-    if [ $? -eq 0 ]; then
-      puts "Hardware daemon was started."
+  
+  if [ "x$UPGRADE" = "x0" ]; then
+    if [ "$ENVIRONMENT" = "HW-NODE" ]; then
+      HW_DAEMON_CONFIG="$INSTALL_DIR/utils/hw-daemon/hw-daemon.ini"
+      if [ ! -f $HW_DAEMON_CONFIG ]; then
+        echo "address = 127.0.0.1" >> $HW_DAEMON_CONFIG
+        echo "port = 7767" >> $HW_DAEMON_CONFIG
+        RAND_KEY=`head -c 200 /dev/urandom | md5sum | awk '{ print \$1 }'`
+        echo "key = $RAND_KEY" >> $HW_DAEMON_CONFIG
+      fi
+      ruby $INSTALL_DIR/utils/hw-daemon/hw-daemon.rb start
+      if [ $? -eq 0 ]; then
+        puts "Hardware daemon was started."
+      else
+        puts "Unable to start hardware daemon. Please check the logs and try to start it manually."
+      fi
+      puts "Adding localhost to the list of controlled servers..."
+      ruby $INSTALL_DIR/script/runner -e production "HardwareServer.new(:host => 'localhost', :auth_key => '$RAND_KEY').connect"
+      [ $? -ne 0 ] && puts "Failed to add local server."
     else
-      puts "Unable to start hardware daemon. Please check the logs and try to start it manually."
+      puts "Place hardware daemon on machine with OpenVZ."
+      puts "To start hardware daemon run:"
+      puts "sudo ruby $INSTALL_DIR/utils/hw-daemon/hw-daemon.rb start"
     fi
-    puts "Adding localhost to the list of controlled servers..."
-    ruby $INSTALL_DIR/script/runner -e production "HardwareServer.new(:host => 'localhost', :auth_key => '$RAND_KEY').connect"
-    [ $? -ne 0 ] && puts "Failed to add local server."
-  else
-    puts "Place hardware daemon on machine with OpenVZ."
-    puts "To start hardware daemon run:"
-    puts "sudo ruby $INSTALL_DIR/utils/hw-daemon/hw-daemon.rb start"
   fi
 }
 
