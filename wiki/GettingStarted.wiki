@@ -15,8 +15,9 @@ Additional information can be found at http://www.gnu.org/licenses/old-licenses/
 
   * Web-based control of OpenVZ contaniers
   * Ability to control several physical servers
-  * Separate physical server daemon (ability to set up panel inside VE)
-  * Pretty interface
+  * Separate physical server daemon (ability to set up panel inside virtual server)
+  * Automatic installation
+  * Simple and beautiful interface
   * Multilanguage support
 
 = Installation =
