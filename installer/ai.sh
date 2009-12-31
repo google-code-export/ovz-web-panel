@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # global variables
-VERSION="0.4"
+VERSION="0.5"
 DOWNLOAD_URL="http://ovz-web-panel.googlecode.com/files/ovz-web-panel-$VERSION.tgz"
 RUBYGEMS_URL="http://rubyforge.org/frs/download.php/60718/rubygems-1.3.5.tgz"
 RUBY_SQLITE3_CMD="ruby -e \"require 'rubygems'\" -e \"require 'sqlite3/database'\""
@@ -87,7 +87,7 @@ resolve_deps()
 
   if [ "$DISTRIB_ID" = "Ubuntu" -o "$DISTRIB_ID" = "Debian" ]; then
     apt-get update
-    apt-get -y install ruby rubygems libsqlite3-ruby libopenssl-ruby
+    apt-get -y install ruby rubygems libsqlite3-ruby libopenssl-ruby rake
   fi
   
   if [ "$DISTRIB_ID" = "RedHat" ]; then
@@ -102,7 +102,12 @@ resolve_deps()
       ruby /tmp/$DIR_NAME/setup.rb
       rm -f /tmp/$ARCHIVE_NAME
       rm -rf /tmp/$DIR_NAME
-    fi   
+    fi
+    
+    gem list rake -i
+    if [ $? -ne 0 ]; then
+      gem install rake
+    fi
     
     sh -c "$RUBY_SQLITE3_CMD" > /dev/null 2>&1
     if [ $? -ne 0 ]; then
@@ -112,7 +117,7 @@ resolve_deps()
   fi
   
   if [ "$DISTRIB_ID" = "Fedora" ]; then
-    yum -y install ruby rubygems ruby-sqlite3
+    yum -y install ruby rubygems ruby-sqlite3 rubygem-rake
   fi
 }
 
@@ -186,6 +191,14 @@ install_product()
   
   if [ "x$PRESERVE_ARCHIVE" != "x1" ]; then
     exec_cmd "Removing downloaded archive:" "rm -f $INSTALL_DIR/$ARCHIVE_NAME"
+  fi
+  
+  if [ "x$UPGRADE" = "x1" ]; then
+    puts "Upgrading database..."
+    pushd $INSTALL_DIR
+      rake db:migrate RAILS_ENV="production"
+    popd
+    [ $? -ne 0 ] && fatal_error "Failed to upgrade database to new version."
   fi
   
   # temporary workaround for Debian/Ubuntu systems (should be removed after fixing the issue #19)
