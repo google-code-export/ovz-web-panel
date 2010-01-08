@@ -214,7 +214,7 @@ start_services() {
 
   puts "Starting services..."
   
-  ruby $INSTALL_DIR/script/server -e production -d
+  ruby $INSTALL_DIR/script/server webrick -e production -d
   if [ $? -eq 0 ]; then
     puts "Panel was started."
   else
