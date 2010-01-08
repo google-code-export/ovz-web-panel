@@ -22,29 +22,24 @@ done
 
 [ "x$DEBUG" = "x1" ] && set -xv 
 
-log()
-{
+log() {
   echo `date` $1 >> $LOG_FILE
 }
 
-puts()
-{
+puts() {
   echo $1
   log "$1"
 }
 
-puts_separator()
-{
+puts_separator() {
   puts "-----------------------------------"
 }
 
-puts_spacer()
-{
+puts_spacer() {
   puts 
 }
 
-exec_cmd()
-{
+exec_cmd() {
   TITLE=$1
   COMMAND=$2
   
@@ -52,22 +47,19 @@ exec_cmd()
   `$COMMAND`
 }
 
-fatal_error()
-{
+fatal_error() {
   puts "Fatal error: $1"
   exit $ERR_FATAL
 }
 
-is_command_present()
-{
+is_command_present() {
   puts "Checking presence of the command: $1"
   
   CMD=`whereis -b $1 | awk '{ print $2 }'`
   [ -n "$CMD" ] && return 0 || return 1
 }
 
-detect_os()
-{
+detect_os() {
   puts "Detecting distrib ID..."
 
   is_command_present "lsb_release"
@@ -81,8 +73,7 @@ detect_os()
   [ -f /etc/fedora-release ] && DISTRIB_ID="Fedora"
 }
 
-resolve_deps()
-{
+resolve_deps() {
   puts "Resolving dependencies..."
 
   if [ "$DISTRIB_ID" = "Ubuntu" -o "$DISTRIB_ID" = "Debian" ]; then
@@ -158,8 +149,7 @@ check_environment() {
   puts_spacer
 }
 
-detect_openvz()
-{
+detect_openvz() {
   if [ -f /proc/vz/version ]; then
     ENVIRONMENT="HW-NODE"
     puts "OpenVZ hardware node detected."
@@ -172,8 +162,7 @@ detect_openvz()
   fi
 }
 
-install_product()
-{
+install_product() {
   puts "Installation..."
   
   mkdir -p $INSTALL_DIR
@@ -209,8 +198,7 @@ install_product()
   puts_spacer
 }
 
-stop_services()
-{
+stop_services() {
   puts "Stopping services..."
   
   PANEL_APP_PID=`ps auxww | grep ruby | grep script/server | awk '{ print $2 }'`
@@ -221,8 +209,7 @@ stop_services()
   fi
 }
 
-start_services()
-{
+start_services() {
   [ "x$UPGRADE" = "x1" ] && stop_services
 
   puts "Starting services..."
@@ -260,12 +247,11 @@ start_services()
   fi
 }
 
-print_how_to_start_services()
-{  
+print_how_to_start_services() {
   puts_spacer
   
   puts "To start the panel run:"
-  puts "sudo ruby $INSTALL_DIR/script/server -e production -d"  
+  puts "sudo ruby $INSTALL_DIR/script/server webrick -e production -d"  
   
   puts "To start hardware daemon run:"
   puts "sudo ruby $INSTALL_DIR/utils/hw-daemon/hw-daemon.rb start"
@@ -273,15 +259,13 @@ print_how_to_start_services()
   puts_spacer
 }
 
-print_access_info()
-{
+print_access_info() {
   puts "Panel should be available at:"
   puts "http://`hostname`:3000"
   puts "Default credentials: admin/admin"
 }
 
-main()
-{
+main() {
   puts_separator
   puts "OpenVZ Web Panel $VERSION Installer."
   puts_separator
