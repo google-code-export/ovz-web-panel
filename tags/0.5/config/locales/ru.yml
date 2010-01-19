@@ -1,0 +1,202 @@
+ru:
+  language:
+    title: "Русский"
+  form:
+    loading: "Пожалуйста, подождите..."
+    confirmation: "Подтверждение"
+    performing_task: "Пожалуйста, подождите. Выполнение задачи..."
+    error:
+      title: "Ошибка"
+      fill_form: "Пожалуйста, заполните форму."
+    info:
+      title: "Информация"
+    button:
+      save: "Сохранить"
+      cancel: "Отмена"
+      create: "Создать"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              confirmation: "Пароль и подтверждение не совпадают."
+              too_short: "Пароль слишком короткий (минимум символов: {{count}})."
+        hardware_server:
+          attributes:
+            host:
+              taken: "Сервер с таким именем уже присутствует."
+              connection: "Не удалось подключиться. Возможно демон не запущен."
+            auth_key:
+              bad_auth: "Невозможно выполнить авторизацию. Возможно неверный ключ авторизации."
+  about:
+    copyright: "Авторское право 2008-2009 SoftUnity."
+    right_reserved: "Все права зарезервированы."
+    about_program: "О программе"
+    author: "Главный разработчик"
+    contributors: "Участники"
+    contributors_list: "список"
+    web_site: "Веб-сайт"
+  login:
+    page_title: "Вход"
+    window_title: "Вход в {{product}}"
+    username: "Логин"
+    password: "Пароль"
+    remember_me: "Запомнить"
+    button_login: "Вход"
+    locale: "Язык"
+    bad_login: "Неверный логин или пароль."
+  admin:
+    menu:
+      title: "Меню"  
+      general:
+        title: "Общее"
+        dashboard: "Рабочий стол"
+        hardware_servers: "Физические сервера"
+        my_profile: "Мой профиль"
+        event_log: "Журнал событий"
+        logout: "Выход" 
+      help:
+        title: "Помощь"
+        documentation: "Документация"
+        support: "Тех. поддержка"
+    operations:
+      up_level: "Вверх"
+    logout: "Вы действительно хотите выйти?"
+    my_profile:
+      title: "Мой профиль"
+      user_name: "Логин"
+      current_password: "Текущий пароль"
+      new_password: "Новый пароль"
+      confirm_password: "Подтверждение пароля"
+      bad_current_password: "Неверный текущий пароль."
+    events:
+      hardware_server:
+        connect: "Физический сервер {{host}} был подключен."
+        disconnect: "Физический сервер {{host}} был отключен."
+        sync: "Состояние сервера {{host}} было синхронизировано."
+      virtual_server:
+        created: "Виртуальный сервер {{identity}} был создан."
+        removed: "Виртуальный сервер {{identity}} был удален."
+    dashboard:
+      title: "Рабочий стол"
+      intro:
+        title: "Введение"
+        text: "OpenVZ Web Panel - это веб-фронтэнд для управления серверами на технологии виртуализации OpenVZ."
+      stats_grid:
+        title: "Статистика"
+        column:
+          parameter: "Параметр"
+          value: "Значение"
+        parameter:
+          panel_users: "Пользователи панели"
+          hardware_servers: "Физические сервера"
+          virtual_servers: "Виртуальные сервера"
+          virtual_servers_running: "Виртуальные сервера - запущенные"
+          virtual_servers_stopped: "Виртуальные сервера - остановленные"
+          os_templates: "Шаблоны ОС"
+    hardware_servers:
+      title: "Физические сервера"
+      grid:
+        title: "Список физических серверов"
+        column:
+          host_name: "Имя хоста"
+          description: "Описание"
+          virtual_servers: "Виртуальные сервера"
+        button:
+          connect: "Подключить новый сервер"
+          reconnect: "Переподключить сервер"
+          disconnect: "Отключить сервер"
+          details: "Детали"
+          sync: "Синхронизация"
+          edit: "Изменить настройки"
+      form:
+        connect_server:
+          title: "Подключить новый физический сервер"
+          edit_title: "Изменить настройки физического сервера"
+          button_connect: "Подключить"
+          field:
+            host_name: "Имя хоста"
+            auth_key: "Ключ авторизации"
+            description: "Описание"
+        disconnect_server:
+          sure_to_disconnect: "Вы действительно хотите отключить выбранные сервера?"
+          deletion_failed: "Во время отключения произошла ошибка."
+        sync:
+          sync_failed: "Не удалось синхронизировать информацию на некоторых физических серверах."
+      show:
+        title: "Физический сервер {{name}}"
+      top_toolbar:
+        os_templates: "Шаблоны ОС"
+    virtual_servers:
+      grid:
+        title: "Список виртуальных серверов"
+        column:
+          state: "Статус"
+          identity: "VEID"
+          ip_address: "IP адрес"
+          host_name: "Имя хоста"
+          os_template: "Шаблон ОС"
+        button:
+          create: "Создать вирутальный сервер"
+          destroy: "Удалить вирутальный сервер"
+          change_state: "Изменить состояние"
+          start: "Старт"
+          restart: "Рестарт"
+          stop: "Стоп"
+          edit: "Изменить настройки"
+      form:
+        change_state:
+          failed: "Невозможно изменить состояние виртуального сервера."
+        remove_server:
+          sure_to_remove: "Вы действительно хотите удалить выбранные виртуальные сервера?"
+          deletion_failed: "Не удалось удалить некоторые виртуальные сервера."
+        create_server:
+          title: "Создать новый виртуальный сервер"
+          edit_title: "Изменить настройки виртуального сервера"
+          button_create: "Создать"
+          field:
+            identity: "ID сервера (VEID)"
+            os_template: "Шаблон ОС"
+            select_os_template: "Выберите шаблон ОС"
+            ip_address: "IP адрес"
+            host_name: "Имя хоста"
+            password: "Пароль root'а"
+            confirm_password: "Подтверждение пароля"
+            start_on_boot: "Запуск после загрузки"
+            start_after_creation: "Запуск после создания"
+          fieldset:
+            general: "Общее"
+            network: "Сеть"
+            system_access: "Доступ к системе"
+            start_options: "Опции запуска"
+    os_templates:
+      title: "Шаблоны ОС на физическом сервере {{name}}"
+      grid:
+        title: "Установленные шаблоны OС"
+        column:
+          name: "Имя"
+        button:
+          install_new_template: "Установить новый шаблон ОС"
+          remove: "Удалить шаблон ОС"
+      form:
+        install:
+          title: "Установка нового шаблона ОС"
+          tab:
+            official: "Официальные"
+            contributed: "Пользовательские"
+          button_install: "Установить"  
+          failed: "Невозможно начать установку шаблонов ОС."
+          scheduled: "Инсталляция шаблонов ОС запланирована. Новые шаблоны появятся по прошествии некоторого времени."
+        remove_template:
+          sure_to_remove: "Вы действительно хотите удалить выбранные шаблоны ОС"
+          deletion_failed: "Не удалось удалить некоторые шаблоны ОС."
+    event_log:
+      title: "Журнал событий"
+      grid:
+        title: "Последние события"
+        column:
+          level: "Статус"
+          created_at: "Дата"
+          message: "Сообщение"
+          id: "ID"
