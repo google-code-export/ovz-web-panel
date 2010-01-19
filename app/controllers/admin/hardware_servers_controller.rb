@@ -15,10 +15,8 @@ class Admin::HardwareServersController < AdminController
     render :json => { :data => @hardware_servers }  
   end
   
-  def save
-    @hardware_server = (params[:id].to_i > 0) ? HardwareServer.find_by_id(params[:id]) : HardwareServer.new
-    params.delete(:auth_key) if !@hardware_server.new_record? && params[:auth_key].empty?
-    @hardware_server.attributes = params
+  def connect
+    @hardware_server = HardwareServer.new(params)
     
     if @hardware_server.connect
       render :json => { :success => true }  
@@ -45,28 +43,6 @@ class Admin::HardwareServersController < AdminController
     @hardware_server = HardwareServer.find_by_id(params[:id])    
     redirect_to :action => 'list' if !@hardware_server
     @up_level = '/admin/hardware-servers/list'
-  end
-  
-  def sync
-    params[:ids].split(',').each { |id|
-      hardware_server = HardwareServer.find(id)
-      
-      if !hardware_server.sync
-        render :json => { :success => false }  
-        return
-      end
-    }
-    
-    render :json => { :success => true }  
-  end
-  
-  def load_data
-    hardware_server = HardwareServer.find_by_id(params[:id])
-    redirect_to :action => 'list' if !hardware_server
-    render :json => { :success => true, :data => {
-      :host => hardware_server.host,
-      :description => hardware_server.description
-    }}  
   end
   
 end

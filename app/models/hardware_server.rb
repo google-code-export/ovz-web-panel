@@ -15,33 +15,32 @@ class HardwareServer < ActiveRecord::Base
       return false
     end
     
-    result = save    
-    sync if result
-    EventLog.info("hardware_server.connect", { :host => self.host })
+    result = save
+    
+    if result
+      add_os_templates(rpc_client)
+      add_virtual_servers(rpc_client)
+    end
+    
     result
   end
   
   def disconnect
     destroy
-    EventLog.info("hardware_server.disconnect", { :host => self.host })
   end
   
   def rpc_client
     HwDaemonClient.new(self.host, self.auth_key)
   end
-      
+  
+  def exec_command(command, args = '')
+    rpc_client.exec(command, args)
+  end
+    
   def sync_os_templates
-    os_templates_on_server = rpc_client.exec('ls', '/vz/template/cache')['output'].split
-    
-    os_templates.each { |template|
-      if !os_templates_on_server.include?(template.name + '.tar.gz')
-        template.destroy
-      end
-    }
-    
-    os_templates_on_server.each { |template_name|
+    rpc_client.exec('ls', '/vz/template/cache')['output'].split.each { |template_name|
       template_name.sub!(/\.tar.\gz/, '')
-      if !OsTemplate.find_by_name_and_hardware_server_id(template_name, self.id)
+      if !OsTemplate.find_by_name(template_name)
         os_template = OsTemplate.new(:name => template_name)
         os_template.hardware_server = self
         os_template.save
@@ -49,47 +48,34 @@ class HardwareServer < ActiveRecord::Base
     }
   end
   
-  def sync_virtual_servers
-    ves_on_server = rpc_client.exec('vzlist', '-a -H -o veid,hostname,ip,status')['output'].split("\n")
-    
-    ves_ids_on_server = ves_on_server.map { |vzlist_entry|
-      vzlist_entry = vzlist_entry.split.first
+  private
+  
+  def add_os_templates(rpc_client)
+    rpc_client.exec('ls', '/vz/template/cache')['output'].split.each { |template_name|
+      os_template = OsTemplate.new(:name => template_name.sub(/\.tar.\gz/, ''))
+      os_template.hardware_server = self
+      os_template.save
     }
-    
-    virtual_servers.each { |virtual_server|
-      if !ves_ids_on_server.include?(virtual_server.identity)
-        virtual_server.destroy
-      end
-    }
-    
-    ves_on_server.each { |vzlist_entry|
+  end
+  
+  def add_virtual_servers(rpc_client)
+    rpc_client.exec('vzlist', '-a -H -o veid,hostname,ip,status')['output'].split("\n").each { |vzlist_entry|
       ve_id, host_name, ip_address, ve_state = vzlist_entry.split
+      virtual_server = VirtualServer.new(
+        :identity => ve_id,
+        :host_name => host_name,
+        :ip_address => ip_address,
+        :state => ve_state
+      )
       
-      virtual_server = virtual_servers.find_by_identity(ve_id)
-      virtual_server = VirtualServer.new(:identity => ve_id) unless virtual_server
-      
-      virtual_server.ip_address = ip_address
-      virtual_server.state = ve_state
-        
       parser = IniParser.new(rpc_client.exec('cat', "/etc/vz/conf/#{ve_id}.conf")['output'])
-      
-      os_template = os_templates.find_by_name(parser.get('OSTEMPLATE'))
+      os_template = OsTemplate.find_by_name(parser.get('OSTEMPLATE'))      
       virtual_server.os_template = os_template
-      virtual_server.start_on_boot = ('yes' == parser.get('ONBOOT'))
-      virtual_server.host_name = parser.get('HOSTNAME')
-      virtual_server.nameserver = parser.get('NAMESERVER')
-      virtual_server.search_domain = parser.get('SEARCHDOMAIN')
-      virtual_server.diskspace = parser.get('DISKSPACE').split(":").last.to_i / 1024
-      virtual_server.memory = parser.get('PRIVVMPAGES').split(":").last.to_i * 4 / 1024
+      
       virtual_server.hardware_server = self
+      
       virtual_server.save
     }
   end
   
-  def sync
-    sync_os_templates
-    sync_virtual_servers
-    EventLog.info("hardware_server.sync", { :host => self.host })
-  end
-    
 end

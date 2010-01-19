@@ -9,7 +9,7 @@ class Admin::VirtualServersController < AdminController
       :ip_address => item.ip_address,
       :host_name => item.host_name,
       :state => item.state,
-      :os_template_name => item.os_template ? item.os_template.name : '-'
+      :os_template_name => item.os_template.name
     }}
     render :json => { :data => virtual_servers }  
   end
@@ -45,37 +45,13 @@ class Admin::VirtualServersController < AdminController
     hardware_server = HardwareServer.find_by_id(params[:hardware_server_id])    
     redirect_to :controller => 'hardware_servers', :action => 'list' if !hardware_server
     
-    virtual_server = (params[:id].to_i > 0) ? VirtualServer.find_by_id(params[:id]) : VirtualServer.new
-    if !virtual_server.new_record?
-      params.delete(:identity)
-      params.delete(:start_after_creation)
-    end
-    virtual_server.attributes = params
-    virtual_server.start_on_boot = params.key?(:start_on_boot)
+    virtual_server = VirtualServer.new(params)
     
-    if virtual_server.save_physically
+    if virtual_server.create_physically
       render :json => { :success => true }  
     else
       render :json => { :success => false, :form_errors => virtual_server.errors }
     end    
-  end
-  
-  def load_data
-    hardware_server = HardwareServer.find_by_id(params[:hardware_server_id])
-    virtual_server = VirtualServer.find_by_id(params[:id])
-    redirect_to :controller => 'hardware_servers', :action => 'list' if !hardware_server || !virtual_server
-    
-    render :json => { :success => true, :data => {
-      :identity => virtual_server.identity,
-      :os_template_id => virtual_server.os_template ? virtual_server.os_template.name : '-',
-      :ip_address => virtual_server.ip_address,
-      :host_name => virtual_server.host_name,
-      :start_on_boot => virtual_server.start_on_boot,
-      :nameserver => virtual_server.nameserver,
-      :search_domain => virtual_server.search_domain,
-      :diskspace => virtual_server.diskspace,
-      :memory => virtual_server.memory,
-    }}  
   end
   
 end

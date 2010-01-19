@@ -1,17 +1,15 @@
-<%= render :partial => 'layouts/header' %>
+<%= render :partial => 'layouts/header' %>   
   
   <% javascript_tag do -%>
     Ext.onReady(function() {
-      var formMyProfile = new Owp.form.BasicForm({
+      var formMyProfile = new Ext.form.FormPanel({
+        baseCls: 'x-plain',
         labelWidth: 150,
         url: '/admin/users/save_profile',
+        defaultType: 'textfield',
         defaults: { width: 200 },
-        keys: [{
-          key: Ext.EventObject.ENTER,
-          fn: function() {
-            windowMyProfile.submitButton.handler();
-          }
-        }],
+        waitMsgTarget: true,
+        
         items: [{
           fieldLabel: '<%= tjs('admin.my_profile.user_name') %>',
           value: '<%= escape_javascript @current_user.login %>',
@@ -50,7 +48,6 @@
         buttons: [{
           text: '<%= tjs('form.button.save') %>',
           iconCls: 'icon-button-save',
-          ref: '../submitButton',
           handler: function() {
             formMyProfile.form.submit({
               waitMsg: '<%= tjs('form.loading') %>',
@@ -59,7 +56,6 @@
               },
               failure: function(form, action) {
                 Owp.form.errorHandler(form, action);
-                windowMyProfile.focus();
               }
             });
           }
@@ -95,9 +91,7 @@
             text: '<%= tjs('admin.menu.general.hardware_servers') %>',
             href: '/admin/hardware-servers/list',
             icon: '/images/server.png',
-            expandable: false,
-            expanded: true,
-            children: <%= @servers_list.to_json %>
+            leaf: true
           }, {
             cls: 'menu-item',
             text: '<%= tjs('admin.menu.general.my_profile') %>',
@@ -108,11 +102,6 @@
                 windowMyProfile.show();
               }
             }
-          }, {
-            cls: 'menu-item',
-            text: '<%= tjs('admin.menu.general.event_log') %>',
-            href: '/admin/event-log/list',
-            icon: '/images/table.png'
           }, {
             cls: 'menu-item',
             text: '<%= tjs('admin.menu.general.logout') %>',
@@ -172,15 +161,9 @@
         items: [
           new Ext.BoxComponent({
             region: 'north',
-            id: 'top-header',
+            el: 'top-header',
             cls: 'x-panel-header',
-            html: '<%= escape_javascript(render :partial => 'layouts/top_header') %>',
-            height: 50,
-            listeners: {
-              afterrender: function() {
-                <%= render :partial => 'layouts/about_box' %>
-              }
-            }
+            height: 50
           }), {
             region: 'west',
             stateId: 'adminWestPanel',
@@ -214,9 +197,10 @@
             }
           }, {
             region: 'center',
-            layout: 'fit',
+            margins: '5 5 5 0',
             contentEl: 'main-content',
             xtype: 'panel',
+            autoScroll: true,
             title: '<%= escape_javascript(@page_title) %>',
             cls: 'main-content-center-panel',
             id: 'mainContentCenterPanel',
@@ -233,10 +217,12 @@
     });
   <% end -%>
   
+  <%= render :partial => 'layouts/top_header' %>
+  
   <div id='main-menu'></div>
   
-  <div id='main-content'></div>
-  
-  <div style="display: none;"><%= yield %></div>
+  <div id='main-content'>
+    <%= yield %>
+  </div>
   
 <%= render :partial => 'layouts/footer' %>

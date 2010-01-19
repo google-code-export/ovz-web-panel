@@ -19,16 +19,13 @@ Ext.onReady(function() {
   }
   
   function clearGridsSelections() {
-    // TODO: remove try-catch after detailed investigation
-    try {
-      if ('undefined' != typeof windowInstallNewTemplate.officialTemplatesGrid) {
-        windowInstallNewTemplate.officialTemplatesGrid.getSelectionModel().clearSelections();
-      }
-      
-      if ('undefined' != typeof windowInstallNewTemplate.contributedTemplatesGrid) {
-        windowInstallNewTemplate.contributedTemplatesGrid.getSelectionModel().clearSelections();
-      }
-    } catch(e) { }
+    if ('undefined' != typeof windowInstallNewTemplate.officialTemplatesGrid) {
+      windowInstallNewTemplate.officialTemplatesGrid.getSelectionModel().clearSelections();
+    }
+    
+    if ('undefined' != typeof windowInstallNewTemplate.contributedTemplatesGrid) {
+      windowInstallNewTemplate.contributedTemplatesGrid.getSelectionModel().clearSelections();
+    }
   }
 
   function installTemplates() {
@@ -96,26 +93,6 @@ Ext.onReady(function() {
     });
   }
 
-  function removeOsTemplates() {
-    Ext.MessageBox.confirm(
-      '<%= tjs('form.confirmation') %>',
-      '<%= tjs('admin.os_templates.form.remove_template.sure_to_remove') %>',
-      function(button, text) {
-        if ('yes' == button) { 
-          Owp.list.groupAction({
-            gridName: 'osTemplatesGrid',
-            url: '/admin/os-templates/delete',
-            waitMsg: '<%= tjs('form.performing_task') %>',
-            failure: {
-              title: '<%= tjs('form.error.title') %>',
-              msg: '<%= tjs('admin.os_templates.form.remove_template.deletion_failed') %>'
-            }
-          });
-        }
-      }
-    );
-  }
-
   var windowInstallNewTemplate;
   
   function installNewTemplate() {
@@ -127,20 +104,6 @@ Ext.onReady(function() {
     });
   
     if (!windowInstallNewTemplate) {
-      var storeOfficialTemplates = new Ext.data.JsonStore({
-        url: '/admin/os-templates/available_list_data?hardware_server_id=' + <%= @hardware_server.id %>,
-        root: 'data',
-        autoLoad: true,
-        fields: [{ name: 'name' }]
-      });
-      
-      var storeContributedTemplates = new Ext.data.JsonStore({
-        url: '/admin/os-templates/available_list_data?contributed=yes&hardware_server_id=' + <%= @hardware_server.id %>,
-        root: 'data',
-        autoLoad: true,
-        fields: [{ name: 'name' }]
-      });
-    
       windowInstallNewTemplate = new Ext.Window({
         title: '<%= tjs('admin.os_templates.form.install.title') %>',
         iconCls: 'icon-window-add',
@@ -159,9 +122,13 @@ Ext.onReady(function() {
             title: '<%= tjs('admin.os_templates.form.install.tab.official') %>',
             xtype: 'grid',
             layout: 'fit',
-            loadMask: true,
             ref: '../officialTemplatesGrid',
-            store: storeOfficialTemplates,
+            store: new Ext.data.JsonStore({
+              url: '/admin/os-templates/available_list_data?hardware_server_id=' + <%= @hardware_server.id %>,
+              root: 'data',
+              autoLoad: true,
+              fields: [{ name: 'name' }]
+            }),
             cm: new Ext.grid.ColumnModel([selectionModelOfficial, {
               id: 'name',
               header: '<%= tjs('admin.os_templates.grid.column.name') %>',
@@ -180,7 +147,12 @@ Ext.onReady(function() {
             xtype: 'grid',
             layout: 'fit',
             ref: '../contributedTemplatesGrid',
-            store: storeContributedTemplates,
+            store: new Ext.data.JsonStore({
+              url: '/admin/os-templates/available_list_data?contributed=yes&hardware_server_id=' + <%= @hardware_server.id %>,
+              root: 'data',
+              autoLoad: true,
+              fields: [{ name: 'name' }]
+            }),
             cm: new Ext.grid.ColumnModel([selectionModelContributed, {
               id: 'name',
               header: '<%= tjs('admin.os_templates.grid.column.name') %>',
@@ -227,29 +199,12 @@ Ext.onReady(function() {
     ]
   });
   
-  var selectionModel = new Ext.grid.CheckboxSelectionModel({ 
-    listeners: {
-      selectionchange: function(selectionModel) {
-        if (selectionModel.getCount()) {
-          osTemplatesGrid.removeButton.enable();
-        } else {
-          osTemplatesGrid.removeButton.disable();
-        }
-      }
-    }
-  });
+  var selectionModel = new Ext.grid.CheckboxSelectionModel();
   
   var osTemplatesGrid = new Ext.grid.GridPanel({
     id: 'osTemplatesGrid',
     store: store,
     title: '<%= tjs('admin.os_templates.grid.title') %>',
-    loadMask: true,
-    tools: [{ 
-      id: 'refresh',
-      handler: function() {
-        osTemplatesGrid.getStore().reload();
-      }
-    }],
     cm: new Ext.grid.ColumnModel([
       selectionModel,
       {
@@ -262,6 +217,7 @@ Ext.onReady(function() {
     sm: selectionModel,
     stripeRows: true,
     autoExpandColumn: 'name',
+    autoHeight: true,
     autoWidth: true,
     stripeRows: true,
     frame: true,
@@ -271,16 +227,11 @@ Ext.onReady(function() {
       handler: installNewTemplate,
       cls: 'x-btn-text-icon',
       icon: '/images/add.png'
-    }, {
-      text: '<%= tjs('admin.os_templates.grid.button.remove') %>', 
-      cls: 'x-btn-text-icon',
-      icon: '/images/delete.png',     
-      handler: removeOsTemplates,
-      ref: '../removeButton',
-      disabled: true
     }]
   });
-
-  Owp.layout.addToCenter(osTemplatesGrid);
+  
+  osTemplatesGrid.render('os-templates-list');
 });
 <% end -%>
+
+<div id="os-templates-list"></div>

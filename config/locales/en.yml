@@ -30,12 +30,10 @@ en:
             auth_key:
               bad_auth: "Unable to authorize. Probably incorrect auth key."
   about:
-    copyright: "Copyright 2008-2010 SoftUnity."
+    copyright: "Copyright 2008-2009 SoftUnity."
     right_reserved: "All Rights Reserved."
     about_program: "About program"
-    author: "Main developer"
-    contributors: "Contributors"
-    contributors_list: "list"
+    author: "Author"
     web_site: "Web site"
   login:
     page_title: "Login"
@@ -54,7 +52,6 @@ en:
         dashboard: "Dashboard"
         hardware_servers: "Physical servers"
         my_profile: "My profile"
-        event_log: "Events log"
         logout: "Logout"
       help:
         title: "Help"
@@ -70,14 +67,6 @@ en:
       new_password: "New Password"
       confirm_password: "Confirm Password"
       bad_current_password: "Invalid current password."
-    events:
-      hardware_server:
-        connect: "Physical server {{host}} was connected."
-        disconnect: "Physical server {{host}} was disconnected."
-        sync: "Server's {{host}} state was synchronized."
-      virtual_server:
-        created: "Virtual server {{identity}} was created."
-        removed: "Virtual server {{identity}} was removed."
     dashboard:
       title: "Dashboard"
       intro:
@@ -107,13 +96,10 @@ en:
           connect: "Connect new server"
           reconnect: "Reconnect server"
           disconnect: "Disconnect server"   
-          details: "Details" 
-          sync: "Synchronization"
-          edit: "Change settings"
+          details: "Details"   
       form:
         connect_server:
           title: "Connect new physical server"
-          edit_title: "Change settings of physical server"
           button_connect: "Connect"
           field:
             host_name: "Host name"
@@ -122,8 +108,6 @@ en:
         disconnect_server:
           sure_to_disconnect: "Are you sure you want to disconnect selected servers?"
           deletion_failed: "Servers disconnection request failed."
-        sync:
-          sync_failed: "Unable to synchronize information on some physical servers."
       show:
         title: "Physical Server {{name}}"
       top_toolbar:
@@ -144,7 +128,6 @@ en:
           start: "Start"
           restart: "Restart"
           stop: "Stop"
-          edit: "Change settings"
       form:
         change_state:
           failed: "Unable to change virtual server state."
@@ -153,7 +136,6 @@ en:
           deletion_failed: "Unable to delete some virtual servers."
         create_server:
           title: "Create new virtual server"
-          edit_title: "Change settings of virtual server"
           button_create: "Create"
           field:
             identity: "Server ID (VEID)"
@@ -165,20 +147,11 @@ en:
             confirm_password: "Confirm Password"
             start_on_boot: "Start on Boot"
             start_after_creation: "Start after Creation"
-            nameserver: "DNS Server"
-            searchdomain: "Search Domain"
-            diskspace: "Disk Space, Mb"
-            memory: "RAM Memory, Mb"
           fieldset:
             general: "General"
             network: "Network"
             system_access: "System Access"
             start_options: "Start Options"
-            dns_settings: "DNS Settings"
-            limits: "Limits"
-          tab:
-            main_settings: "Main Settings"
-            additional_settings: "Additional Settings"
     os_templates:
       title: "OS Templates on Physical Server {{name}}"
       grid:
@@ -187,7 +160,6 @@ en:
           name: "Name"
         button:
           install_new_template: "Install New OS Template"
-          remove: "Remove Template"
       form:
         install:
           title: "Installation of new OS template"
@@ -197,15 +169,3 @@ en:
           button_install: "Install"
           failed: "Failed to start installation of OS templates."
           scheduled: "OS templates installation was scheduled. New templates appeared after some time."
-        remove_template:
-          sure_to_remove: "Are you sure you want to remove selected OS templates?"
-          deletion_failed: "Unable to delete some OS templates."
-    event_log:
-      title: "Events Log"
-      grid:
-        title: "Latest events"
-        column:
-          level: "Status"
-          created_at: "Date"
-          message: "Message"
-          id: "ID"

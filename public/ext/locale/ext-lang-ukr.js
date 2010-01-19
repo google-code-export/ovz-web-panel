@@ -1,27 +1,23 @@
 /*!
- * Ext JS Library 3.1.0
+ * Ext JS Library 3.0.0
  * Copyright(c) 2006-2009 Ext JS, LLC
  * licensing@extjs.com
  * http://www.extjs.com/license
  */
-/*
- * Ukrainian translations for ExtJS (UTF-8 encoding)
- *
- * Original translation by zlatko
+﻿/*
+ * Ukrainian translation
+ * By zlatko (utf-8 encoding)
  * 3 October 2007
- *
- * Updated by dev.ashevchuk@gmail.com
- * 01.09.2009
  */
 
-Ext.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Завантаження...</div>';
+Ext.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Триває завантаження...</div>';
 
 if(Ext.View){
-   Ext.View.prototype.emptyText = "<Порожньо>";
+   Ext.View.prototype.emptyText = "";
 }
 
 if(Ext.grid.GridPanel){
-   Ext.grid.GridPanel.prototype.ddText = "{0} обраних рядків";
+   Ext.grid.GridPanel.prototype.ddText = "{0} вибраних стрічок";
 }
 
 if(Ext.TabPanelItem){
@@ -29,7 +25,7 @@ if(Ext.TabPanelItem){
 }
 
 if(Ext.form.Field){
-   Ext.form.Field.prototype.invalidText = "Хибне значення";
+   Ext.form.Field.prototype.invalidText = "Значення у цьому полі невірне";
 }
 
 if(Ext.LoadMask){
@@ -57,7 +53,7 @@ Date.dayNames = [
    "Вівторок",
    "Середа",
    "Четвер",
-   "П’ятниця",
+   "Пятниця",
    "Субота"
 ];
 
@@ -81,12 +77,12 @@ if(Ext.util.Format){
 if(Ext.DatePicker){
    Ext.apply(Ext.DatePicker.prototype, {
       todayText         : "Сьогодні",
-      minText           : "Ця дата меньша за мінімальну допустиму дату",
-      maxText           : "Ця дата більша за максимальну допустиму дату",
+      minText           : "Ця дата менше мінімальної дати",
+      maxText           : "Ця дата більше максимальної дати",
       disabledDaysText  : "",
       disabledDatesText : "",
       monthNames        : Date.monthNames,
-      dayNames          : Date.dayNames,
+      dayNames	        : Date.dayNames,
       nextText          : 'Наступний місяць (Control+Вправо)',
       prevText          : 'Попередній місяць (Control+Вліво)',
       monthYearText     : 'Вибір місяця (Control+Вверх/Вниз для вибору року)',
@@ -106,8 +102,8 @@ if(Ext.PagingToolbar){
       prevText       : "Попередня сторінка",
       nextText       : "Наступна сторінка",
       lastText       : "Остання сторінка",
-      refreshText    : "Освіжити",
-      displayMsg     : "Відображення записів з {0} по {1}, всього {2}",
+      refreshText    : "Обновити",
+      displayMsg     : "Відображаються записи з {0} по {1}, всього {2}",
       emptyMsg       : 'Дані для відображення відсутні'
    });
 }
@@ -124,9 +120,9 @@ if(Ext.form.TextField){
 
 if(Ext.form.NumberField){
    Ext.apply(Ext.form.NumberField.prototype, {
-      minText : "Значення у цьому полі не може бути меньше {0}",
-      maxText : "Значення у цьому полі не може бути більше {0}",
-      nanText : "{0} не є числом"
+      minText : "Значення цього поля не може бути менше {0}",
+      maxText : "Значення цього поля не може бути більше {0}",
+      nanText : "{0} не являється числом"
    });
 }
 
@@ -134,9 +130,9 @@ if(Ext.form.DateField){
    Ext.apply(Ext.form.DateField.prototype, {
       disabledDaysText  : "Не доступно",
       disabledDatesText : "Не доступно",
-      minText           : "Дата у цьому полі повинна бути більша {0}",
-      maxText           : "Дата у цьому полі повинна бути меньша {0}",
-      invalidText       : "{0} хибна дата - дата повинна бути вказана у форматі {1}",
+      minText           : "Дата в цьому полі повинна бути більше {0}",
+      maxText           : "Дата в цьому полі повинна бути менше {0}",
+      invalidText       : "{0} неправильна дата - дата повинна бути вказана у  форматі {1}",
       format            : "d.m.y"
    });
 }
@@ -150,7 +146,7 @@ if(Ext.form.ComboBox){
 
 if(Ext.form.VTypes){
    Ext.apply(Ext.form.VTypes, {
-      emailText    : 'Це поле повинно містити адресу електронної пошти у форматі "user@example.com"',
+      emailText    : 'Це поле повинно містити адресу електронної почти у форматі "user@example.com"',
       urlText      : 'Це поле повинно містити URL у форматі "http:/'+'/www.example.com"',
       alphaText    : 'Це поле повинно містити виключно латинські літери та символ підкреслення "_"',
       alphanumText : 'Це поле повинно містити виключно латинські літери, цифри та символ підкреслення "_"'
@@ -163,42 +159,42 @@ if(Ext.form.HtmlEditor){
      buttonTips : {
             bold : {
                title: 'Напівжирний (Ctrl+B)',
-               text: 'Зробити напівжирним виділений текст.',
+               text: 'Застосування напівжирного до виділеного тексту.',
                cls: 'x-html-editor-tip'
             },
             italic : {
                title: 'Курсив (Ctrl+I)',
-               text: 'Зробити курсивом виділений текст.',
+               text: ' Застосування курсиву до виділеного тексту.',
                cls: 'x-html-editor-tip'
             },
             underline : {
                title: 'Підкреслений (Ctrl+U)',
-               text: 'Зробити підкресленим виділений текст.',
+               text: ' Застосування підкреслення до виділенного тексту.',
                cls: 'x-html-editor-tip'
            },
            increasefontsize : {
                title: 'Збільшити розмір',
-               text: 'Збільшити розмір шрифта.',
+               text: 'Збільшення розміру шрифта.',
                cls: 'x-html-editor-tip'
            },
            decreasefontsize : {
-               title: 'Зменьшити розмір',
-               text: 'Зменьшити розмір шрифта.',
+               title: 'Зменшити розмір',
+               text: 'Зменшення розміру шрифта.',
                cls: 'x-html-editor-tip'
            },
            backcolor : {
                title: 'Заливка',
-               text: 'Змінити колір фону для виділеного тексту або абзацу.',
+               text: 'Зміна кольору фону для виділеного тексту або абзацу.',
                cls: 'x-html-editor-tip'
            },
            forecolor : {
                title: 'Колір тексту',
-               text: 'Змінити колір виділеного тексту або абзацу.',
+               text: 'Зміна кольору тексту.',
                cls: 'x-html-editor-tip'
            },
            justifyleft : {
-               title: 'Вирівняти текст по лівому полю',
-               text: 'Вирівнювання тексту по лівому полю.',
+               title: 'Вирівняти текст по лівій границі',
+               text: 'Вирівнювання тексту по лівій границі.',
                cls: 'x-html-editor-tip'
            },
            justifycenter : {
@@ -207,8 +203,8 @@ if(Ext.form.HtmlEditor){
                cls: 'x-html-editor-tip'
            },
            justifyright : {
-               title: 'Вирівняти текст по правому полю',
-               text: 'Вирівнювання тексту по правому полю.',
+               title: 'Вирівняти текст по правій границі',
+               text: 'Вирівнювання тексту по правій границі.',
                cls: 'x-html-editor-tip'
            },
            insertunorderedlist : {
@@ -227,8 +223,8 @@ if(Ext.form.HtmlEditor){
                cls: 'x-html-editor-tip'
            },
            sourceedit : {
-               title: 'Джерельний код',
-               text: 'Режим редагування джерельного коду.',
+               title: 'Вихідний код',
+               text: 'Переключитись на вихідний код.',
                cls: 'x-html-editor-tip'
            }
         }
@@ -239,9 +235,9 @@ if(Ext.grid.GridView){
    Ext.apply(Ext.grid.GridView.prototype, {
       sortAscText  : "Сортувати по зростанню",
       sortDescText : "Сортувати по спаданню",
-      lockText     : "Закріпити стовпець",
-      unlockText   : "Відкріпити стовпець",
-      columnsText  : "Стовпці"
+      lockText     : "Закріпити колонку",
+      unlockText   : "Зняти закріплення колонки",
+      columnsText  : "Колонки"
    });
 }
 

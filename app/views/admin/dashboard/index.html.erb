@@ -3,11 +3,10 @@
 <% javascript_tag do -%>
 Ext.onReady(function() {
 
-  var introPanel = new Ext.Panel({
+  new Ext.Panel({
     title: '<%= tjs('admin.dashboard.intro.title') %>',
     collapsible: true,
-    region: 'north',
-    stateId: 'introPanel',
+    renderTo: 'panel-dashboard-intro',
     html: '<p>' + '<%= tjs('admin.dashboard.intro.text') %>' + '</p>'
   });
   
@@ -27,8 +26,9 @@ Ext.onReady(function() {
     id: 'statsGrid',
     title: '<%= tjs('admin.dashboard.stats_grid.title') %>',
     iconCls: 'icon-items-list',
-    region: 'center',
     store: store,
+    collapsible: true,
+    autoHeight: true,
     autoWidth: true,
     stripeRows: true,
     autoExpandColumn: 'value',
@@ -46,12 +46,12 @@ Ext.onReady(function() {
     }])    
   });
   
-  var container = new Ext.Container({
-    layout: 'border',
-    items: [ introPanel, statsGrid ]
-  });
-  
-  Owp.layout.addToCenter(container);
+  statsGrid.render('panel-dashboard-stats');  
+
 });
 <% end -%>
+
+<div id="panel-dashboard-intro"></div>
+
+<div id="panel-dashboard-stats"></div>
 
