@@ -184,9 +184,10 @@ install_product() {
   
   if [ "x$UPGRADE" = "x1" ]; then
     puts "Upgrading database..."
-    pushd $INSTALL_DIR
+    CURRENT_DIR=`pwd`
+    cd $INSTALL_DIR
       rake db:migrate RAILS_ENV="production"
-    popd
+    cd $CURRENT_DIR
     [ $? -ne 0 ] && fatal_error "Failed to upgrade database to new version."
 
     puts "Syncing physical servers state..."
