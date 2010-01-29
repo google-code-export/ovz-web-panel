@@ -270,7 +270,7 @@ print_access_info() {
 
 main() {
   puts_separator
-  puts "OpenVZ Web Panel $VERSION Installer."
+  puts "OpenVZ Web Panel Installer."
   puts_separator
   
   check_environment
