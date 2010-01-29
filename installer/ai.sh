@@ -188,6 +188,9 @@ install_product() {
       rake db:migrate RAILS_ENV="production"
     popd
     [ $? -ne 0 ] && fatal_error "Failed to upgrade database to new version."
+
+    puts "Syncing physical servers state..."
+    ruby $INSTALL_DIR/script/runner -e production "HardwareServer.all.each { |server| server.sync }"
   fi
   
   # temporary workaround for Debian/Ubuntu systems (should be removed after fixing the issue #19)
