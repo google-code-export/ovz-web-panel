@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # global variables
-VERSION="0.5"
+VERSION="0.6"
 DOWNLOAD_URL="http://ovz-web-panel.googlecode.com/files/ovz-web-panel-$VERSION.tgz"
 RUBYGEMS_URL="http://rubyforge.org/frs/download.php/60718/rubygems-1.3.5.tgz"
 RUBY_SQLITE3_CMD="ruby -e \"require 'rubygems'\" -e \"require 'sqlite3/database'\""
