@@ -1,4 +1,5 @@
 #summary Document contains release preparation checklist
+#labels Phase-QA
 
 = Introduction =
 
