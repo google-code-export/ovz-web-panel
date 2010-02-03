@@ -1,0 +1,48 @@
+#summary Project's roadmap.
+#labels Featured
+
+= Version 0.5 =
+
+  * Early preview release.
+  * Released: 2009-12-31.
+  * UI demonstration.
+  * Key features demonstration.
+
+= Version 0.9 =
+
+  * Beta release.
+  * Preliminary release date: 2010-02-28
+  * Finishing features development.
+  * ~~Virtual servers management.~~ Done.
+  * ~~Physical servers management.~~ Done.
+  * ~~OS templates management.~~ Done.
+  * Users & roles concept.
+  * Server templates management.
+  * Backup/restore functionality.
+
+= Version 1.0 =
+
+  * Major release.
+  * Preliminary release date: 2010-03-21
+  * Features freeze.
+  * Bugfixing.
+  * Final testing.
+
+= Version 1.1 =
+
+  * Maintenance release.
+  * Preliminary release date: 2010-05-02
+  * Developing in maintenance branch.
+  * Top priority: customer's bug reports.
+
+= Version 1.5 =
+
+  * Major release.
+  * Preliminary release date: 2010-08-??
+  * Developing in SVN trunk (in parallel with maintenance).
+  * E-mail notifications.
+
+= Version 2.0 = 
+
+  * Major release.
+  * Preliminary release date: 2011-Q1
