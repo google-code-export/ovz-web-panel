@@ -4,7 +4,7 @@
 = Requirements =
 
 The following software is required to be installed on server with panel:
-  * Ruby 1.8.5+
+  * Ruby 1.8.5+ (1.9 is not supported)
   * !RubyGems
   * Ruby SQLite3 support
 
@@ -12,7 +12,7 @@ The following software is required to be installed on physical server, which
 will be used for OpenVZ containers:
   * OpenVZ kernel
   * OpenVZ tools (vzctl, vzlist)
-  * Ruby 1.8.5+
+  * Ruby 1.8.5+ (1.9 is not supported)
 
 = Automatic Installation =
 
