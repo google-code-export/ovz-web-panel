@@ -126,9 +126,13 @@ check_environment() {
 
   is_command_present ruby
   if [ $? -eq 0 ]; then
-    puts "Ruby version: `ruby -v`"
+    RUBY_VERSION=`ruby -v | awk '{ print $2 }'`
+    if [ "1.9" = "`echo $RUBY_VERSION | awk -F. '{ print $1"."$2 }'`" ]; then
+      fatal_error "Ruby 1.9 is not supported. Need to install Ruby 1.8."
+    fi
+    puts "Ruby version: $RUBY_VERSION"
   else
-    fatal_error "Ruby is not installed. Please install it first."
+    fatal_error "Ruby 1.8 is not installed. Please install it first."
   fi
   
   is_command_present gem
