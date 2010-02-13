@@ -71,8 +71,3 @@ Source code can be checked out anonymously via:
 File http://code.google.com/p/ovz-web-panel/source/browse/trunk/build/build.sh
 contains information on how to prepare working copy.
  
-= Known Problems =
-
-Daemon expects that vz partition located at `/vz` directory. On Ubuntu it's need to create
-a symlink:
-  `ln -s /var/lib/vz /vz`
