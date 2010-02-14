@@ -4,3 +4,4 @@ Main developer: Alexei Yuzhakov [mailto:sibprogrammer@gmail.com sibprogrammer@gm
 
 Contributors:
   * Jef Rechards [mailto:j.rechards@home.nl j.rechards@home.nl]
+  * Thomas Amler [mailto:support@pf-hosting.de support@pf-hosting.de]
