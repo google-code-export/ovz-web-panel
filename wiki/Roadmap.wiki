@@ -4,26 +4,25 @@
 = Version 0.5 =
 
   * Early preview release.
-  * Released: 2009-12-31.
+  * *Released:* 2009-12-31.
   * UI demonstration.
   * Key features demonstration.
 
 = Version 0.9 =
 
   * Beta release.
-  * Preliminary release date: 2010-02-28
+  * Preliminary release date: 2010-03-28
   * Finishing features development.
   * ~~Virtual servers management.~~ Done.
   * ~~Physical servers management.~~ Done.
   * ~~OS templates management.~~ Done.
-  * Users & roles concept.
-  * Server templates management.
-  * Backup/restore functionality.
+  * ~~Users & roles concept.~~ Done. Simple users model.
+  * ~~Server templates management.~~ Done.
 
 = Version 1.0 =
 
   * Major release.
-  * Preliminary release date: 2010-03-21
+  * Preliminary release date: 2010-04-11
   * Features freeze.
   * Bugfixing.
   * Final testing.
@@ -31,7 +30,7 @@
 = Version 1.1 =
 
   * Maintenance release.
-  * Preliminary release date: 2010-05-02
+  * Preliminary release date: 2010-05-16
   * Developing in maintenance branch.
   * Top priority: customer's bug reports.
 
@@ -41,6 +40,9 @@
   * Preliminary release date: 2010-08-??
   * Developing in SVN trunk (in parallel with maintenance).
   * E-mail notifications.
+  * Backup/restore functionality.
+  * Virtual server re-installation.
+  * Virtual server cloning.
 
 = Version 2.0 = 
 
