@@ -71,6 +71,7 @@ detect_os() {
   
   [ -f /etc/redhat-release ] && DISTRIB_ID="RedHat"  
   [ -f /etc/fedora-release ] && DISTRIB_ID="Fedora"
+  [ -f /etc/debian_version ] && DISTRIB_ID="Debian"
 }
 
 resolve_deps() {
