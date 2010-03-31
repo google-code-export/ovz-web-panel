@@ -199,9 +199,6 @@ install_product() {
     ruby $INSTALL_DIR/script/runner -e production "HardwareServer.all.each { |server| server.sync }"
   fi
   
-  # temporary workaround for Debian/Ubuntu systems (should be removed after fixing the issue #19)
-  [ ! -e /vz -a -d /var/lib/vz ] && ln -s /var/lib/vz /vz
-  
   [ ! -x $INSTALL_DIR/script/owp ] && chmod +x $INSTALL_DIR/script/owp
   
   puts "Installation finished."
