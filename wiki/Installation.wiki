@@ -17,7 +17,7 @@ will be used for OpenVZ containers:
 = Automatic Installation =
 
 The most simple way to install OpenVZ Web Panel is to run the following command:
-  `wget -O - http://ovz-web-panel.googlecode.com/svn/installer/ai.sh | sudo sh`
+  `wget -O - http://ovz-web-panel.googlecode.com/svn/installer/ai.sh | sh`
 
 After installation Panel should be available by the following URL: 
   `http://<you-host>:3000`
@@ -39,10 +39,10 @@ using apt:
   `apt-get install ruby rubygems libsqlite3-ruby`
 
 To start the panel run the command:
-  `sudo ruby /opt/ovz-web-panel/script/server -e production -d`
+  `sudo /opt/ovz-web-panel/script/owp start`
 
-To shutdown application the following command can be used (be careful):
-  {{{sudo kill -2 `pidof ruby`}}}
+To shutdown application the following command can be used:
+  `sudo /opt/ovz-web-panel/script/owp stop`
 
 Then need to place hardware daemon on the server with OpenVZ. There are two
 possible scenarios: panel is installed on hardware node or panel is on separate
