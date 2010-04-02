@@ -2,6 +2,6 @@
 <updates>
   <latest>
     <version>0.9</version>
-    <upgrade_command>wget -O - http://ovz-web-panel.googlecode.com/svn/installer/ai.sh | sudo sh</upgrade_command>
+    <upgrade_command>wget -O - http://ovz-web-panel.googlecode.com/svn/installer/ai.sh | sh</upgrade_command>
   </latest>
 </updates>
