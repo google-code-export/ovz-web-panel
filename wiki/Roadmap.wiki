@@ -1,18 +1,11 @@
 #summary Project's roadmap.
 #labels Featured
 
-= Version 0.5 =
-
-  * Early preview release.
-  * *Released:* 2009-12-31.
-  * UI demonstration.
-  * Key features demonstration.
-
 = Version 0.9 =
 
   * Beta release.
-  * Preliminary release date: 2010-03-28
-  * Finishing features development.
+  * *Released:* 2010-03-29.
+  * ~~Finishing features development.~~ Done.
   * ~~Virtual servers management.~~ Done.
   * ~~Physical servers management.~~ Done.
   * ~~OS templates management.~~ Done.
