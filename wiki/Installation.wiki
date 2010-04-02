@@ -16,7 +16,7 @@ will be used for OpenVZ containers:
 
 = Automatic Installation =
 
-The most simple way to install OpenVZ Web Panel is to run the following command:
+The most simple way to install OpenVZ Web Panel is to run the following command (under root):
   `wget -O - http://ovz-web-panel.googlecode.com/svn/installer/ai.sh | sh`
 
 After installation Panel should be available by the following URL: 
