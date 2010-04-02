@@ -82,7 +82,7 @@ resolve_deps() {
     apt-get -y install ruby rubygems libsqlite3-ruby libopenssl-ruby rake
   fi
   
-  if [ "$DISTRIB_ID" = "RedHat" ]; then
+  if [ "$DISTRIB_ID" = "RedHat" -o "$DISTRIB_ID" = "CentOS" ]; then
     yum -y install ruby
     is_command_present gem
     if [ $? -ne 0 ]; then
