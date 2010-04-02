@@ -22,8 +22,8 @@ Additional information can be found at http://www.gnu.org/licenses/old-licenses/
 
 = Installation =
 
-The most simple way to install OpenVZ Web Panel is to run the following command:
-  `wget -O - http://ovz-web-panel.googlecode.com/svn/installer/ai.sh | sudo sh`
+The most simple way to install OpenVZ Web Panel is to run the following command (under root):
+  `wget -O - http://ovz-web-panel.googlecode.com/svn/installer/ai.sh | sh`
 
 There are other possible way to install the Panel can be found at [Installation].
 
