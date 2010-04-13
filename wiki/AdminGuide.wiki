@@ -1,0 +1,21 @@
+#summary Administrator's guide.
+
+= Introduction =
+
+TODO
+
+= Dashboard =
+
+= OS Templates =
+
+= Virtual Servers =
+
+= Server Templates =
+
+= Physical Servers =
+
+= Users =
+
+= Events Logs =
+
+= Tasks =
