@@ -201,6 +201,18 @@ install_product() {
   
   [ ! -x $INSTALL_DIR/script/owp ] && chmod +x $INSTALL_DIR/script/owp
   
+  if [ "$DISTRIB_ID" = "Ubuntu" -o "$DISTRIB_ID" = "Debian" -o "$DISTRIB_ID" = "RedHat" -o "$DISTRIB_ID" = "CentOS" -o "$DISTRIB_ID" = "Fedora" ]; then
+    if [ ! -f /etc/init.d/owp ]; then
+      cp $INSTALL_DIR/script/owp /etc/init.d/owp
+      chmod 755 /etc/init.d/owp
+      if [ "$DISTRIB_ID" = "Ubuntu" -o "$DISTRIB_ID" = "Debian" ]; then
+        update-rc.d owp defaults > /dev/null 2>&1
+      else
+        /sbin/chkconfig --add owp > /dev/null 2>&1
+      fi
+    fi
+  fi
+  
   puts "Installation finished."
   puts "Product was installed into: $INSTALL_DIR"  
   puts_spacer
