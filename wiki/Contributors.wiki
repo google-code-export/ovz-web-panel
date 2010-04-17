@@ -5,4 +5,4 @@ Main developer: [mailto:sibprogrammer@gmail.com Alexei Yuzhakov]
 Contributors:
   * [mailto:j.rechards@home.nl Jef Rechards]
   * [mailto:support@pf-hosting.de Thomas Amler]
-  * [mailto:support@pf-hosting.de Vass Károly]
+  * [mailto:cvk@cvk.hu Vass Károly]
