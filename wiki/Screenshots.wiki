@@ -3,20 +3,24 @@
 
 http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot1.png
 
-http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot2.png
+http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide1.png
 
-http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot3.png
+http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide2.png
 
-http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot4.png
+http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide3.png
 
-http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot5.png
+http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide4.png
 
-http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot6.png
+http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide5.png
 
-http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot7.png
+http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide6.png
 
-http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot8.png
+http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide7.png
 
-http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot9.png
+http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide8.png
 
-http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot10.png
+http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide9.png
+
+http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide10.png
+
+http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide11.png
