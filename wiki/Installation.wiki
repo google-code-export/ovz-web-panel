@@ -52,10 +52,18 @@ To start the panel run the command:
 {{{
   sudo /opt/ovz-web-panel/script/owp start
 }}}
+or
+{{{
+  service owp start
+}}}
 
 To shutdown application the following command can be used:
 {{{
   sudo /opt/ovz-web-panel/script/owp stop
+}}}
+or
+{{{
+  service owp stop
 }}}
 
 Then need to place hardware daemon on the server with OpenVZ. There are two
@@ -112,4 +120,3 @@ On CentOS server behind NAT the following can be helpfull:
   modprobe ip_conntrack_ftp
   modprobe ip_nat_ftp
 }}}
-
