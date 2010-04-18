@@ -10,7 +10,6 @@ INSTALL_DIR="/opt/ovz-web-panel/"
 FORCE=0 # force installation to the same directory
 PRESERVE_ARCHIVE=0
 AUTOSOLVER=1 # automatic solving of dependencies
-AUTOSTART=1 # start panel automatically after installation
 DISTRIB_ID=""
 DEBUG=0
 UPGRADE=0
@@ -221,25 +220,13 @@ install_product() {
 stop_services() {
   puts "Stopping services..."
   
-  PANEL_APP_PID=`ps auxww | grep ruby | grep script/server | awk '{ print $2 }'`
-  [ -n "$PANEL_APP_PID" ] && kill -2 $PANEL_APP_PID
-  
-  if [ "$ENVIRONMENT" = "HW-NODE" ]; then
-    ruby $INSTALL_DIR/utils/hw-daemon/hw-daemon.rb stop
-  fi
+  $INSTALL_DIR/script/owp stop
 }
 
 start_services() {
   [ "x$UPGRADE" = "x1" ] && stop_services
 
   puts "Starting services..."
-  
-  ruby $INSTALL_DIR/script/server webrick -e production -d
-  if [ $? -eq 0 ]; then
-    puts "Panel was started."
-  else
-    puts "Unable to start the panel. Please check the logs and try to start it manually."
-  fi
   
   if [ "x$UPGRADE" = "x0" ]; then
     if [ "$ENVIRONMENT" = "HW-NODE" ]; then
@@ -250,33 +237,19 @@ start_services() {
         RAND_KEY=`head -c 200 /dev/urandom | md5sum | awk '{ print \$1 }'`
         echo "key = $RAND_KEY" >> $HW_DAEMON_CONFIG
       fi
-      ruby $INSTALL_DIR/utils/hw-daemon/hw-daemon.rb start
-      if [ $? -eq 0 ]; then
-        puts "Hardware daemon was started."
-      else
-        puts "Unable to start hardware daemon. Please check the logs and try to start it manually."
-      fi
+      $INSTALL_DIR/script/owp start
       puts "Adding localhost to the list of controlled servers..."
       ruby $INSTALL_DIR/script/runner -e production "HardwareServer.new(:host => 'localhost', :auth_key => '$RAND_KEY').connect"
       [ $? -ne 0 ] && puts "Failed to add local server."
     else
+      $INSTALL_DIR/script/owp start
       puts "Place hardware daemon on machine with OpenVZ."
       puts "To start hardware daemon run:"
       puts "sudo ruby $INSTALL_DIR/utils/hw-daemon/hw-daemon.rb start"
     fi
+  else
+    $INSTALL_DIR/script/owp start
   fi
-}
-
-print_how_to_start_services() {
-  puts_spacer
-  
-  puts "To start the panel run:"
-  puts "sudo ruby $INSTALL_DIR/script/server webrick -e production -d"  
-  
-  puts "To start hardware daemon run:"
-  puts "sudo ruby $INSTALL_DIR/utils/hw-daemon/hw-daemon.rb start"
-  
-  puts_spacer
 }
 
 print_access_info() {
@@ -292,7 +265,7 @@ main() {
   
   check_environment
   install_product
-  [ "x$AUTOSTART" = "x1" ] && start_services ; true || print_how_to_start_services
+  start_services
   print_access_info  
   puts_separator
 }
