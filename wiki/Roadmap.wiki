@@ -1,24 +1,13 @@
 #summary Project's roadmap.
 #labels Featured
 
-= Version 0.9 =
-
-  * Beta release.
-  * *Released:* 2010-03-29.
-  * ~~Finishing features development.~~ Done.
-  * ~~Virtual servers management.~~ Done.
-  * ~~Physical servers management.~~ Done.
-  * ~~OS templates management.~~ Done.
-  * ~~Users & roles concept.~~ Done. Simple users model.
-  * ~~Server templates management.~~ Done.
-
 = Version 1.0 =
 
   * Major release.
-  * Preliminary release date: 2010-04-11
-  * Features freeze.
-  * Bugfixing.
-  * Final testing.
+  * *Released:* 2010-04-18.
+  * ~~Features freeze.~~ Done.
+  * ~~Bugfixing.~~ Done.
+  * ~~Final testing.~~ Done.
 
 = Version 1.1 =
 
