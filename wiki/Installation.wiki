@@ -54,7 +54,7 @@ To start the panel run the command:
 }}}
 or
 {{{
-  service owp start
+  /etc/init.d/owp start
 }}}
 
 To shutdown application the following command can be used:
@@ -63,7 +63,7 @@ To shutdown application the following command can be used:
 }}}
 or
 {{{
-  service owp stop
+  /etc/init.d/owp stop
 }}}
 
 Then need to place hardware daemon on the server with OpenVZ. There are two
