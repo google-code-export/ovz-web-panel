@@ -1,4 +1,4 @@
-#summary OpenVZ Web Panel project changelog.
+#summary Project's changelog.
 #labels Featured
 
 = OpenVZ Web Panel 1.0 (2010-04-18) =
