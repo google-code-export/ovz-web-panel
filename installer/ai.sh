@@ -207,9 +207,10 @@ install_product() {
     cp $INSTALL_DIR/script/owp /etc/init.d/owp
     chmod 755 /etc/init.d/owp
     if [ "$DISTRIB_ID" = "Ubuntu" -o "$DISTRIB_ID" = "Debian" ]; then
-      update-rc.d owp defaults > /dev/null 2>&1
+      update-rc.d -f owp remove
+      update-rc.d owp defaults 30
     else
-      /sbin/chkconfig --add owp > /dev/null 2>&1
+      /sbin/chkconfig --add owp
     fi
   fi
   
