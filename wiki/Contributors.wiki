@@ -6,3 +6,4 @@ Contributors:
   * [mailto:j.rechards@home.nl Jef Rechards]
   * [mailto:support@pf-hosting.de Thomas Amler]
   * [mailto:cvk@cvk.hu Vass Károly]
+  * [mailto:calex@greenbit.ro Alexandru Troponete]
