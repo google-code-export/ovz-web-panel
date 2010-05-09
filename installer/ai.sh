@@ -13,6 +13,7 @@ AUTOSOLVER=1 # automatic solving of dependencies
 DISTRIB_ID=""
 DEBUG=0
 UPGRADE=0
+UNINSTALL=0
 ERR_FATAL=1
 
 for PARAM in $@; do
@@ -121,7 +122,11 @@ check_environment() {
   
   detect_os
   [ "x$DISTRIB_ID" != "x" ] && puts "Detected distrib ID: $DISTRIB_ID"
+  
+  detect_openvz
+}
 
+check_dependencies() {
   [ "x$AUTOSOLVER" = "x1" ] && resolve_deps
 
   is_command_present ruby
@@ -146,10 +151,6 @@ check_environment() {
   sh -c "$RUBY_SQLITE3_CMD" > /dev/null 2>&1
   [ $? -ne 0 ] && fatal_error "Ruby SQLite3 support not found. Please install it first."
 
-  detect_openvz
-  
-  [ -d $INSTALL_DIR ] && UPGRADE=1
-  
   puts_spacer
 }
 
@@ -168,6 +169,8 @@ detect_openvz() {
 
 install_product() {
   puts "Installation..."
+  
+  [ -d $INSTALL_DIR ] && UPGRADE=1
   
   mkdir -p $INSTALL_DIR
   
@@ -260,16 +263,40 @@ print_access_info() {
   puts "Default credentials: admin/admin"
 }
 
+uninstall_product() {
+  if [ ! -d "$INSTALL_DIR" -o "$INSTALL_DIR" = "" -o "$INSTALL_DIR" = "/" ]; then
+    puts "Panel not found. Nothing to uninstall."
+    return 1
+  fi
+  
+  stop_services
+  rm -rf $INSTALL_DIR
+  
+  if [ "$DISTRIB_ID" = "Ubuntu" -o "$DISTRIB_ID" = "Debian" ]; then
+    update-rc.d -f owp remove
+  elif [ "$DISTRIB_ID" = "RedHat" -o "$DISTRIB_ID" = "CentOS" -o "$DISTRIB_ID" = "Fedora" ]; then
+    /sbin/chkconfig --del owp
+  fi
+  
+  puts "Panel was uninstalled."
+}
+
 main() {
   puts_separator
   puts "OpenVZ Web Panel Installer."
   puts_separator
   
   check_environment
-  install_product
-  start_services
-  print_access_info  
-  puts_separator
+  
+  if [ "x$UNINSTALL" = "x1" ]; then
+    uninstall_product
+  else
+    check_dependencies
+    install_product
+    start_services
+    print_access_info
+    puts_separator
+  fi
 }
 
 main
