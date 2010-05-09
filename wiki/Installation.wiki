@@ -88,7 +88,7 @@ To start the daemon run:
   sudo ruby hw-daemon.rb start
 }}}
 
-Daemon can be stopped using the following command
+Daemon can be stopped using the following command:
 {{{
   sudo ruby hw-daemon.rb stop
 }}}
@@ -119,4 +119,11 @@ On CentOS server behind NAT the following can be helpfull:
 {{{
   modprobe ip_conntrack_ftp
   modprobe ip_nat_ftp
+}}}
+
+= Uninstallation =
+
+To uninstall the product need to run the command:
+{{{
+  wget -O - http://ovz-web-panel.googlecode.com/svn/installer/ai.sh | sh -s UNINSTALL=1
 }}}
