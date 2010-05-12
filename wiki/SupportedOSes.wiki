@@ -1,0 +1,22 @@
+#summary List of officially supported OSes.
+#labels Phase-Deploy
+
+= Officially Supported OSes =
+
+Here is the list of of officially supported OSes:
+  * Debian 5
+  * CentOS 5
+  * Ubuntu 9.10
+  * Ubuntu 9.04
+  * Ubuntu 8.04
+  * Fedora 12
+
+Every release of the product is tested on these OSes.
+
+= Ever Tested OSes =
+
+Here is the list of OSes on that the product have been ever tested:
+  * Debian 4
+  * ArchLinux
+
+The OSes from this list have a limited support. This means that product can work on selected OS without problems, but in case of bugs it's better to switch to one of the officially supported OSes. 
