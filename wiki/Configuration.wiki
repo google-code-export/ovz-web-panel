@@ -1,0 +1,54 @@
+#summary Information on how to perform panel fine-tuning.
+#labels Phase-Deploy
+
+= Panel Configuration =
+
+Default configuration file sample located at `/opt/ovz-web-panel/config/config.yml.sample` Panel checks and tries to load configuration `/opt/ovz-web-panel/config/config.yml` You can copy sample or simply create `config.yml` and add necessary settings. If `config.yml` file is absent the defaults hardcoded inside code will be used.
+
+Settings are in YAML format and groupped by sections. Description of the settings is below.
+
+== OS Templates ==
+
+Settings related to OS templates are shown below:
+
+{{{
+os_templates:
+  mirror:
+    host: download.openvz.org
+    path: /template/
+}}}
+
+Setting `os_templates.mirror` is used for showing templates, that available for installation on physical server.
+
+For example the following can be used to download templates from Yandex mirror:
+
+{{{
+os_templates:
+  mirror:
+    host: mirror.yandex.ru
+    path: /mirrors/download.openvz.org/template/
+}}}
+
+Additional mirrors can be found at OpenVZ wiki. See the page with [http://wiki.openvz.org/Download_mirrors list of FTP mirrors].
+
+== Branding ==
+
+Settings related to branding are shown below:
+
+{{{
+branding:
+  show_version: false
+}}}
+
+Setting `branding.show_version` controls if panel's version number is shown in UI. For security reasons you may want to hide the version.
+
+== Hardware Daemon ==
+
+Settings related to hardware daemon configuration are shown below:
+
+{{{
+hw_daemon:
+  port: 7767
+}}}
+
+Setting `hw_daemon.port` allows to set default port, which should be used for communicating with hardware servers daemons.
