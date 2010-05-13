@@ -17,6 +17,6 @@ Every release of the product is tested on these OSes.
 
 Here is the list of OSes on that the product have been ever tested:
   * Debian 4
-  * ArchLinux
+  * !ArchLinux
 
 The OSes from this list have a limited support. This means that product can work on selected OS without problems, but in case of bugs it's better to switch to one of the officially supported OSes. 
