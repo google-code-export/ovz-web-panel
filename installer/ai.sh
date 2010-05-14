@@ -217,6 +217,11 @@ install_product() {
     fi
   fi
   
+  if [ -f $INSTALL_DIR/config/owp.conf.sample -a ! -f /etc/owp.conf ]; then
+    cp $INSTALL_DIR/config/owp.conf.sample /etc/owp.conf
+    sed -i "s|^INSTALL_DIR=.*|INSTALL_DIR=$INSTALL_DIR|g" /etc/owp.conf
+  fi
+  
   puts "Installation finished."
   puts "Product was installed into: $INSTALL_DIR"  
   puts_spacer
@@ -277,6 +282,8 @@ uninstall_product() {
   elif [ "$DISTRIB_ID" = "RedHat" -o "$DISTRIB_ID" = "CentOS" -o "$DISTRIB_ID" = "Fedora" ]; then
     /sbin/chkconfig --del owp
   fi
+  
+  [ -f /etc/owp.conf ] && rm /etc/owp.conf
   
   puts "Panel was uninstalled."
 }
