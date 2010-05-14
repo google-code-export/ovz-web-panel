@@ -130,10 +130,9 @@ Ext.onReady(function() {
               width: 100,
               sortable: true,
               dataIndex: 'soft_limit',
-              editor: new Ext.form.NumberField({
+              editor: new Ext.form.TextField({
                 allowBlank: false,
-                allowNegative: false,
-                maxValue: 2147483647
+                maskRe: /\d+/
               })
             }, {
               id: 'hard_limit',
@@ -141,10 +140,9 @@ Ext.onReady(function() {
               width: 100,
               sortable: true,
               dataIndex: 'hard_limit',
-              editor: new Ext.form.NumberField({
+              editor: new Ext.form.TextField({
                 allowBlank: false,
-                allowNegative: false,
-                maxValue: 2147483647
+                maskRe: /\d+/
               })
             }]),
             stripeRows: true,
