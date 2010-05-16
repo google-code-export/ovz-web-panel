@@ -12,18 +12,18 @@
 = Version 1.1 =
 
   * Maintenance release.
-  * Preliminary release date: 2010-05-16
+  * Preliminary release date: 2010-05-23
   * Developing in maintenance branch.
   * Top priority: customer's bug reports.
 
 = Version 1.5 =
 
   * Major release.
-  * Preliminary release date: 2010-08-??
+  * Preliminary release date: 2010-07-18
   * Developing in SVN trunk (in parallel with maintenance).
   * E-mail notifications.
   * Backup/restore functionality.
-  * Virtual server re-installation.
+  * ~~Virtual server re-installation.~~ Done.
   * Virtual server cloning.
 
 = Version 2.0 = 
