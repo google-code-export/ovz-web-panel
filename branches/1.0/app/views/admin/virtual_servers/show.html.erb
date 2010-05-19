@@ -7,6 +7,8 @@
 <% javascript_tag do -%>
 Ext.onReady(function() {
 
+  <%= render :partial => 'edit_form' %>
+
   var store = new Ext.data.JsonStore({
     url: '/admin/virtual-servers/get_properties?id=<%= @virtual_server.id %>',
     root: 'data',
@@ -175,8 +177,187 @@ Ext.onReady(function() {
     
     windowLimitsForm.show();
   }
-
+  
+  var reinstallAction = function() {
+    var formReinstall = new Owp.form.BasicForm({
+      labelWidth: 150,
+      waitMsgTarget: true,
+      url: '/admin/virtual-servers/reinstall?id=<%= @virtual_server.id %>',
+      defaults: { width: 200 },
+      autoHeight: true,
+      keys: [{
+        key: Ext.EventObject.ENTER,
+        fn: function() {
+          windowReinstall.submitButton.handler();
+        }
+      }],
+      items: [{
+        fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.password') %>',
+        name: 'password',
+        inputType: 'password',
+        allowBlank: false
+      }, {
+        fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.confirm_password') %>',
+        name: 'password_confirmation',
+        inputType: 'password',
+        allowBlank: false
+      }]
+    });  
+    
+    var windowReinstall = new Owp.form.BasicFormWindow({
+      title: '<%= tjs('admin.virtual_servers.form.reinstall.title') %>',
+      iconCls: 'icon-window-reinstall',
+      width: 410,
+      autoHeight: true,
+      modal: true,
+      layout: 'fit',
+      plain: true,
+      bodyStyle: 'padding: 5px;',
+      resizable: false,
+      items: formReinstall,
+      
+      buttons: [{
+        text: '<%= tjs('admin.virtual_servers.form.reinstall.button.reinstall') %>',
+        iconCls: 'icon-button-save',
+        ref: '../submitButton',
+        handler: function() {
+          formReinstall.form.submit({
+            waitMsg: '<%= tjs('form.loading') %>',
+            success: function() {
+              windowReinstall.close();
+            },
+            failure: function(form, action) {
+              Owp.form.errorHandler(form, action);
+              windowReinstall.focus();
+            }
+          });
+        }
+      }, {
+        text: '<%= tjs('form.button.cancel') %>',
+        iconCls: 'icon-button-cancel',
+        handler: function() {
+          windowReinstall.close();
+        }
+      }]
+    });
+    
+    windowReinstall.on('show', function() {
+      formReinstall.getForm().reset();
+    });
+    
+    windowReinstall.show();
+  }
+  
+  var changeSettingsAction = function() {
+    var formChangeSettings = new Owp.form.BasicForm({
+      labelWidth: 180,
+      waitMsgTarget: true,
+      url: '/admin/virtual-servers/change_settings?id=<%= @virtual_server.id %>',
+      keys: [{
+        key: Ext.EventObject.ENTER,
+        fn: function() {
+          windowChangeSettings.submitButton.handler();
+        }
+      }],
+      autoHeight: true,
+      layout: 'form',
+      items: [{
+        xtype: 'fieldset',
+        title: '<%= tjs('admin.virtual_servers.form.create_server.fieldset.system_access') %>',
+        autoHeight: true,
+        defaults: { width: 155 },
+        defaultType: 'textfield',
+        items: [{
+          fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.password') %>',
+          name: 'password',
+          inputType: 'password'
+        }, {
+          fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.confirm_password') %>',
+          name: 'password_confirmation',
+          inputType: 'password'
+        }]
+      }, {
+        xtype: 'fieldset',
+        title: '<%= tjs('admin.virtual_servers.form.create_server.fieldset.network') %>',
+        autoHeight: true,
+        defaults: { width: 155 },
+        defaultType: 'textfield',
+        items: [{
+          fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.host_name') %>',
+          name: 'host_name'
+        }, {
+          fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.nameserver') %>',
+          name: 'nameserver'
+        }, {
+          fieldLabel: '<%= tjs('admin.virtual_servers.form.create_server.field.searchdomain') %>',
+          name: 'search_domain'
+        }]
+      }]
+    });  
+    
+    var windowChangeSettings = new Owp.form.BasicFormWindow({
+      title: '<%= tjs('admin.virtual_servers.form.change_settings.title') %>',
+      iconCls: 'icon-window-edit',
+      width: 410,
+      autoHeight: true,
+      modal: true,
+      layout: 'fit',
+      plain: true,
+      bodyStyle: 'padding: 5px;',
+      resizable: false,
+      items: formChangeSettings,
+      
+      buttons: [{
+        text: '<%= tjs('form.button.save') %>',
+        iconCls: 'icon-button-save',
+        ref: '../submitButton',
+        handler: function() {
+          formChangeSettings.form.submit({
+            waitMsg: '<%= tjs('form.loading') %>',
+            success: function() {
+              virtualServerInfoGrid.store.reload();
+              windowChangeSettings.close();
+            },
+            failure: function(form, action) {
+              Owp.form.errorHandler(form, action);
+              windowChangeSettings.focus();
+            }
+          });
+        }
+      }, {
+        text: '<%= tjs('form.button.cancel') %>',
+        iconCls: 'icon-button-cancel',
+        handler: function() {
+          windowChangeSettings.close();
+        }
+      }]
+    });
+    
+    windowChangeSettings.on('show', function() {
+      formChangeSettings.getForm().load({
+        waitMsg: '<%= tjs('form.loading') %>',
+        success: function() {
+          windowChangeSettings.focus();
+        },
+        url: '/admin/virtual-servers/load_data?id=<%= @virtual_server.id %>'
+      });
+    });
+    
+    windowChangeSettings.show();
+  }
+  
+  var editVirtualServer = function() {
+    showVirtualServerEditForm('edit', virtualServerInfoGrid);
+  }
+  
   var mainContentCenterPanel = Ext.getCmp('mainContentCenterPanel');
+  
+  mainContentCenterPanel.getTopToolbar().insertButton(0, {
+    text: '<%= tjs('admin.virtual_servers.grid.button.reinstall') %>',
+    iconCls: 'icon-button-reinstall',
+    ref: '../reinstallButton',
+    handler: reinstallAction
+  });
   
   mainContentCenterPanel.getTopToolbar().insertButton(0, {
     text: '<%= tjs('admin.virtual_servers.grid.button.limits') %>',
@@ -184,6 +365,22 @@ Ext.onReady(function() {
     ref: '../limitsButton',
     handler: limitsAction
   });
+  
+  <% if @current_user.superadmin? %>
+    mainContentCenterPanel.getTopToolbar().insertButton(0, {
+      text: '<%= tjs('admin.virtual_servers.grid.button.change_settings') %>',
+      iconCls: 'icon-button-change-setting',
+      ref: '../changeSettingsButton',
+      handler: editVirtualServer
+    });
+  <% else %>
+    mainContentCenterPanel.getTopToolbar().insertButton(0, {
+      text: '<%= tjs('admin.virtual_servers.grid.button.change_settings') %>',
+      iconCls: 'icon-button-change-setting',
+      ref: '../changeSettingsButton',
+      handler: changeSettingsAction
+    });
+  <% end %>
   
   mainContentCenterPanel.getTopToolbar().insertButton(0, {
     text: '<%= tjs('admin.virtual_servers.grid.button.change_state') %>',
