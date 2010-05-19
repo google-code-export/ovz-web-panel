@@ -185,7 +185,15 @@ ru:
           stop: "Стоп"
           edit: "Изменить настройки"
           limits: "Ограничения"
+          reinstall: "Переустановка"
+          change_settings: "Изменить настройки"
       form:
+        change_settings:
+          title: "Изменить настройки виртуального сервера"
+        reinstall:
+          title: "Переустановить виртуальный сервер"
+          button:
+            reinstall: "Переустановить"
         change_state:
           failed: "Невозможно изменить состояние виртуального сервера."
         remove_server:

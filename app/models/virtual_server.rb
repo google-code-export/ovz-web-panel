@@ -12,6 +12,8 @@ class VirtualServer < ActiveRecord::Base
   validates_uniqueness_of :identity, :scope => :hardware_server_id
   validates_confirmation_of :password
   validates_format_of :nameserver, :with => /^((\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})|\s)*$/
+  validates_format_of :search_domain, :with => /^([a-z0-9\-\.]+\s*)*$/i
+  validates_format_of :host_name, :with => /^[a-z0-9\-\.]*$/i
 
   def get_limits
     parser = IniParser.new(hardware_server.rpc_client.exec('cat', "/etc/vz/conf/#{identity.to_s}.conf")['output'])
@@ -82,23 +84,43 @@ class VirtualServer < ActiveRecord::Base
     end
     
     begin
-      vzctl_set("--hostname #{host_name} --save") if !host_name.empty?
-      vzctl_set("--ipdel all " + ip_address.split.map { |ip| "--ipadd #{ip} " }.join + "--save")
-      vzctl_set("--userpasswd root:#{password}") if !password.empty?
-      vzctl_set("--onboot " + (start_on_boot ? "yes" : "no") + " --save")
-      vzctl_set(nameserver.split.map { |ip| "--nameserver #{ip} " }.join + "--save") if !nameserver.empty?
-      vzctl_set("--searchdomain '#{search_domain}' --save") if !search_domain.empty?
-      vzctl_set("--diskspace #{diskspace * 1024} --privvmpages #{memory * 1024 / 4} --save")
+      vzctl_set("--hostname #{host_name} --save") if !host_name.empty? and host_name_changed?
+      vzctl_set("--ipdel all " + ip_address.split.map { |ip| "--ipadd #{ip} " }.join + "--save") if ip_address_changed?
+      vzctl_set("--userpasswd root:#{password}") if password and !password.empty?
+      vzctl_set("--onboot " + (start_on_boot ? "yes" : "no") + " --save") if start_on_boot_changed?
+      vzctl_set(nameserver.split.map { |ip| "--nameserver #{ip} " }.join + "--save") if !nameserver.empty? and nameserver_changed?
+      vzctl_set("--searchdomain '#{search_domain}' --save") if !search_domain.empty? and search_domain_changed?
+      vzctl_set("--diskspace #{diskspace * 1024} --privvmpages #{memory * 1024 / 4} --save") if diskspace_changed? or memory_changed?
     rescue HwDaemonExecException => exception
       delete_physically if is_new
       raise exception
     end
     
-    start if start_after_creation
+    self.host_name = host_name_was if !is_new and host_name.empty?
+    self.nameserver = nameserver_was if !is_new and nameserver.empty?
+    self.search_domain = search_domain_was if !is_new and search_domain.empty?
+    
+    start if start_after_creation and is_new
   
     result = save
     EventLog.info("virtual_server." + (is_new ? "created" : "updated"), { :identity => identity })
     result
+  end
+  
+  def reinstall
+    was_running = 'running' == state
+    path = '/etc/vz/conf'
+    tmp_template = "tmp.template"
+    
+    hardware_server.rpc_client.exec("cp #{path}/#{self.identity}.conf #{path}/ve-#{tmp_template}.conf-sample")
+    stop
+    hardware_server.rpc_client.exec('vzctl', 'destroy ' + identity.to_s)
+    hardware_server.rpc_client.exec('vzctl', "create #{identity.to_s} --config #{tmp_template}")
+    change_state('start', 'running') if was_running
+    hardware_server.rpc_client.exec("rm #{path}/ve-#{tmp_template}.conf-sample")
+    
+    EventLog.info("virtual_server.reinstall", { :identity => identity })
+    true
   end
   
   private
