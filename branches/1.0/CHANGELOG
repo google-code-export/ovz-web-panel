@@ -1,3 +1,18 @@
+= OpenVZ Web Panel 1.1 (2010-05-23) =
+
+This version is a maintenance release. The following items were fixed and/or
+added:
+
+  * Proper handling of maximum limits numbers (issue 111).
+  * Fixed deletion of VPS if imposible to update some parameter (issue 112).
+  * Allowed to sync virtual servers with same IPs or without them (issue 110).
+  * Added "Change settings" dialog to virtual server overview page (issue 104).
+  * Ability to uninstall the panel (issue 102).
+  * Romanian language support (issue 94).
+  * Ability to set hostname and root password by virtual server owner (issue 92).
+  * Proper message about virtual server update in event log (issue 86).
+  * Ability to reinstall virtual server (issue 45).
+
 = OpenVZ Web Panel 1.0 (2010-04-18) =
 
 This version is a major release. The following items were fixed and/or added:
