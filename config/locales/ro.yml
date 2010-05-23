@@ -356,8 +356,6 @@ ro:
             nameserver: "Server DNS"
             searchdomain: "Search Domain"
             cpu_units: "Unitati CPU"
-            cpus: "Numar Core-uri CPU"
-            cpu_limit: "Limita CPU %"
           grid:
             column:
               name: "Nume"

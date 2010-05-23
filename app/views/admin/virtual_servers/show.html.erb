@@ -6,7 +6,7 @@
 
 <% javascript_tag do -%>
 Ext.onReady(function() {
-  
+
   <%= render :partial => 'edit_form' %>
 
   var store = new Ext.data.JsonStore({
@@ -349,7 +349,7 @@ Ext.onReady(function() {
   var editVirtualServer = function() {
     showVirtualServerEditForm('edit', virtualServerInfoGrid);
   }
-
+  
   var mainContentCenterPanel = Ext.getCmp('mainContentCenterPanel');
   
   mainContentCenterPanel.getTopToolbar().insertButton(0, {

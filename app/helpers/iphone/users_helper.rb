@@ -1,2 +1,0 @@
-module Iphone::UsersHelper
-end

@@ -6,7 +6,7 @@ cd `dirname $0`
 
 {
   PROJECT="ovz-web-panel"
-  SVN_REPO="http://ovz-web-panel.googlecode.com/svn/trunk/"
+  SVN_REPO="http://ovz-web-panel.googlecode.com/svn/branches/1.0/"
   
   [ -d $PROJECT ] && rm -rf ovz-web-panel
   

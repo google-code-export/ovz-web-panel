@@ -16,8 +16,7 @@ class Admin::ServerTemplatesController < Admin::Base
     server_templates.map! { |item| {
       :id => item.id,
       :name => item.name,
-      :is_default => item.name == hardware_server.default_server_template,
-      :virtual_servers => VirtualServer.count(:conditions => ["hardware_server_id = ? AND orig_server_template = ?", hardware_server.id, item.name]),
+      :is_default => item.name == hardware_server.default_server_template
     }}
     render :json => { :data => server_templates }
   end
@@ -63,8 +62,6 @@ class Admin::ServerTemplatesController < Admin::Base
       :diskspace => server_template.get_diskspace,
       :memory => server_template.get_memory,
       :cpu_units => server_template.get_cpu_units,
-      :cpus => server_template.get_cpus,
-      :cpu_limit => server_template.get_cpu_limit,
       :raw_limits => server_template.get_advanced_limits.to_json,
     }}
   end

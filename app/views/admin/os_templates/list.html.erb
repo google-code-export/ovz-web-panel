@@ -257,8 +257,7 @@ Ext.onReady(function() {
     sortInfo: { field: 'name', direction: 'ASC' },
     fields: [
       { name: 'id' },
-      { name: 'name' },
-      { name: 'virtual_servers' }
+      { name: 'name' }
     ]
   });
   
@@ -292,11 +291,6 @@ Ext.onReady(function() {
         header: '<%= tjs('admin.os_templates.grid.column.name') %>',
         sortable: true,
         dataIndex: 'name'
-      }, {
-        id: 'virtual_servers',
-        header: '<%= tjs('admin.os_templates.grid.column.virtual_servers') %>',
-        sortable: true,
-        dataIndex: 'virtual_servers'
       }
     ]),
     sm: selectionModel,

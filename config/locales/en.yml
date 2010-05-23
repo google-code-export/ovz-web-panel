@@ -45,10 +45,6 @@ en:
               confirmation: "Password and confirmation are not equal."
             nameserver:
               invalid: "DNS server IP address is invalid."
-            host_name:
-              invalid: "Hostname is invalid."
-            search_domain:
-              invalid: "Search domains are invalid."
         server_template:
           attributes:
             name:
@@ -260,7 +256,6 @@ en:
         column:
           name: "Name"
           size: "Size, Mb"
-          virtual_servers: "Servers"
         button:
           install_new_template: "Install New OS Template"
           remove: "Remove Template"
@@ -336,7 +331,6 @@ en:
         column:
           name: "Name"
           template_default: "default"
-          virtual_servers: "Servers"
         button:
           add: "Add Template"
           remove: "Remove Template"
@@ -365,8 +359,6 @@ en:
             nameserver: "DNS Server"
             searchdomain: "Search Domain"
             cpu_units: "CPU Units"
-            cpus: "Number of CPUs"
-            cpu_limit: "CPU Limit, %"
           grid:
             column:
               name: "Name"

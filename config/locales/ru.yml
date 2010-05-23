@@ -45,10 +45,6 @@ ru:
               confirmation: "Пароль и его подтверждение не совпадают."
             nameserver:
               invalid: "Неверный IP-адрес DNS-сервера."
-            host_name:
-              invalid: "Неверное имя хоста."
-            search_domain:
-              invalid: "Неверные домены для поиска."
         server_template:
           attributes:
             name:
@@ -260,7 +256,6 @@ ru:
         column:
           name: "Имя"
           size: "Размер, Мб"
-          virtual_servers: "Серверы"
         button:
           install_new_template: "Установить новый шаблон ОС"
           remove: "Удалить шаблон ОС"
@@ -336,7 +331,6 @@ ru:
         column:
           name: "Имя"
           template_default: "по-умолчанию"
-          virtual_servers: "Серверы"
         button:
           add: "Добавить шаблон"
           remove: "Удалить шаблон"
@@ -365,8 +359,6 @@ ru:
             nameserver: "DNS сервер"
             searchdomain: "Домен для поиска"
             cpu_units: "CPU единиц"
-            cpus: "Количество CPU"
-            cpu_limit: "CPU лимит, %"
           grid:
             column:
               name: "Имя"
