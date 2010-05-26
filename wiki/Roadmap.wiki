@@ -1,20 +1,12 @@
 #summary Project's roadmap.
 #labels Featured
 
-= Version 1.0 =
-
-  * Major release.
-  * *Released:* 2010-04-18.
-  * ~~Features freeze.~~ Done.
-  * ~~Bugfixing.~~ Done.
-  * ~~Final testing.~~ Done.
-
 = Version 1.1 =
 
   * Maintenance release.
-  * Preliminary release date: 2010-05-23
-  * Developing in maintenance branch.
-  * Top priority: customer's bug reports.
+  * *Released:* 2010-05-23.
+  * ~~Developing in maintenance branch.~~ Done.
+  * ~~Top priority: customer's bug reports.~~ Done.
 
 = Version 1.5 =
 
