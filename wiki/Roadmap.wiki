@@ -11,7 +11,7 @@
 = Version 1.5 =
 
   * Major release.
-  * Preliminary release date: 2010-07-18
+  * Preliminary release date: 2010-07-31
   * Developing in SVN trunk (in parallel with maintenance).
   * E-mail notifications.
   * Backup/restore functionality.
