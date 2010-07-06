@@ -12,13 +12,23 @@
 
   * Major release.
   * Preliminary release date: 2010-07-31
-  * Developing in SVN trunk (in parallel with maintenance).
-  * E-mail notifications.
+  * Branch for development: trunk.
   * Backup/restore functionality.
   * ~~Virtual server re-installation.~~ Done.
   * Virtual server cloning.
+
+= Version 1.6 =
+
+  * Maintenance release.
+  * Preliminary release date: 2010-09-19
+  * Branch for development: trunk.
+  * Top priority: customer's bug reports.
 
 = Version 2.0 = 
 
   * Major release.
   * Preliminary release date: 2011-Q1
+  * E-mail notifications.
+  * Remote API.
+  * Virtual servers migration between physical servers.
+  * Speed and quality improvements.
