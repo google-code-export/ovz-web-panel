@@ -3,6 +3,7 @@
 Main developer: [mailto:sibprogrammer@gmail.com Alexei Yuzhakov]
 
 Contributors:
+  * [mailto:kram3r@gmail.com Ananias Filho]
   * [mailto:daniel304@chello.nl Daniel van den Oord]
   * [mailto:alex@greenbit.ro Alexandru Troponete]
   * [mailto:cvk@cvk.hu Vass Károly]
