@@ -132,8 +132,11 @@ check_dependencies() {
   is_command_present ruby
   if [ $? -eq 0 ]; then
     RUBY_VERSION=`ruby -v | awk '{ print $2 }'`
-    if [ "1.9" = "`echo $RUBY_VERSION | awk -F. '{ print $1"."$2 }'`" ]; then
-      fatal_error "Ruby 1.9 is not supported. Need to install Ruby 1.8."
+    if [ "1.8" != "`echo $RUBY_VERSION | awk -F. '{ print $1"."$2 }'`" ]; then
+      fatal_error "Panel requires Ruby 1.8 (Ruby 1.9 is not supported)."
+    fi
+    if [ `echo $RUBY_VERSION | awk -F. '{ print $3 }'` -lt 5 ]; then
+      fatal_error "Panel requires Ruby 1.8.5 or higher."
     fi
     puts "Ruby version: $RUBY_VERSION"
   else
