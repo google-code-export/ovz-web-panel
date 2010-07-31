@@ -1,4 +1,4 @@
-#summary Getting Started Information
+#summary Getting Started information.
 #labels Featured
 
 = Description =
