@@ -1,0 +1,367 @@
+nl:
+  language:
+    title: "Nederlands"
+  form:
+    loading: "Even geduld..."
+    confirmation: "Bevestig"
+    performing_task: "Even wachten. Voert taak uit..."
+    error:
+      title: "Fout"
+      fill_form: "Alstublieft, vul het formulier."
+    info:
+      title: "Informatie"
+    button:
+      save: "Opslaan"
+      cancel: "Annuleren"
+      create: "Cre&emul;er"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              confirmation: "Wachtwoord en bevestiging zijn niet gelijk."
+              too_short: "Wachtwoord is te kort (minimum tekens: {{count}})."
+            password_confirmation:
+              blank: "Wachtwoord bevestiging is verplicht."
+            login:
+              taken: "Deze gebruikersnaam bestaat al."
+              too_short: "Gebruikersnaam is te kort (minimum tekens: {{count}})."
+        hardware_server:
+          attributes:
+            host:
+              taken: "Server met deze naam bestaat al."
+              connection: "Connectie mislukt. Daemon draait mogelijk niet."
+            auth_key:
+              bad_auth: "Kan niet authenticeren. Mogelijk onjuiste autorisatie sleutel."
+        virtual_server:
+          attributes:
+            ip_address:
+              invalid: "Onjuist IP adres."
+              taken: "IP adres is al ingebruik door een andere server."
+            identity:
+              taken: "Deze identiteit is al ingebruik door een andere server."
+            password:
+              confirmation: "Wachtwoord en bevestiging zijn niet gelijk."
+            nameserver:
+              invalid: "DNS server IP adres is onjuist."
+        server_template:
+          attributes:
+            name:
+              taken: "Server template naam is al in gebruik."
+  about:
+    copyright: "Copyright 2008-2010 SoftUnity."
+    right_reserved: "All Rights Reserved."
+    about_program: "About program"
+    author: "Main developer"
+    contributors: "Contributors"
+    contributors_list: "list"
+    web_site: "Web site"
+  login:
+    page_title: "Login"
+    window_title: "Inloggen op {{product}}"
+    username: "Gebruikersnaam"
+    password: "Wachtwoord"
+    remember_me: "Onthoudt mij"
+    button_login: "Inloggen"
+    locale: "Taal"
+    bad_login: "Onjuiste gebruikersnaam of wachtwoord."
+  admin:
+    menu:
+      title: "Menu"
+      general:
+        title: "Generiek"
+        dashboard: "Dashboard"
+        hardware_servers: "Fysieke servers"
+        virtual_servers: "Virtuele servers"
+        my_profile: "Mijn profiel"
+        users: "Gebruikers"
+        tasks: "Taken"
+        event_log: "Gebeurtenissen"
+        logout: "Uitloggen"
+      help:
+        title: "Help"
+        documentation: "Documentatie"
+        support: "Support"
+    operations:
+      up_level: "Niveau omhoog"
+    logout: "Weet je het zeker dat je wilt uitloggen?"
+    my_profile:
+      title: "Mijn profiel"
+      user_name: "Gebruikersnaam"
+      current_password: "Huidige wachtwoord"
+      new_password: "Nieuw wachtwoord"
+      confirm_password: "Bevestig wachtwoord"
+      bad_current_password: "Onjuist huidig wachtwoord."
+    events:
+      internal_error: "Interne fout: {{message}}"
+      hardware_server:
+        connect: "Fysieke server {{host}} verbonden."
+        disconnect: "Fysieke server {{host}} is niet verbonden."
+        sync: "Server's {{host}} status is gesynchroniseerd."
+      virtual_server:
+        created: "Virtuele server {{identity}} is aangemaakt."
+        removed: "Virtuele server {{identity}} is verwijderd."
+        change_state_failed: "Status veranderen mislukt voor virtuele server {{identity}}; status: {{state}}; code: {{code}}."
+        updated: "Instellingen voor virtuele server {{identity}} zijn ge-update."
+    tasks:
+      os_templates:
+        install: "OS templates installatie op de server {{host}}."
+    dashboard:
+      title: "Dashboard"
+      intro:
+        title: "Introductie"
+        text: "OpenVZ Web Panel is een GUI web-based frontend voor het controleren van fysieke servers met OpenVZ virtualizatie technologie."
+      profile:
+        title: "Profiel"
+        text: "Je bent ingelogd als {{login}}."
+      updates:
+        text: "Een nieuwe versie is beschikbaar: {{product}}."
+        update_command: "Om de update te draaien moet je het volgende commando uitvoeren: {{command}}"
+      stats_grid:
+        title: "Statistieken"
+        column:
+          parameter: "Parameter"
+          value: "Waarde"
+        parameter:
+          panel_users: "Panel gebruikers"
+          hardware_servers: "Fysieke servers"
+          virtual_servers: "Virtuele servers"
+          virtual_servers_running: "Virtuele servers - draaiend"
+          virtual_servers_stopped: "Virtuele servers - gestopt"
+    hardware_servers:
+      title: "Fysieke servers"
+      grid:
+        title: "Fysieke server lijst"
+        column:
+          host_name: "Hostnaam"
+          description: "Omschrijving"
+          virtual_servers: "Virtuele servers"
+        button:
+          connect: "Verbind nieuwe server"
+          reconnect: "Herverbind server"
+          disconnect: "Stop verbinding server"   
+          details: "Details" 
+          sync: "Synchronisatie"
+          edit: "Verander instellingen"
+      form:
+        connect_server:
+          title: "Verbind nieuw fysieke server"
+          edit_title: "Verander instellinge van fysieke server"
+          button_connect: "Verbind"
+          field:
+            host_name: "Hostnaam"
+            auth_key: "Autorisatie sleutel"
+            description: "Omschrijving"
+        disconnect_server:
+          sure_to_disconnect: "Weet u zeker dat u de verbinding wilt stoppen voor de geselecteerde servers?"
+          deletion_failed: "Verzoek om verbinding te stoppen is mislukt."
+        sync:
+          sync_failed: "Het is niet mogelijk informatie te synchroniseren op sommige fysieke servers."
+      show:
+        title: "Fysieke server {{name}}"
+      top_toolbar:
+        os_templates: "OS templates"
+        server_templates: "Server templates"
+    virtual_servers:
+      title: "Virtuele servers"
+      grid:
+        title: "Virtuele servers lijst"
+        column:
+          state: "Status"
+          identity: "VEID"
+          ip_address: "IP adres"
+          host_name: "Hostnaam"
+          os_template: "OS template"
+          memory: "Geheugen, Mb"
+          diskspace: "Diskruimte, Mb"
+          owner: "Eigenaar"
+          description: "Omschrijving"
+        button:
+          create: "Cre&euml;er virtuele server"
+          destroy: "Verwijder virtuele server"
+          change_state: "Verander status"
+          start: "Starten"
+          restart: "Herstart"
+          stop: "Stoppen"
+          edit: "Verander instellingen"
+          limits: "Limieten"
+          reinstall: "Herinstalleer"
+          change_settings: "Verander instellingen"
+      form:
+        change_settings:
+          title: "Verander instellingen van virtuele server"
+        reinstall:
+          title: "Herinstalleer virtuele server"
+          button:
+            reinstall: "Herinstalleer"
+        change_state:
+          failed: "Het is niet mogelijk de status te veranderen van de virtuele servers."
+        remove_server:
+          sure_to_remove: "Weet u zeker dat u de geselecteerde virtuele servers wilt verwijderen?"
+          deletion_failed: "Het is niet mogelijk om sommige virtuele servers te verwijderen."
+        create_server:
+          title: "Cre&euml;er een nieuwe virtuele server"
+          edit_title: "Verander instellingen van de virtuele server"
+          button_create: "Cre&euml;er"
+          field:
+            identity: "Server ID (VEID)"
+            os_template: "OS template"
+            select_os_template: "Selecteer OS template"
+            ip_address: "IP adres"
+            host_name: "Hostnaam"
+            password: "Root wachtwoord"
+            confirm_password: "Bevestig wachtwoord"
+            start_on_boot: "Start bij booten"
+            start_after_creation: "Start na creatie"
+            nameserver: "DNS server"
+            searchdomain: "Zoek domain"
+            diskspace: "Diskruimte, Mb"
+            memory: "RAM geheugen, Mb"
+            status: "Status"
+            owner: "Gebruiker"
+            select_owner: "Selecteer een eigenaar"
+            no_owner: "Geen eigenaar"
+            server_template: "Server template"
+            select_server_template: "Selecteer server template"
+            description: "Omschrijving"
+          fieldset:
+            general: "Generiek"
+            network: "Netwerk"
+            system_access: "Systeem toegang"
+            start_options: "Start opties"
+            dns_settings: "DNS instellingen"
+            limits: "Limieten"
+            panel_access: "Panel toegang"
+          tab:
+            main_settings: "Hoofd instellingen"
+            additional_settings: "Extra instellingen"
+        limits:
+          title: "Limieten"
+          grid:
+            column:
+              name: "Naam"
+              soft_limit: "Barri&egrave;re"
+              hard_limit: "Limiet"
+      show:
+        title: "Virtuele server {{name}}"
+        grid:
+          title: "Virtuele server informatie"
+          column:
+            parameter: "Parameter"
+            value: "Waarde"
+    os_templates:
+      title: "OS Templates op fysieke server {{name}}"
+      grid:
+        title: "Geinstalleerde OS templates"
+        column:
+          name: "Naam"
+          size: "Grootte, Mb"
+        button:
+          install_new_template: "Installeer nieuw OS template"
+          remove: "Verwijder template"
+      form:
+        install:
+          title: "Installatie van nieuw OS template"
+          tab:
+            official: "Officieel"
+            contributed: "Bijgedragen"
+          button_install: "Installeer"
+          load_failed: "Laden van OS template lijst mislukt."
+          failed: "Starten installatie van OS templates mislukt."
+          scheduled: "OS templates installatie is gepland. Nieuwe template verschijnen na een tijdje."
+        remove_template:
+          sure_to_remove: "Weet u zeker dat u de geselecteerd OS templates wilt verwijderen?"
+          deletion_failed: "Verwijderen van sommige OS templates is mislukt."
+    event_log:
+      title: "Gebeurtenissen"
+      grid:
+        title: "Laatste gebeurtenissen"
+        column:
+          level: "Status"
+          created_at: "Datum"
+          message: "Boodschap"
+          id: "ID"
+        button:
+          clear: "Leeg log"
+      form:
+        clear:
+          sure_to_clear: "Weet u zeker dat u alle records wilt verwijderen?"
+          clear_failed: "Legen log is mislukt."
+    users:
+      role:
+        infrastructure_admin: "Infrastructuur administrator"
+        virtual_server_owner: "Virtuele server eigenaar"
+      title: "Gebruikers"
+      grid:
+        title: "Gebruikers lijst"
+        column:
+          login: "Login"
+          created_at: "Creatie datum"
+          role: "Rol"
+        button:
+          add: "Gebruiker toevoegen"
+          remove: "Gebruiker verwijderen"
+          edit: "Gebruiker veranderen"
+      form:
+        remove_user:
+          sure_to_remove: "Weet u zeker dat u de geselecteerd gebruikers wilt verwijderen?"
+          deletion_failed: "Verwijderen van sommige gebruikers is mislukt."
+        create:
+          title: "Cre&euml;er nieuwe gebruiker"
+          edit_title: "Verander gebruiker"
+          button_create: "Cre&euml;er"
+          field:
+            login: "Login"
+            password: "Wachtwoord"
+            confirm_password: "Bevestig wachtwoord"
+            role: "Rol"
+            select_role: "Selecteer een rol"
+    task:
+      title: "Taken"
+      grid:
+        title: "Taken lijst"
+        column:
+          status: "Status"
+          id: "ID"
+          description: "Omschrijving"
+    server_templates:
+      title: "Server templates op de fysieke server {{name}}"
+      grid:
+        title: "Beschikare server remplates"
+        column:
+          name: "Naam"
+          template_default: "default"
+        button:
+          add: "Template toevoegen"
+          remove: "Template verwijderen"
+          edit: "Template veranderen"
+      form:
+        remove_template:
+          sure_to_remove: "Weet u zeker dat u de geselecteerde server templates wilt verwijderen?"
+          deletion_failed: "Verwijderen van sommige server templates is mislukt."
+        create_server:
+          title: "Cre&euml;er nieuw server template"
+          edit_title: "Verander server template"
+          button_create: "Cre&euml;er"
+          tab:
+            main_settings: "Hoofd instellingen"
+            advanced_settings: "Geavanceerde instellingen"
+          fieldset:
+            general: "Generiek"
+            limits: "Limieten"
+            dns_settings: "DNS instelingen"
+            start_options: "Start opties"
+          field:
+            name: "Naam"
+            diskspace: "Diskruimte, Mb"
+            memory: "Geheugen, Mb"
+            start_on_boot: "Start bij booten"
+            nameserver: "DNS server"
+            searchdomain: "Zoek domein"
+            cpu_units: "CPU eenheden"
+          grid:
+            column:
+              name: "Naam"
+              soft_limit: "Barri&euml;re"
+              hard_limit: "Limiet"

@@ -1,0 +1,5 @@
+server_101:
+  id: 1
+  identity: 101
+  ip_address: 192.168.100.101
+  hardware_server_id: 1

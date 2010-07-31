@@ -1,0 +1,465 @@
+hu:
+  language:
+    title: "Magyar"
+  form:
+    loading: "Kérem várjon..."
+    confirmation: "Megerősítés"
+    performing_task: "Kérem várjon. Folyamatban..."
+    error:
+      title: "Hiba"
+      fill_form: "Kérem töltse ki a hiányzó mezőket."
+    info:
+      title: "Információ"
+    button:
+      save: "Mentés"
+      cancel: "Mégsem"
+      create: "Létrehozás"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              confirmation: "A beírt jelszó és a megerősítés nem egyezik."
+              too_short: "A beírt jelszó túl rövid (minimum {{count}} karakter)."
+            password_confirmation:
+              blank: "Jelszó megerősítése szükséges."
+            login:
+              taken: "A felhasználói név már foglalt."
+              too_short: "A beírt név túl rövid (minimum {{count}} karakter)."
+        hardware_server:
+          attributes:
+            host:
+              taken: "A szervernév már létezik."
+              connection: "A csatlakozás sikertelen. Talán nem fut a szolgáltatás."
+            auth_key:
+              bad_auth: "Sikertelen hitelesítés. Valószínűleg helytelen a hitelesítő kulcs."
+            daemon_port:
+              not_a_number: "Érvénytelen port szám."
+              greater_than: "A port számának nagyobbnak kell lenni mint {{count}}."
+              less_than: "A port száma kissebb kell legyen mint {{count}}."
+        virtual_server:
+          attributes:
+            ip_address:
+              invalid: "Helytelen IP cím."
+              taken: "Az IP már hozzá van rendelve egy másik szervehez."
+            identity:
+              taken: "Az ilyen azaonosító a másik szerverhez tartozik."
+            password:
+              confirmation: "A jelszó és a megerősítés nem egyezik."
+            nameserver:
+              invalid: "A DNS szerver IP címe érvénytelen."
+            host_name:
+              invalid: "A megadott Hostnév érvénytelen."
+            search_domain:
+              invalid: "A keresési tartomány érvénytelen."
+            description:
+              invalid: "A leírás érvénytelen karaktereket tartalmaz."
+        server_template:
+          attributes:
+            name:
+              taken: "Már létezik szerver sablon ezen a néven."
+  about:
+    copyright: "Copyright 2008-2010 SoftUnity."
+    right_reserved: "Minden jog fenntartva."
+    about_program: "Névjegy"
+    author: "Fejlesztő"
+    contributors: "Közreműködők"
+    contributors_list: "weboldala"
+    web_site: "OpenVZ Web Panel Weboldala"
+  login:
+    page_title: "Bejelentkezés"
+    window_title: "Belépés a(z) {{product}}"
+    username: "Felhasználónév"
+    password: "Jelszó"
+    remember_me: "Jegyezz meg"
+    button_login: "Belépés"
+    locale: "Nyelv"
+    bad_login: "Érvénytelen név vagy jelszó."
+  admin:
+    menu:
+      title: "Menü"
+      general:
+        title: "Általános"
+        dashboard: "Műszerfal"
+        hardware_servers: "Fizikai szerverek"
+        virtual_servers: "Virtuális szerverek"
+        my_profile: "Profilom"
+        users: "Felhasználók"
+        tasks: "Feladatok"
+        event_log: "Eseménynapló"
+        logout: "Kijelentkezés"
+      help:
+        title: "Súgó"
+        documentation: "Dokumentáció (online)"
+        support: "Támogatás (online)"
+    operations:
+      up_level: "Egy szintel feljebb"
+      search: "Keresés"
+    logout: "Biztosan ki akar jelentkezni?"
+    search:
+      form:
+        title: "Keresés"
+        field:
+          query: "Keresendő"
+        button:
+          search: "Keresés"
+    my_profile:
+      title: "Profilom"
+      user_name: "Felhasználónév"
+      current_password: "Jelenlegi jelszó"
+      new_password: "Új jelszó"
+      confirm_password: "Jelszó megerősítése"
+      bad_current_password: "Érvénytelen jelenlegi jelszó."
+    events:
+      internal_error: "Belső hiba: {{message}}"
+      hardware_server:
+        connect: "Fizikai szerver {{host}} csatlakoztatva."
+        disconnect: "Fizikai szerver {{host}} szétkapcsolva."
+        sync: "A(z) {{host}} státusza szinkronizált."
+        reboot: "A(z) {{host}} fizikai szerver újraindítása."
+      virtual_server:
+        created: "Virtuális szerver {{identity}} létrehozva."
+        removed: "Virtuális szerver {{identity}} eltávolítva."
+        change_state_failed: "Nem sikerült megváltoztatni a(z) {{identity}} szerver állapotát; állapot: {{state}}; hibakód: {{code}}."
+        updated: "A(z) {{identity}} virtuális szerver beállítása frissült."
+    tasks:
+      os_templates:
+        install: "Rendszer sablonok telepítése a(z) {{host}} szerverre."
+      backups:
+        create: "A(z) #{{identity}} virtuális szerver mentése a(z) {{host}} fizikai szerveren."
+        restore: "A(z) #{{identity}} virtuális gép visszaálltása a(z) {{host}} fizikai szerveren."
+    dashboard:
+      title: "Műszerfal"
+      intro:
+        title: "Bemutatás"
+        text: "Az OpenVZ Web Panel egy web alapú grafikus felület az OpenVZ virtualizációs technológiát használó fizikai kiszolgáló gépek vezérlésére."
+      profile:
+        title: "Profil"
+        text: "Bejelentkezve mint {{login}}."
+      updates:
+        text: "Új verzió érhető el: {{product}}."
+        update_command: "A frissítés végrehajtásához futtassa a következő parancsot: {{command}}"
+      stats_grid:
+        title: "Statisztika"
+        column:
+          parameter: "Paraméter"
+          value: "Érték"
+        parameter:
+          panel_users: "Panel felhasználók"
+          hardware_servers: "Fizikai szerverek"
+          virtual_servers: "Virtuális szerverek"
+          virtual_servers_running: "Futó virtuális szerverek"
+          virtual_servers_stopped: "Megállított virtuális szerverek"
+    hardware_servers:
+      title: "Fizikai szerverek"
+      grid:
+        title: "Fizikai szerverek listája"
+        column:
+          host_name: "Gépnév"
+          description: "Leírás"
+          virtual_servers: "Virtuális Szerverek"
+        button:
+          connect: "Csatlakozás új szerverhez"
+          reconnect: "Újracsatlakozás a szerverhez"
+          disconnect: "Szerver leválasztása"   
+          details: "Részletek" 
+          sync: "Szinkronizálás"
+          edit: "Beállítások módosítása"
+          reboot: "Újraindítás"
+      form:
+        connect_server:
+          title: "Csatlakozás új fizikai szerverhez"
+          edit_title: "Fizikai szerver beállításainak módosítása"
+          button_connect: "Csatlakozás"
+          field:
+            host_name: "Gépnév"
+            auth_key: "Hitelesítő kulcs"
+            description: "Leírás"
+            daemon_port: "Szolgáltatás port"
+        disconnect_server:
+          sure_to_disconnect: "Biztosan le akarja választani a kijelölt szervereket?"
+          deletion_failed: "A szerverleválasztási kérés meghiúsult."
+        sync:
+          sync_failed: "Nem sikerült szinkronizálni néhány szerverrel."
+        reboot_server:
+          sure_to_reboot: "A kiválasztott szerverek nem lesznek elérhetőek az újraindítás alatt. Biztosan újra szeretné indítani azokat?"
+          reboot_failed: "Néhány szervert nem sikerült újraindítani."
+      show:
+        title: "Fizikai szerver {{name}}"
+      top_toolbar:
+        os_templates: "Rendszer sablonok"
+        server_templates: "Szerver Sablonok"
+      stats:
+        title: "Fizikai szerver statisztikák"
+        column:
+          parameter: "Paraméter"
+          value: "Érték"
+        field:
+          os_version: "Operációs rendszer verzió"
+          cpu_load_average: "Átlagos CPU terhelés"
+          disk_usage: "Lemez használat, partíció {{partition}}"
+          memory_usage: "Memória használat"
+        value:
+          disk_usage: "{{percent}}%, {{used}} használt a {{total}} -l / {{free}} szabad"
+          memory_usage: "{{percent}}%, {{used}} használt a {{total}} -l / {{free}} szabad"
+    virtual_servers:
+      title: "Virtuális Szerverek"
+      grid:
+        title: "Virtuális szerverek listája"
+        column:
+          state: "Státusz"
+          identity: "VEID"
+          ip_address: "IP Cím"
+          host_name: "Gépnév"
+          os_template: "Rendszer sablon"
+          memory: "Memória, Mb"
+          diskspace: "Lemezterület, Mb"
+          owner: "Tulajdonos"
+          description: "Leírás"
+        button:
+          create: "Virtuális szerver létrehozása"
+          destroy: "Virtuális szerver törlése"
+          change_state: "Állapot"
+          start: "Elindítás"
+          restart: "Újraindítás"
+          stop: "Leállítás"
+          edit: "Beállítások"
+          limits: "Korlátozások"
+          reinstall: "Újratelepítés"
+          change_settings: "Beállítások módosítása"
+          console: "Konzol"
+          backup: "Mentés"
+      form:
+        change_settings:
+          title: "A virtuális szerver beállításaina megváltoztatása"     
+        reinstall:
+          title: "A virtuális szerver újratelepítése"
+          button:
+            reinstall: "Újratelepítés"
+        change_state:
+          failed: "Nem sikerült megváltoztatni a virtuális szerver állapotát."
+        remove_server:
+          sure_to_remove: "Biztosan el kívánja távolítani a kiválasztott virtuális szervert?"
+          deletion_failed: "Néhány virtuális szerver törlése sikertelen."
+        create_server:
+          title: "Új virtuális szerver létrehozása"
+          edit_title: "Virtuális szerver beállításainak módosítása"
+          button_create: "Létrehozás"
+          field:
+            identity: "Szerver azonosító (VEID)"
+            os_template: "Rendszer sablon"
+            select_os_template: "Rendszer sablon kiválasztása"
+            ip_address: "IP cím"
+            host_name: "Gépnév"
+            password: "Root jelszó"
+            confirm_password: "Jelszó megerősítése"
+            start_on_boot: "Indítás Bootkor"
+            start_after_creation: "Indítás létrehozás után"
+            nameserver: "DNS Szerver"
+            searchdomain: "Keresési tartomány"
+            diskspace: "Lemezterület, Mb"
+            memory: "RAM Memória, Mb"
+            status: "Státusz"
+            owner: "Tulajdonos"
+            select_owner: "Tulajdonos kiválasztása"
+            no_owner: "Nincs tulajdonos"
+            server_template: "Szerver sablon"
+            select_server_template: "Szerver sablon kiválasztása"
+            description: "Leírás"
+            cpu_units: "CPU egység"
+            cpus: "CPU-k száma"
+            cpu_limit: "CPU korlát, %"
+          fieldset:
+            general: "Általános"
+            network: "Hálózat"
+            system_access: "Hozzáférés"
+            start_options: "Indítási beállítás"
+            dns_settings: "DNS beállítások"
+            limits: "Korlátozások"
+            panel_access: "Panel hozzáférés"
+          tab:
+            main_settings: "Fő beállítások"
+            additional_settings: "További beállítások"
+        limits:
+          title: "Korlátozások"
+          grid:
+            column:
+              name: "Név"
+              soft_limit: "Barrier"
+              hard_limit: "Limit"
+        console:
+          title: "Konzol"
+          error:
+            code: "Visszatérési kód:"
+            output: "Kimenet:"
+          field:
+            command: "Parancs"
+          button:
+            run: "Futtatás"
+      show:
+        title: "Virtuális szerver {{name}}"
+        grid:
+          title: "Virtuális szerver információ"
+          column:
+            parameter: "Paraméter"
+            value: "Érték"
+      stats:
+        title: "Virtuális szerver statisztikák"
+        field:
+          cpu_load_average: "Átlagos CPU terhelés"
+          disk_usage: "Lemez használat"
+          memory_usage: "Memória használat"
+        value:
+          disk_usage: "{{percent}}%, {{used}} használt a {{total}} -l / {{free}} szabad"
+          memory_usage: "{{percent}}%, {{used}} használt a {{total}} -l / {{free}} szabad"       
+    os_templates:
+      title: "Rendszer sablonok a(z) {{name}} szerveren"
+      grid:
+        title: "Telepített rendszer sablonok"
+        column:
+          name: "Név"
+          size: "Méret, Mb"
+          virtual_servers: "Szerverek"      
+        button:
+          install_new_template: "Új rendszer sablon telepítés"
+          remove: "Sablon törlése"
+      form:
+        install:
+          title: "Új rendszer sablon telepítése"
+          tab:
+            official: "Hivatalos"
+            contributed: "Közösségi"
+            url: "URL"            
+          button_install: "Telepítés"
+          load_failed: "A rendszer sablonok listájának betöltése sikertelen."
+          failed: "A rendszer sablon telepítése sikertelen."
+          scheduled: "A rendszer sablon telepítése ütemezve. Az új sablon nemsokára elérhetővé válik."
+          field:
+            url: "Sablon URL"
+          invalid_url: "Adjon meg érvényes URL-t a rendszersablon archívumhoz."
+        remove_template:
+          sure_to_remove: "Biztosan el szeretné távolítani a kijelölt rendszersablonokat?"
+          deletion_failed: "Néhány rendszer sablon törlése sikertelen."
+    event_log:
+      title: "Eseménynapló"
+      grid:
+        title: "Legfrissebb események"
+        column:
+          level: "Státusz"
+          created_at: "Dátum"
+          message: "Üzenet"
+          id: "ID"
+        button:
+          clear: "Napló törlése"
+      form:
+        clear:
+          sure_to_clear: "Biztosan el akarja távolítani az összes bejegyzést?"
+          clear_failed: "A bejegyzések törlése sikertelen."
+    users:
+      role:
+        infrastructure_admin: "Adminisztrátor"
+        virtual_server_owner: "Virtuális szerver tulajdonos"
+      title: "Felhasználók"
+      grid:
+        title: "Felhasználói lista"
+        column:
+          login: "Felhasználó név"
+          created_at: "Létrehozás dátuma"
+          role: "Jogkör"
+        button:
+          add: "Felhasználó hozzáadása"
+          remove: "Felhasználó törlése"
+          edit: "Szerkesztés"
+      form:
+        remove_user:
+          sure_to_remove: "Biztos benne hogy törölni szeretné a kiválasztott felhasználókat?"
+          deletion_failed: "Néhány felhasználó törlése sikertelen."
+        create:
+          title: "Felhasználó létrehozása"
+          edit_title: "Szerkesztés"
+          button_create: "Létrehozás"
+          field:
+            login: "Felhasználó név"
+            password: "Jelszó"
+            confirm_password: "Jelszó megerősítése"
+            role: "Jogkör"
+            select_role: "Jogkör kiválasztása"
+    task:
+      title: "Feladatok"
+      grid:
+        title: "Feladatlista"
+        column:
+          status: "Státusz"
+          id: "ID"
+          description: "Leírás"
+    server_templates:
+      title: "Szerver sablonok a(z) {{name}} szerveren"
+      grid:
+        title: "Elérhető szerver sablonok"
+        column:
+          name: "Név"
+          template_default: "alapértelmezett"
+          virtual_servers: "Szerverek"          
+        button:
+          add: "Sablon felvétele"
+          remove: "Sablon törlése"
+          edit: "Sablon módosítása"
+      form:
+        remove_template:
+          sure_to_remove: "Biztos benne hogy törölni szeretné a kiválasztott szerver sablonokat?"
+          deletion_failed: "Néhány sablon törlése sikertelen."
+        create_server:
+          title: "Új szerver sablon létrehozása"
+          edit_title: "Szerver sablon módosítása"
+          button_create: "Létrehozás"
+          tab:
+            main_settings: "Fő beállítások"
+            advanced_settings: "Haladó beállítások"
+          fieldset:
+            general: "Általános"
+            limits: "Korlátozások"
+            dns_settings: "DNS beállítások"
+            start_options: "Indítási beállítások"
+          field:
+            name: "Név"
+            diskspace: "Lemezterület, Mb"
+            memory: "Memória, Mb"
+            start_on_boot: "Indítás Bootkor"
+            nameserver: "DNS Szerver"
+            searchdomain: "Keresési tartomány"
+            cpu_units: "CPU egységek"
+            cpus: "CPU-k száma"
+            cpu_limit: "CPU korlát, %"            
+          grid:
+            column:
+              name: "Név"
+              soft_limit: "Barrier"
+              hard_limit: "Limit"
+    backups:
+      title: "A #{{identity}} virtuális szerver mentése"
+      grid:
+        title: "Mentések"
+        button:
+          create: "Mentés"
+          restore: "Visszaállítás"
+          destroy: "Törlés"
+        column:
+          archive_date: "Dátum"
+          description: "Leírás"
+          size: "Méret, Mb"
+      form:
+        remove_backup:
+          sure_to_remove: "Biztosan törölni szeretné a kijelölt mentéseket?"
+          deletion_failed: "Nem sikerült törölni néhány mentést."
+        create:
+          title: "Új mentés készítése"
+          hint: "Megjegyzés: a virtuális szerver le fog állni a mentés készítése alatt."
+          scheduled: "A mentési eljárás elindult és időbe telik a lefutása."
+          field:
+            description: "Leírás"
+          button_create: "Létrehozás"
+        restore:
+          sure_to_restore: "Biztosan vissza szeretné állítani a kiválasztott mentésből a szervert? A szerver nem lesz elérhető a visszaállítás alatt."
+          failed: "A visszaállítás nem sikerült."
+          scheduled: "A viszaállítás elindult és időbe telik a lefutása."
