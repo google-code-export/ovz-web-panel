@@ -1,28 +1,23 @@
 #summary Project's roadmap.
 #labels Featured
 
-= Version 1.1 =
-
-  * Maintenance release.
-  * *Released:* 2010-05-23.
-  * ~~Developing in maintenance branch.~~ Done.
-  * ~~Top priority: customer's bug reports.~~ Done.
-
 = Version 1.5 =
 
   * Major release.
-  * Preliminary release date: 2010-07-31
+  * *Released:* 2010-07-31
   * Branch for development: trunk.
-  * Backup/restore functionality.
+  * ~~Backup/restore functionality.~~ Done.
   * ~~Virtual server re-installation.~~ Done.
-  * Virtual server cloning.
 
 = Version 1.6 =
 
-  * Maintenance release.
-  * Preliminary release date: 2010-09-19
+  * Major release.
+  * Preliminary release date: 2010-10-09
   * Branch for development: trunk.
   * Top priority: customer's bug reports.
+  * Tickets system.
+  * Users permissions.
+  * Virtual server cloning.
 
 = Version 2.0 = 
 
