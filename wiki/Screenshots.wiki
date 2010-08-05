@@ -24,3 +24,9 @@ http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide9.png
 http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide10.png
 
 http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide11.png
+
+http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot2.png
+
+http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot3.png
+
+http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot4.png
