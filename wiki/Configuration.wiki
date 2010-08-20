@@ -5,7 +5,7 @@
 
 Default configuration file sample located at `/opt/ovz-web-panel/config/config.yml.sample` Panel checks and tries to load configuration `/opt/ovz-web-panel/config/config.yml` You can copy sample or simply create `config.yml` and add necessary settings. If `config.yml` file is absent the defaults hardcoded inside code will be used.
 
-Settings are in YAML format and groupped by sections. Be careful with indentation, it makes sense. Description of the settings is below.
+Settings are in YAML format and groupped by sections. Be careful with indentation, it makes sense. Descriptions of the settings are below.
 
 == OS Templates ==
 
@@ -16,6 +16,7 @@ os_templates:
   mirror:
     host: download.openvz.org
     path: /template/
+  passive_ftp: true
 }}}
 
 Setting `os_templates.mirror` is used for showing templates, that available for installation on physical server.
@@ -30,6 +31,8 @@ os_templates:
 }}}
 
 Additional mirrors can be found at OpenVZ wiki. See the page with [http://wiki.openvz.org/Download_mirrors list of FTP mirrors].
+
+Setting `os_templates.passive_ftp` in true state forces usage of passive mode for FTP connection. If firewall doesn't allow such connection, try to switch to active mode by turning this setting to false state.
 
 == Branding ==
 
@@ -49,9 +52,27 @@ Settings related to hardware daemon configuration are shown below:
 {{{
 hw_daemon:
   port: 7767
+  timeout: 900 # 15 minutes
 }}}
 
 Setting `hw_daemon.port` allows to set default port, which should be used for communicating with hardware servers daemons.
+
+Setting `hw_daemon.timeout` defines maximum timeout for XML-RPC call to hardware server daemon.
+
+== Help ==
+
+Settings related to help configuration are shown below:
+
+{{{
+help:
+  admin_doc_url: "http://code.google.com/p/ovz-web-panel/wiki/AdminGuide"
+  user_doc_url: "http://code.google.com/p/ovz-web-panel/wiki/UserGuide"
+  support_url: "http://code.google.com/p/ovz-web-panel/wiki/Support"
+}}}
+
+Settings `help.admin_doc_url` and `help.user_doc_url` define guides location.
+
+Setting `help.support_url` defines the link to the page with technical support information.
 
 = Start Up Configuration =
 
