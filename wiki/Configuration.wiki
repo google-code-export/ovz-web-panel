@@ -5,7 +5,7 @@
 
 Default configuration file sample located at `/opt/ovz-web-panel/config/config.yml.sample` Panel checks and tries to load configuration `/opt/ovz-web-panel/config/config.yml` You can copy sample or simply create `config.yml` and add necessary settings. If `config.yml` file is absent the defaults hardcoded inside code will be used.
 
-Settings are in YAML format and groupped by sections. Description of the settings is below.
+Settings are in YAML format and groupped by sections. Be careful with indentation, it makes sense. Description of the settings is below.
 
 == OS Templates ==
 
@@ -52,3 +52,39 @@ hw_daemon:
 }}}
 
 Setting `hw_daemon.port` allows to set default port, which should be used for communicating with hardware servers daemons.
+
+= Start Up Configuration =
+
+There is one more configuration file, which is used for start up. It is located at `/etc/owp.conf` It has simple "key-value" format. Changes take effect after panel restart. This can be done using the following command: `/etc/init.d/owp restart`
+
+== Installation Directory ==
+
+Parameter `INSTALL_DIR` stores panel installation directory. It is not recommended to change this parameter without real need.
+
+{{{
+INSTALL_DIR=/opt/ovz-web-panel/
+}}}
+
+== Web Server Port ==
+
+By default web server for panel listens on the port 3000. The port can be changed using `PORT` parameter.
+
+{{{
+PORT=3000
+}}}
+
+== SSL Support ==
+
+By default web server uses HTTP protocol. But HTTPS protocol can be forced using `SSL` parameter. The allowed values for this parameter are: `on` and `off`.
+
+{{{
+SSL=off
+}}}
+
+== Web Server Lock File ==
+
+Web server uses lock file to detect if panel is running. Parameter `LOCK_FILE` defines lock file location. It is not recommended to change this parameter without real need.
+
+{{{
+LOCK_FILE=/var/lock/owp
+}}}
