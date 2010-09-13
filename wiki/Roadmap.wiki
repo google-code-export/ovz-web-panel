@@ -12,7 +12,6 @@
 = Version 1.6 =
 
   * Major release.
-  * Vacation: 26/08 - 09/09 (I'll be travelling across the country and probably can't respond in timely manner).
   * Preliminary release date: 2010-10-09
   * Branch for development: trunk.
   * Top priority: customer's bug reports.
