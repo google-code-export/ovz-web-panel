@@ -1,4 +1,4 @@
-#summary Information on how get to technical support.
+#summary Information on how to get technical support.
 #labels Featured,Phase-Support
 
 = Technical Support =
