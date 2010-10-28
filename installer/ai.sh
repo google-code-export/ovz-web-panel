@@ -173,7 +173,7 @@ detect_openvz() {
 install_product() {
   puts "Installation..."
   
-  [ -d $INSTALL_DIR ] && UPGRADE=1
+  [ -f $INSTALL_DIR/config/database.yml ] && UPGRADE=1
   
   mkdir -p $INSTALL_DIR
   
