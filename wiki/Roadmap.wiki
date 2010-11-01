@@ -12,7 +12,7 @@
 = Version 1.6 =
 
   * Major release.
-  * Preliminary release date: 2010-10-30
+  * Preliminary release date: 2010-11-06
   * Branch for development: trunk.
   * Top priority: customer's bug reports.
   * Tickets system.
