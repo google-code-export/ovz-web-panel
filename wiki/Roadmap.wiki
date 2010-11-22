@@ -14,7 +14,7 @@
 = Version 1.7 =
 
   * Maintenance release.
-  * Preliminary release date: 2010-11-21
+  * Preliminary release date: 2010-11-23
   * Branch for development: trunk.
   * Resolve problem with watchdog and SQLite busy errors.
 
