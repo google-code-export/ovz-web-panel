@@ -1,22 +1,12 @@
 #summary Project's roadmap.
 #labels Featured
 
-= Version 1.6 =
-
-  * Major release.
-  * *Released:* 2010-11-07
-  * Branch for development: trunk.
-  * Top priority: customer's bug reports.
-  * ~~Tickets system.~~ Done.
-  * ~~Users permissions.~~ Done.
-  * ~~Virtual server cloning.~~ Done.
-
 = Version 1.7 =
 
   * Maintenance release.
-  * Preliminary release date: 2010-11-23
+  * *Released:* 2010-11-23
   * Branch for development: trunk.
-  * Resolve problem with watchdog and SQLite busy errors.
+  * ~~Resolve problem with watchdog and SQLite busy errors.~~ Done.
 
 = Version 2.0 = 
 
