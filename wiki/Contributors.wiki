@@ -3,6 +3,7 @@
 Main developer: [mailto:sibprogrammer@gmail.com Alexei Yuzhakov]
 
 Contributors:
+  * [mailto:dedizones@gmail.com Alexandre Foratier]
   * [mailto:vlad.nedelcu@gmail.com Vlad Nedelcu]
   * [mailto:halponn@gmail.com Kazuharu Inaba]
   * [mailto:kidboss13@gmail.com Lionel Hercot]
