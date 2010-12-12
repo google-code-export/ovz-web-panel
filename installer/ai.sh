@@ -177,20 +177,25 @@ install_product() {
   
   mkdir -p $INSTALL_DIR
   
-  exec_cmd "Downloading:" "wget -nc -P $INSTALL_DIR $DOWNLOAD_URL"
-  [ $? -ne 0 ] && fatal_error "Failed to download distribution."
-  
-  ARCHIVE_NAME=`echo $DOWNLOAD_URL | sed 's/.\+\///g'`
-  
+  if [ -f "$DOWNLOAD_URL" ]; then
+    ARCHIVE_NAME=$DOWNLOAD_URL
+    puts "Local archive: $ARCHIVE_NAME"
+    PRESERVE_ARCHIVE=1
+  else
+    exec_cmd "Downloading:" "wget -nc -P $INSTALL_DIR $DOWNLOAD_URL"
+    [ $? -ne 0 ] && fatal_error "Failed to download distribution." 
+    ARCHIVE_NAME="$INSTALL_DIR/"`echo $DOWNLOAD_URL | sed 's/.\+\///g'`
+  fi
+
   EXCLUDE_LIST=""
   if [ "x$UPGRADE" = "x1" ]; then
     EXCLUDE_LIST="--exclude=*.log --exclude=config/database.yml --exclude=db/*.sqlite3"
     [ -f "$INSTALL_DIR/config/certs/server.crt" ] && EXCLUDE_LIST="$EXCLUDE_LIST --exclude=config/certs/*"
   fi
-  exec_cmd "Unpacking:" "tar --strip 2 -C $INSTALL_DIR -xzf $INSTALL_DIR/$ARCHIVE_NAME $EXCLUDE_LIST"
+  exec_cmd "Unpacking:" "tar --strip 2 -C $INSTALL_DIR -xzf $ARCHIVE_NAME $EXCLUDE_LIST"
   
   if [ "x$PRESERVE_ARCHIVE" != "x1" ]; then
-    exec_cmd "Removing downloaded archive:" "rm -f $INSTALL_DIR/$ARCHIVE_NAME"
+    exec_cmd "Removing downloaded archive:" "rm -f $ARCHIVE_NAME"
   fi
   
   if [ "x$UPGRADE" = "x1" ]; then
