@@ -1,0 +1,44 @@
+#summary Solutions for known problems.
+#labels Phase-Support
+
+----
+
+== Wget can not download package ==
+
+=== Symptoms ===
+
+Error after executing autoinstaller:
+
+{{{
+Fatal error: Failed to download distribution.
+}}}
+
+=== Resolution ===
+
+Update wget package using package manager. For example for CentOS:
+ 
+{{{
+yum update wget
+}}}
+
+----
+
+== Internal Server Error: private method gsub! called for Class ==
+
+=== Symptoms ===
+
+Error page is shown with "Internal Server Error". Description contains:
+
+{{{
+private method gsub! called for Class ...
+}}}
+
+=== Resolution ===
+
+Need to update ruby package. Or one can replace line 15 at `/usr/lib/ruby/1.8/webrick/htmlutils.rb` to:
+
+{{{
+str = string ? string.to_s.dup : ""
+}}}
+
+----
