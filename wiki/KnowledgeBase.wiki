@@ -42,3 +42,15 @@ str = string ? string.to_s.dup : ""
 }}}
 
 ----
+
+== Blank boxes instead of charts due to Flashblock ==
+
+=== Symptoms ===
+
+Blank boxes (gray boxes) are shown instead of charts.
+
+=== Resolution ===
+
+Charts are based on Flash technology. Make sure that any Flashblock extension isn't the cause of the problem. Some firewalls can also remove Flash content. Allow Flash content for site with OpenVZ Web Panel.
+
+----
