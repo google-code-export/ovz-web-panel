@@ -191,6 +191,7 @@ install_product() {
   if [ "x$UPGRADE" = "x1" ]; then
     EXCLUDE_LIST="--exclude=*.log --exclude=config/database.yml --exclude=db/*.sqlite3"
     [ -f "$INSTALL_DIR/config/certs/server.crt" ] && EXCLUDE_LIST="$EXCLUDE_LIST --exclude=config/certs/*"
+    [ -f "$INSTALL_DIR/utils/hw-daemon/certs/server.crt" ] && EXCLUDE_LIST="$EXCLUDE_LIST --exclude=hw-daemon/certs/*"
   fi
   exec_cmd "Unpacking:" "tar --strip 2 -C $INSTALL_DIR -xzf $ARCHIVE_NAME $EXCLUDE_LIST"
   
