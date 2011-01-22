@@ -48,11 +48,11 @@ New virtual servers or OS templates can be installed directly on the server usin
 
 = Users =
 
-Panel has simple user management.
+Panel has users & roles management. 
 
-It's possible to create more than one administrator's login (infrastructure administrators). All of them will have the same right and be able to control the whole infrastructure using panel.
+It's possible to create new users and assign roles to them. By default two roles present right after installation: infrastructure admin and virtual server owner.
 
-Also it's possible to create virtual servers owners accounts. Then there are virtual servers owners present, it's possible to assign them as owners for selected virtual servers. This action is performed during virtual server creation or editing on "Advanced settings" tab by selecting owner inside drop down.
+Any user can become the owner of particular virtual server. This action is performed during virtual server creation or editing on "Main settings" tab by selecting owner inside drop down.
 
 http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide7.png
 
@@ -64,6 +64,6 @@ http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide8.png
 
 = Tasks =
 
-Long running tasks execution is tracked at Tasks page. By now it's only OS templates installation. Currently active tasks have a spinner icon in status field. Finished tasks have success of failure icons according to result.
+Long running tasks execution is tracked at Tasks page. Examples of such tasks are OS templates installation or backup creation. Currently active tasks have a spinner icon in status field. Finished tasks have success of failure icons according to result.
 
 http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide9.png
