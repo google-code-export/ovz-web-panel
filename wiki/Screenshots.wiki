@@ -1,6 +1,8 @@
 #summary Page contains screenshots of latest version.
 #labels Featured
 
+= Administrative Interface =
+
 http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot1.png
 
 http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide1.png
@@ -24,6 +26,8 @@ http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide9.png
 http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide10.png
 
 http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide11.png
+
+= Mobile Interface =
 
 http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot2.png
 
