@@ -1,0 +1,141 @@
+#summary Information about Remote API.
+#labels Phase-Implementation
+
+= Introduction =
+
+*Improtant note: Remote API will be available only in v2.0 (not released yet). You can use dev builds to test this functionality.*
+
+Remote API allows to integrate OpenVZ Web Panel with third-party systems, e.g. billing systems. API exposes business logic objects and operations and gives the ability to manipulate with them using HTTP requests with XML responses. 
+
+Typical API entry points:
+{{{
+http://<host>/api/hardware_servers/get?id=38
+}}}
+where "hardware_servers" - name of controller for manipulating with physical servers, "get" - particular method of controller, "id=38" - additional request parameters.
+
+The response for such call is:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<hardware_server>
+  <daemon_port type="integer">7767</daemon_port>
+  <default_os_template>debian</default_os_template>
+  <default_server_template>vps.basic2</default_server_template>
+  <description></description>
+  <host>host</host>
+  <id type="integer">38</id>
+  <use_ssl type="boolean">true</use_ssl>
+</hardware_server>
+}}}
+
+= Authorization =
+
+Remote API uses HTTP basic authorization mechanism.
+
+= Error Handling =
+
+TBD.
+
+= Methods =
+
+== Physical Servers ==
+
+=== list ===
+
+Request URL:
+{{{
+http://<host>/api/hardware_servers/list
+}}}
+
+Response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<hardware_servers type="array">
+  <hardware_server>
+    <daemon_port type="integer">7767</daemon_port>
+    <default_os_template>ubuntu-9.10-x86</default_os_template>
+    <default_server_template>vps.new</default_server_template>
+    <description></description>
+    <host>host</host>
+    <id type="integer">4</id>
+    <use_ssl type="boolean">false</use_ssl>
+  </hardware_server>
+  <hardware_server>
+    ...
+  </hardware_server>
+</hardware_servers>
+
+}}}
+
+Parameters: absent.
+
+=== get ===
+
+=== server_templates ===
+
+=== os_templates ===
+
+=== connect ===
+
+=== sync ===
+
+=== update ===
+
+=== disconnect ===
+
+=== virtual_servers ===
+
+== Virtual Servers ==
+
+=== get ===
+
+=== delete ===
+
+=== get_advanced_limits ===
+
+=== stop ===
+
+=== own_servers ===
+
+=== create ===
+
+=== start ===
+
+=== restart ===
+
+=== update ===
+
+== Users ==
+
+=== get ===
+
+=== delete ===
+
+=== list ===
+
+=== create ===
+
+=== enable ===
+
+=== disable ===
+
+=== update ===
+
+== Roles ==
+
+=== list ===
+
+== Event Log ==
+
+=== list ===
+
+== Tasks ==
+
+=== list ===
+
+= Provisioning Scenarios =
+
+TBD.
+
+= API Client Code Samples =
+
+TBD.
