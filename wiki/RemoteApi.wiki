@@ -29,6 +29,10 @@ The response for such call is:
 </hardware_server>
 }}}
 
+= Playing with API =
+
+The most simple way to become familiar with API is to play with it using browser. It is recommended to use Mozilla Firefox with !WebDeveloper extension installed. Firefox shows XML responses in human-readable manner. !WebDeveloper extension allows to perform re-login procedure (Miscellaneous -> Clear Private Data -> HTTP Authentication).
+
 = Authorization =
 
 Remote API uses HTTP basic authorization mechanism.
