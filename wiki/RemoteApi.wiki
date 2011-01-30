@@ -39,7 +39,45 @@ Remote API uses HTTP basic authorization mechanism.
 
 = Error Handling =
 
-TBD.
+In case of invalid requests or due to some other problems you can get errors instead of expected XML output.
+
+Attempt to access to non-existing virtual server:
+{{{
+http://<host>/api/virtual_servers/get?id=10000
+}}}
+
+Response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<error>
+  <code>object_not_found</code>
+  <message>Object not found.</message>
+</error>
+}}}
+
+Attempt to access location, which is not accesible by current user:
+{{{
+http://<host>/api/hardware_servers/list
+}}}
+
+Response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<error>
+  <code>access_denied</code>
+  <message>Access denied.</message>
+</error>
+}}}
+
+Very rarely you can see internal error. In most cases this means that system doesn't work correctly and maybe you found a bug. Typical response in such case is shown below:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<error>
+  <code>internal_error</code>
+  <message>Internal error.</message>
+  <details>Test error</details>
+</error>
+}}}
 
 = Methods =
 
@@ -347,7 +385,16 @@ Parameters:
 
 = Provisioning Scenarios =
 
-TBD.
+Before provisioning you should prepare infrastructure:
+  * connect physical servers
+  * install OS templates
+  * create/modify server templates
+  * create user roles
+
+Typical provisioning scenario may look like following:
+  * create user to be able to login
+  * create virtual server and assign user as owner
+  * show/send notification to user that server is ready
 
 = API Client Code Samples =
 
