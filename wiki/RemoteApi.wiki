@@ -182,7 +182,6 @@ Example of response:
     ...
   </hardware_server>
 </hardware_servers>
-
 }}}
 
 Parameters: absent.
@@ -432,26 +431,264 @@ Parameters:
 
 === get ===
 
+Detailed information about user.
+
+Request URL:
+{{{
+http://<host>/api/users/get?id=<id>
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<user>
+  <contact_name>John</contact_name>
+  <created_at type="datetime">2011-01-19T16:26:26Z</created_at>
+  <email>john@example.com</email>
+  <enabled type="boolean">true</enabled>
+  <id type="integer">21</id>
+  <login>john</login>
+  <role_id type="integer">2</role_id>
+</user>
+}}}
+
+Parameters:
+|| *Parameter* || *Required* || *Description* ||
+|| `<id>` || + || user ID ||
+
 === delete ===
+
+Delete user.
+
+Request URL:
+{{{
+http://<host>/api/users/delete?id=<id>
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+  <status type="boolean">true</status>
+</result>
+}}}
+
+Parameters:
+|| *Parameter* || *Required* || *Description* ||
+|| `<id>` || + || user ID ||
 
 === list ===
 
+List of panel users.
+
+Request URL:
+{{{
+http://<host>/api/users/list
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<users type="array">
+  <user>
+    <contact_name>John</contact_name>
+    <created_at type="datetime">2011-01-19T16:26:26Z</created_at>
+    <email>john@example.com</email>
+    <enabled type="boolean">true</enabled>
+    <id type="integer">21</id>
+    <login>john</login>
+    <role_id type="integer">2</role_id>
+  </user>
+  <user>
+    ...
+  </user>
+</users>
+}}}
+
+Parameters: absent.
+
 === create ===
+
+Create new user.
+
+Request URL:
+{{{
+http://<host>/api/users/create?login=<login>&password=<password>&role_id=<role_id>
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+  <status type="boolean">true</status>
+  <details>
+    <id type="integer">34</id>
+  </details>
+</result>
+}}}
+
+Parameters:
+|| *Parameter* || *Required* || *Description* ||
+|| `<login>` || + || user login ||
+|| `<password>` || + || user password ||
+|| `<role_id>` || || role ID ||
+|| `<contact_name>` || || contact name ||
+|| `<email>` || || e-mail address ||
 
 === enable ===
 
+Enable user (ability to login).
+
+Request URL:
+{{{
+http://<host>/api/users/enable?id=<id>
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+  <status type="boolean">true</status>
+</result>
+}}}
+
+Parameters:
+|| *Parameter* || *Required* || *Description* ||
+|| `<id>` || + || user ID ||
+
 === disable ===
 
+Disable user (ability to login).
+
+Request URL:
+{{{
+http://<host>/api/users/disable?id=<id>
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+  <status type="boolean">true</status>
+</result>
+}}}
+
+Parameters:
+|| *Parameter* || *Required* || *Description* ||
+|| `<id>` || + || user ID ||
+
 === update ===
+
+Update user attributes.
+
+Request URL:
+{{{
+http://<host>/api/users/update?id=<id>&password=<password>
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+  <status type="boolean">true</status>
+  <details>
+    <id type="integer">34</id>
+  </details>
+</result>
+}}}
+
+Parameters:
+|| *Parameter* || *Required* || *Description* ||
+|| `<id>` || + || user ID ||
+|| `<password>` || || user password ||
+|| `<role_id>` || || role ID ||
+|| `<contact_name>` || || contact name ||
+|| `<email>` || || e-mail address ||
 
 == Roles ==
 
 === list ===
 
+List of available user roles.
+
+Request URL:
+{{{
+http://<host>/api/roles/list
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<roles type="array">
+  <role>
+    <built_in type="boolean">true</built_in>
+    <id type="integer">1</id>
+    <name>superadmin</name>
+  </role>
+  <role>
+    ...
+  </role>
+</roles>
+}}}
+
+Parameters: absent.
+
 == Event Log ==
 
 === list ===
 
+List of lastest events.
+
+Request URL:
+{{{
+http://<host>/api/event_log/list
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<events type="array">
+  <event>
+    <created_at type="datetime">2011-01-30T07:21:24Z</created_at>
+    <id type="integer">1945</id>
+    <ip_address>192.168.0.11</ip_address>
+    <level type="integer">1</level>
+    <message>user.updated</message>
+    <t_message>User john was updated.</t_message>
+  </event>
+  <event>
+    ...
+  </event>
+</events>
+}}}
+
+Parameters: absent.
+
 == Tasks ==
 
 === list ===
+
+List of lastest finished and running tasks.
+
+Request URL:
+{{{
+http://<host>/api/tasks/list
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<tasks type="array">
+  <task>
+    <description>os_templates.install</description>
+    <id type="integer">46</id>
+    <status type="integer">0</status>
+    <t_description>OS templates installation on the server rock.lan.</t_description>
+  </task>
+  <task>
+    ...
+  </task>
+</tasks>
+}}}
+
+Parameters: absent.
