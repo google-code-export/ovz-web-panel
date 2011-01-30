@@ -211,7 +211,7 @@ Example of response:
 
 Parameters:
 || *Parameter* || *Required* || *Description* ||
-|| `<id>` || + || physical server ID ||
+|| id || + || physical server ID ||
 
 === server_templates ===
 
@@ -238,7 +238,7 @@ Example of response:
 
 Parameters:
 || *Parameter* || *Required* || *Description* ||
-|| `<id>` || + || physical server ID ||
+|| id || + || physical server ID ||
 
 === os_templates ===
 
@@ -266,7 +266,7 @@ Example of response:
 
 Parameters:
 || *Parameter* || *Required* || *Description* ||
-|| `<id>` || + || physical server ID ||
+|| id || + || physical server ID ||
 
 === connect ===
 
@@ -290,9 +290,9 @@ Example of response:
 
 Parameters:
 || *Parameter* || *Required* || *Description* ||
-|| `<host>` || + || IP address or host name of new server ||
-|| `<root_password>` || + || SSH root user password ||
-|| `<description>` || || server description ||
+|| host || + || IP address or host name of new server ||
+|| root_password || + || SSH root user password ||
+|| description || || server description ||
 
 === sync ===
 
@@ -313,7 +313,7 @@ Example of response:
 
 Parameters:
 || *Parameter* || *Required* || *Description* ||
-|| `<id>` || + || physical server ID ||
+|| id || + || physical server ID ||
 
 === update ===
 
@@ -337,10 +337,10 @@ Example of response:
 
 Parameters:
 || *Parameter* || *Required* || *Description* ||
-|| `<id>` || + || physical server ID ||
-|| `<host>` || + || IP address or host name of new server ||
-|| `<root_password>` || + || SSH root user password ||
-|| `<description>` || || server description ||
+|| id || + || physical server ID ||
+|| host || + || IP address or host name of new server ||
+|| root_password || + || SSH root user password ||
+|| description || || server description ||
 
 === disconnect ===
 
@@ -361,7 +361,7 @@ Example of response:
 
 Parameters:
 || *Parameter* || *Required* || *Description* ||
-|| `<id>` || + || physical server ID ||
+|| id || + || physical server ID ||
 
 === virtual_servers ===
 
@@ -405,27 +405,281 @@ Example of response:
 
 Parameters:
 || *Parameter* || *Required* || *Description* ||
-|| `<id>` || + || physical server ID ||
+|| id || + || physical server ID ||
 
 == Virtual Servers ==
 
 === get ===
 
+Detailed information about virtual server.
+
+Request URL:
+{{{
+http://<host>/api/virtual_servers/get?id=<id>
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<virtual_server>
+  <cpu_limit type="integer" nil="true"></cpu_limit>
+  <cpu_units type="integer">1000</cpu_units>
+  <cpus type="integer" nil="true"></cpus>
+  <description nil="true"></description>
+  <diskspace type="integer">2000</diskspace>
+  <expiration_date type="date" nil="true"></expiration_date>
+  <hardware_server_id type="integer">38</hardware_server_id>
+  <host_name>ldap.lan</host_name>
+  <id type="integer">299</id>
+  <identity type="integer">131</identity>
+  <ip_address>192.168.0.131</ip_address>
+  <memory type="integer">272</memory>
+  <nameserver>192.168.0.4</nameserver>
+  <orig_os_template>ubuntu-10.04-x86</orig_os_template>
+  <orig_server_template>vps.basic</orig_server_template>
+  <search_domain>lan</search_domain>
+  <start_on_boot type="boolean">true</start_on_boot>
+  <state>running</state>
+  <user_id type="integer">0</user_id>
+</virtual_server>
+}}}
+
+Parameters:
+|| *Parameter* || *Required* || *Description* ||
+|| id || + || virtual server ID ||
+
 === delete ===
+
+Delete virtual server.
+
+Request URL:
+{{{
+http://<host>/api/virtual_servers/delete?id=<id>
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+  <status type="boolean">true</status>
+</result>
+}}}
+
+Parameters:
+|| *Parameter* || *Required* || *Description* ||
+|| id || + || virtual server ID ||
 
 === get_advanced_limits ===
 
+List of advanced limits current values for virtual servers.
+
+Request URL:
+{{{
+http://<host>/api/virtual_servers/get_advanced_limits?id=<id>
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<limits type="array">
+  <limit>
+    <name>KMEMSIZE</name>
+    <soft_limit>11055923</soft_limit>
+    <hard_limit>11377049</hard_limit>
+  </limit>
+  <limit>
+    ...
+  </limit>
+</limits>
+}}}
+
+Parameters:
+|| *Parameter* || *Required* || *Description* ||
+|| id || + || virtual server ID ||
+
 === stop ===
+
+Stop virtual server.
+
+Request URL:
+{{{
+http://<host>/api/virtual_servers/stop?id=<id>
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+  <status type="boolean">true</status>
+</result>
+}}}
+
+Parameters:
+|| *Parameter* || *Required* || *Description* ||
+|| id || + || virtual server ID ||
 
 === own_servers ===
 
+List of virtual server controlled by current user.
+
+Request URL:
+{{{
+http://<host>/api/virtual_servers/own_servers
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<virtual_servers type="array">
+  <virtual_server>
+    <cpu_limit type="integer" nil="true"></cpu_limit>
+    <cpu_units type="integer">1000</cpu_units>
+    <cpus type="integer" nil="true"></cpus>
+    <description></description>
+    <diskspace type="integer">2048</diskspace>
+    <expiration_date type="date" nil="true"></expiration_date>
+    <hardware_server_id type="integer">4</hardware_server_id>
+    <host_name>117.ip.lan</host_name>
+    <id type="integer">202</id>
+    <identity type="integer">117</identity>
+    <ip_address>192.168.0.117</ip_address>
+    <memory type="integer">512</memory>
+    <nameserver>192.168.0.4</nameserver>
+    <orig_os_template>ubuntu-9.04-x86</orig_os_template>
+    <orig_server_template>vps.new</orig_server_template>
+    <search_domain nil="true"></search_domain>
+    <start_on_boot type="boolean">true</start_on_boot>
+    <state>stopped</state>
+    <user_id type="integer">21</user_id>
+  </virtual_server>
+  <virtual_server>
+    ...
+  </virtual_server>
+</virtual_servers>
+}}}
+
+Parameters: absent.
+
 === create ===
+
+Create new virtual server.
+
+Request URL:
+{{{
+http://<host>/api/virtual_servers/create?hardware_server_id=<hardware_server_id>&identity=<identity>...
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+  <status type="boolean">true</status>
+  <details>
+    <id type="integer">350</id>
+  </details>
+</result>
+}}}
+
+Parameters:
+|| *Parameter* || *Required* || *Description* ||
+|| hardware_server_id || + || physical server ID ||
+|| identity || + || virtual server identity (container id) ||
+|| orig_os_template || + || OS template name ||
+|| orig_server_template || + || Server template name ||
+|| description || || server description ||
+|| ip_address || || server IP address ||
+|| host_name || || server host name ||
+|| password || || SSH root user password ||
+|| user_id || || user ID (server owner) ||
+|| diskspace || || disk space, Mb ||
+|| memory || || RAM memory, Mb ||
+|| cpu_units || || number of CPU units ||
+|| cpus || || number of allowed CPUs ||
+|| cpu_limit || || percent of CPU time ||
+|| expiration_date || || expiration date ||
+|| nameserver || || DNS server ||
+|| search_domain || || search domain (for DNS lookup) ||
+|| start_on_boot || || start virtual server after physical server reboot ||
 
 === start ===
 
+Start virtual server.
+
+Request URL:
+{{{
+http://<host>/api/virtual_servers/start?id=<id>
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+  <status type="boolean">true</status>
+</result>
+}}}
+
+Parameters:
+|| *Parameter* || *Required* || *Description* ||
+|| id || + || virtual server ID ||
+
 === restart ===
 
+Restart virtual server.
+
+Request URL:
+{{{
+http://<host>/api/virtual_servers/restart?id=<id>
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+  <status type="boolean">true</status>
+</result>
+}}}
+
+Parameters:
+|| *Parameter* || *Required* || *Description* ||
+|| id || + || virtual server ID ||
+
 === update ===
+
+Update virtual server attributes.
+
+Request URL:
+{{{
+http://<host>/api/virtual_servers/update?id=<id>password=<password>...
+}}}
+
+Example of response:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+  <status type="boolean">true</status>
+  <details>
+    <id type="integer">350</id>
+  </details>
+</result>
+}}}
+
+Parameters:
+|| *Parameter* || *Required* || *Description* ||
+|| id || + || virtual server ID ||
+|| description || || server description ||
+|| ip_address || || server IP address ||
+|| host_name || || server host name ||
+|| password || || SSH root user password ||
+|| user_id || || user ID (server owner) ||
+|| diskspace || || disk space, Mb ||
+|| memory || || RAM memory, Mb ||
+|| cpu_units || || number of CPU units ||
+|| cpus || || number of allowed CPUs ||
+|| cpu_limit || || percent of CPU time ||
+|| expiration_date || || expiration date ||
+|| nameserver || || DNS server ||
+|| search_domain || || search domain (for DNS lookup) ||
+|| start_on_boot || || start virtual server after physical server reboot ||
 
 == Users ==
 
@@ -454,7 +708,7 @@ Example of response:
 
 Parameters:
 || *Parameter* || *Required* || *Description* ||
-|| `<id>` || + || user ID ||
+|| id || + || user ID ||
 
 === delete ===
 
@@ -475,7 +729,7 @@ Example of response:
 
 Parameters:
 || *Parameter* || *Required* || *Description* ||
-|| `<id>` || + || user ID ||
+|| id || + || user ID ||
 
 === list ===
 
@@ -529,11 +783,11 @@ Example of response:
 
 Parameters:
 || *Parameter* || *Required* || *Description* ||
-|| `<login>` || + || user login ||
-|| `<password>` || + || user password ||
-|| `<role_id>` || || role ID ||
-|| `<contact_name>` || || contact name ||
-|| `<email>` || || e-mail address ||
+|| login || + || user login ||
+|| password || + || user password ||
+|| role_id || || role ID ||
+|| contact_name || || contact name ||
+|| email || || e-mail address ||
 
 === enable ===
 
@@ -554,7 +808,7 @@ Example of response:
 
 Parameters:
 || *Parameter* || *Required* || *Description* ||
-|| `<id>` || + || user ID ||
+|| id || + || user ID ||
 
 === disable ===
 
@@ -575,7 +829,7 @@ Example of response:
 
 Parameters:
 || *Parameter* || *Required* || *Description* ||
-|| `<id>` || + || user ID ||
+|| id || + || user ID ||
 
 === update ===
 
@@ -599,11 +853,11 @@ Example of response:
 
 Parameters:
 || *Parameter* || *Required* || *Description* ||
-|| `<id>` || + || user ID ||
-|| `<password>` || || user password ||
-|| `<role_id>` || || role ID ||
-|| `<contact_name>` || || contact name ||
-|| `<email>` || || e-mail address ||
+|| id || + || user ID ||
+|| password || || user password ||
+|| role_id || || role ID ||
+|| contact_name || || contact name ||
+|| email || || e-mail address ||
 
 == Roles ==
 
