@@ -54,3 +54,21 @@ Blank boxes (gray boxes) are shown instead of charts.
 Charts are based on Flash technology. Make sure that any Flashblock extension isn't the cause of the problem. Some firewalls can also remove Flash content. Allow Flash content for site with OpenVZ Web Panel.
 
 ----
+
+== Proxy support for OS templates downloading ==
+
+=== Symptoms ===
+
+OS templates downloading doesn't work due to need of using proxy at local network.
+
+=== Resolution ===
+
+Internally panel uses wget for templates downloading. Need to  open `/etc/wgetrc` file at corresponding physical server with OpenVZ kernel and uncomment the following lines:
+
+{{{
+http_proxy = http://your-proxy.com:3128/
+ftp_proxy = http://your-proxy.com:3128/
+use_proxy = on
+}}}
+
+----
