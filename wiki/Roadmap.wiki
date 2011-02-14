@@ -11,8 +11,14 @@
 = Version 2.0 = 
 
   * Major release.
-  * Preliminary release date: Feb 2011
+  * Preliminary release date: March 2011
   * E-mail notifications.
-  * Remote API.
+  * ~~Remote API.~~ Done.
   * Virtual servers migration between physical servers.
   * Speed and quality improvements.
+
+= Version 2.1 =
+
+  * Maintenance release.
+  * Preliminary release date: Q2.
+  * Top priority: bugfixes.
