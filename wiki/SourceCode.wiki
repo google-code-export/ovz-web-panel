@@ -2,7 +2,7 @@
 
 = Git =
 
-Mirror on GitHub. Easy to fork and contribute changes.
+Mirror on !GitHub. Easy to fork and contribute changes.
 
 Web interface:
 https://github.com/sibprogrammer/owp
