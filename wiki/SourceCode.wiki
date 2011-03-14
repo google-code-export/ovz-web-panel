@@ -1,0 +1,24 @@
+#summary Information on how to obtain source code.
+
+= Git =
+
+Mirror on GitHub. Easy to fork and contribute changes.
+
+Web interface:
+https://github.com/sibprogrammer/owp
+
+Read-only checkout:
+{{{
+git://github.com/sibprogrammer/owp.git
+}}}
+
+= SVN = 
+
+Original SVN repository.
+
+Web interface: http://code.google.com/p/ovz-web-panel/source/browse/
+
+Read-only checkout:
+{{{
+svn checkout http://ovz-web-panel.googlecode.com/svn/trunk/ ovz-web-panel
+}}}
