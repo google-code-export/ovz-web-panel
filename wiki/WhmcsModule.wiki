@@ -1,0 +1,44 @@
+#summary WHMCS integration module
+#labels Phase-Deploy
+
+= Introduction =
+
+*Improtant note: WHMCS integration module relies on Remote API which will be available only in v2.0 (not released yet). You can use dev builds to test this functionality.*
+
+[http://www.whmcs.com/ WHMCS] is a well-known all-in-one client management, billing & support solution. Integration module allows to integrate OpenVZ Web Panel and WHMCS.
+
+= Installation =
+
+Integration module is shipped with OpenVZ Web Panel. It is located at `/opt/ovz-web-panel/utils/whmcs/owp/owp.php`
+
+Need to create `owp` directory inside `<WHMCS-root>/modules/servers/` And copy `owp.php` to that directory.
+
+= Configuration =
+
+== Add Server ==
+
+Go to Setup -> Servers -> Add New Server. Fill the form:
+  * Main section
+    * Name, e.g. Owp master server
+    * Hostname, e.g. owp.you-host.com (important that this name should be resolved properly)
+  * Server Details
+    * Type - Owp
+    * Username - admin
+    * Password - your admin password for OpenVZ Web Panel
+
+== Create Product ==
+
+Go to Setup -> Products/Services -> Add a New Product. Fill the form:
+  * Product Type - VPS/Dedicated server
+  * Select Module Settings tab
+  * Module name - Owp
+  * Select Node, OS, Server Template and default User Role for VPS owners.
+
+== VPS Provisioning ==
+
+Need to have client created. Then go to Orders -> Add New Order. Fill the form, select Product created on previous step and create it. Click the order for detail. Need to fill the following fields:
+  * Dedicated IP - IP address of VPS
+  * Username - login for VPS owner
+  * Password - password for VPS owner
+After that need to click Save Changes button. After saving changes look at Modules Commands and click Create button. VPS and VPS owner will be created using OpenVZ Web Panel.
+  
