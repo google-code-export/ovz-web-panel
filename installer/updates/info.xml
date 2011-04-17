@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <updates>
   <latest>
-    <version>1.7</version>
+    <version>2.0</version>
     <upgrade_command>wget -O - http://ovz-web-panel.googlecode.com/svn/installer/ai.sh | sh</upgrade_command>
   </latest>
 </updates>
