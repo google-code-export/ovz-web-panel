@@ -1,21 +1,14 @@
 #summary Project's roadmap.
 #labels Featured
 
-= Version 1.7 =
-
-  * Maintenance release.
-  * *Released:* 2010-11-23
-  * Branch for development: trunk.
-  * ~~Resolve problem with watchdog and SQLite busy errors.~~ Done.
-
 = Version 2.0 = 
 
   * Major release.
-  * Preliminary release date: Apr 17, 2011
-  * E-mail notifications.
+  * Released: 2011-04-17
   * ~~Remote API.~~ Done.
-  * Virtual servers migration between physical servers.
-  * Speed and quality improvements.
+  * ~~Virtual servers migration between physical servers.~~ Done.
+  * ~~IP addresses management.~~ Done.
+  * ~~Speed and quality improvements.~~ Done.
 
 = Version 2.1 =
 
