@@ -3,8 +3,6 @@
 
 = Introduction =
 
-*Improtant note: WHMCS integration module relies on Remote API which will be available only in v2.0 (not released yet). You can use dev builds to test this functionality.*
-
 [http://www.whmcs.com/ WHMCS] is a well-known all-in-one client management, billing & support solution. Integration module allows to integrate OpenVZ Web Panel and WHMCS.
 
 = Installation =
