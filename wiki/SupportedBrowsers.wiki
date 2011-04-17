@@ -3,8 +3,9 @@
 = Supported Browsers =
 
 Here is the list of of officially supported browsers:
- * Mozilla Firefox 3.x
- * Internet Explorer 7, 8
- * Google Chrome 3.x
+ * Safari 5.x+
+ * Google Chrome
+ * Mozilla Firefox 3.x+
+ * Internet Explorer 7+
 
 Web panel can work in the other browsers but the product isn't tested under them. You should avoid the usage of unsupported browsers or use the panel on your own risk.
