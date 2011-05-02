@@ -88,6 +88,19 @@ Setting `updates.disabled` controls if panel checks for updates and shows notifi
 
 Setting `updates.period` defines the updates checking period in second (3 days by default).
 
+== LDAP ==
+
+It's possible set up authentication through LDAP server. Typical settings are shown below: 
+
+{{{
+ldap:
+  enabled: true
+  host: "ldap.lan"
+  login_pattern: "uid=<login>,ou=people,dc=example,dc=com"
+}}}
+
+Setting `login_pattern` should be set according to your LDAP server configuration.
+
 = Start Up Configuration =
 
 There is one more configuration file, which is used for start up. It is located at `/etc/owp.conf` It has simple "key-value" format. Changes take effect after panel restart. This can be done using the following command: `/etc/init.d/owp restart`
