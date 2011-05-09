@@ -29,6 +29,12 @@ http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide11.png
 
 http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot5.png
 
+http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide12.png
+
+http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide13.png
+
+http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide14.png
+
 = Mobile Interface =
 
 http://ovz-web-panel.googlecode.com/svn/wiki/shots/shot2.png
