@@ -13,5 +13,5 @@
 = Version 2.1 =
 
   * Maintenance release.
-  * Preliminary release date: Q2.
+  * Preliminary release date: Q3.
   * Top priority: bugfixes.
