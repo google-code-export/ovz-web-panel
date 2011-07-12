@@ -279,7 +279,7 @@ start_services() {
 
 print_access_info() {
   puts "Panel should be available at:"
-  puts "http://`hostname`:3000"
+  puts "http://`hostname -f`:3000"
   puts "Default credentials: admin/admin"
 }
 
