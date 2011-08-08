@@ -28,6 +28,17 @@ After installation Panel should be available by the following URL:
 
 Default administrator's credentials are: admin/admin. Don't forget to change default password. 
 
+= Upgrade = 
+
+To upgrade the panel use the same command as for install:
+{{{
+  wget -O - http://ovz-web-panel.googlecode.com/svn/installer/ai.sh | sh
+}}}
+
+Panel will be upgraded to the lastest release version. 
+
+Downgrade is officially not supported, but one can try to do it on its own risk.
+
 = Manual Installation of The Build = 
 
 Place build archive to the server where you plan to run the panel. Move 
