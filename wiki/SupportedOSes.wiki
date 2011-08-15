@@ -16,6 +16,7 @@ Every release of the product is tested on these OSes.
 = Ever Tested OSes =
 
 Here is the list of OSes on that the product have been ever tested:
+  * Slackware 13.37
   * Alt Linux
   * Debian 4
   * Ubuntu 9.04
