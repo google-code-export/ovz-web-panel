@@ -1,4 +1,5 @@
 #summary How to install panel to Slackware server.
+#labels Phase-Deploy
 
 How-To was provided by [mailto:kesha@mithril.org.ua Mykyta Solomko].
 
