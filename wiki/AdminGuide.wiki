@@ -28,6 +28,8 @@ http://ovz-web-panel.googlecode.com/svn/wiki/guides/guide4.png
 
 Need to select VEID, OS and server template, IP address (or addresses) and root password. Also it's possible to define diskspace and RAM on "Advanced settings" tab like some other additional parameters.
 
+Several IP addresses or DNS servers can be added separating them by spaces.
+
 Quality of service limits can be changed later. By default they will be copied from server template.
 
 = Server Templates =
