@@ -72,3 +72,15 @@ use_proxy = on
 }}}
 
 ----
+
+== Two IP addresses or DNS servers for virtual server ==
+
+=== Symptoms ===
+
+Unclear how to add more than one IP address or DNS server for virtual server.
+
+=== Resolution ===
+
+Use the same input field to add more than one IP address or DNS server. Separate each IP or DNS server by space.
+
+----
