@@ -13,4 +13,6 @@ If you have problem related to installation, don't forget to attach /tmp/ovz-web
 
 = Donations =
 
-If you like the project and use it for commercial purposes, fill free to donate the development. It's only possible for Yandex.Money account (money.yandex.ru). Account for donations 41001719127921 (add a comment that donation is for Owp project). Project is driven by enthusiasm and your donations will be very appreciated. Money will be spend on hardware and will stimulate new features development.
+If you like the project and use it for commercial purposes, fill free to donate the development. Project is driven by enthusiasm and your donations will be very appreciated. Money will be spend on hardware and will stimulate new features development.
+
+[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WLJQ85UMKWBDE http://www.paypal.com/en_US/i/btn/x-click-but04.gif]
