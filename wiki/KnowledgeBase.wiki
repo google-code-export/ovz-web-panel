@@ -1,5 +1,17 @@
-#summary Solutions for known problems.
+#summary Solutions for known problems. Frequently asked questions (FAQ).
 #labels Phase-Support
+
+----
+
+== Two IP addresses or DNS servers for virtual server ==
+
+=== Symptoms ===
+
+Unclear how to add more than one IP address or DNS server for virtual server.
+
+=== Resolution ===
+
+Use the same input field to add more than one IP address or DNS server. Separate each IP or DNS server by space.
 
 ----
 
@@ -70,17 +82,5 @@ http_proxy = http://your-proxy.com:3128/
 ftp_proxy = http://your-proxy.com:3128/
 use_proxy = on
 }}}
-
-----
-
-== Two IP addresses or DNS servers for virtual server ==
-
-=== Symptoms ===
-
-Unclear how to add more than one IP address or DNS server for virtual server.
-
-=== Resolution ===
-
-Use the same input field to add more than one IP address or DNS server. Separate each IP or DNS server by space.
 
 ----
