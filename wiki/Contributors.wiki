@@ -1,6 +1,6 @@
 #summary List of project's contributors
 
-Main developer: [mailto:sibprogrammer@gmail.com Alexei Yuzhakov]
+Lead developer: [mailto:sibprogrammer@gmail.com Alexei Yuzhakov]
 
 Contributors:
   * [mailto:vince.vinet@gmail.com Vincent Vinet]
