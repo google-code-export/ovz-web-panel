@@ -3,6 +3,7 @@
 Main developer: [mailto:sibprogrammer@gmail.com Alexei Yuzhakov]
 
 Contributors:
+  * [mailto:vince.vinet@gmail.com Vincent Vinet]
   * [mailto:kontakt@iscgr.de Manuel Kretschmar]
   * [mailto:akzhan.abdulin@gmail.com Akzhan Abdulin]
   * [mailto:mgironacci@itecnis.com Mariano Andres Gironacci]
