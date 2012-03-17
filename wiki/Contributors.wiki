@@ -1,4 +1,4 @@
-#summary List of project's contributors
+#summary Project contributors
 
 Lead developer: [mailto:sibprogrammer@gmail.com Alexei Yuzhakov]
 
