@@ -15,3 +15,15 @@
   * Maintenance release.
   * Preliminary release date: 2012-04-??.
   * Top priority: bugfixes.
+
+= Version 2.5 = 
+
+  * Major release.
+  * Preliminary release date: 2012-09-??.
+  * Traffic control.
+  * New networking options.
+
+= Version 3.0 =
+
+  * Major release.
+  * Preliminary release date: Q1 2013.
