@@ -214,11 +214,6 @@ install_product() {
     ruby $INSTALL_DIR/script/runner -e production "HardwareServer.all.each { |server| server.sync }"
   fi
   
-  if [ "$DISTRIB_ID" = "Ubuntu" -a "`lsb_release -cs`" = "lucid" ]; then
-    puts "Patching broken WEBrick for Ubuntu 10.04"
-    sed -i''  's/string.dup/string.to_s.dup/' /usr/lib/ruby/1.8/webrick/htmlutils.rb
-  fi
-
   [ ! -x $INSTALL_DIR/script/owp ] && chmod +x $INSTALL_DIR/script/owp
   
   if [ "$DISTRIB_ID" = "Ubuntu" -o "$DISTRIB_ID" = "Debian" -o "$DISTRIB_ID" = "RedHat" -o "$DISTRIB_ID" = "CentOS" -o "$DISTRIB_ID" = "Fedora" ]; then
