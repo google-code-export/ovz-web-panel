@@ -1,19 +1,10 @@
 #summary Project roadmap.
 #labels Featured
 
-= Version 2.0 = 
-
-  * Major release.
-  * Released: 2011-04-17
-  * ~~Remote API.~~ Done.
-  * ~~Virtual servers migration between physical servers.~~ Done.
-  * ~~IP addresses management.~~ Done.
-  * ~~Speed and quality improvements.~~ Done.
-
 = Version 2.1 =
 
   * Maintenance release.
-  * Preliminary release date: 2012-04-??.
+  * Released: 2012-05-02.
   * Top priority: bugfixes.
 
 = Version 2.5 = 
