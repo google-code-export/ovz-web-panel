@@ -4,7 +4,7 @@
 VERSION="2.1"
 DOWNLOAD_URL="http://ovz-web-panel.googlecode.com/files/ovz-web-panel-$VERSION.tgz"
 RUBYGEMS_URL="http://production.cf.rubygems.org/rubygems/rubygems-1.3.5.tgz"
-RUBY_SQLITE3_CMD="ruby -e \"require 'rubygems'\" -e \"require 'sqlite3/database'\""
+RUBY_SQLITE3_CMD="ruby -e \"require 'rubygems'\" -e \"require 'sqlite3'\""
 LOG_FILE="/tmp/ovz-web-panel.log"
 INSTALL_DIR="/opt/ovz-web-panel/"
 FORCE=0 # force installation to the same directory
@@ -104,7 +104,7 @@ resolve_deps() {
     sh -c "$RUBY_SQLITE3_CMD" > /dev/null 2>&1
     if [ $? -ne 0 ]; then
       yum -y install sqlite-devel make gcc
-      gem install sqlite3-ruby --version '= 1.2.4'
+      gem install sqlite3
     fi 
   fi
   
