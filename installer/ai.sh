@@ -294,6 +294,7 @@ uninstall_product() {
   fi
   
   [ -f /etc/owp.conf ] && rm /etc/owp.conf
+  [ -f /etc/init.d/owp ] && rm /etc/init.d/owp
   
   puts "Panel was uninstalled."
 }
