@@ -8,8 +8,8 @@ Here is the list of of officially supported OSes:
   * Debian 5
   * CentOS 6
   * CentOS 5
+  * Ubuntu 12.04
   * Ubuntu 10.04
-  * Ubuntu 9.10
 
 Every release of the product is tested on these OSes.
 
