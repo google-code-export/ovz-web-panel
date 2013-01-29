@@ -7,14 +7,19 @@
   * Released: 2012-05-02.
   * Top priority: bugfixes.
 
+= Version 2.2 = 
+
+  * Maintenance release.
+  * Preliminary release date: 2013-01-??.
+
 = Version 2.5 = 
 
   * Major release.
-  * Preliminary release date: 2012-09-??.
+  * Preliminary release date: 2013-??-??.
   * Traffic control.
   * New networking options.
 
 = Version 3.0 =
 
   * Major release.
-  * Preliminary release date: Q1 2013.
+  * Preliminary release date: Q4 2013.
