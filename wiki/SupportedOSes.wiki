@@ -7,7 +7,6 @@ Here is the list of of officially supported OSes:
   * Debian 6
   * Debian 5
   * CentOS 6
-  * CentOS 5
   * Ubuntu 12.04
   * Ubuntu 10.04
 
@@ -24,5 +23,6 @@ Here is the list of OSes on that the product have been ever tested:
   * !ArchLinux
   * Fedora 12
   * Gentoo
+  * CentOS 5
 
 The OSes from this list have a limited support. This means that product can work on selected OS without problems, but in case of bugs it's better to switch to one of the officially supported OSes. 
