@@ -226,6 +226,11 @@ install_product() {
       /sbin/chkconfig --add owp
     fi
   fi
+
+  if [ -f $INSTALL_DIR/script/owp.cron -a -d /etc/cron.daily ]; then
+    cp $INSTALL_DIR/script/owp.cron /etc/cron.daily/owp.cron
+    chmod 755 /etc/cron.daily/owp.cron
+  fi 
   
   if [ -f $INSTALL_DIR/config/owp.conf.sample -a ! -f /etc/owp.conf ]; then
     cp $INSTALL_DIR/config/owp.conf.sample /etc/owp.conf
@@ -295,6 +300,7 @@ uninstall_product() {
   
   [ -f /etc/owp.conf ] && rm /etc/owp.conf
   [ -f /etc/init.d/owp ] && rm /etc/init.d/owp
+  [ -f /etc/cron.daily/owp.cron ] && rm /etc/cron.daily/owp.cron
   
   puts "Panel was uninstalled."
 }
