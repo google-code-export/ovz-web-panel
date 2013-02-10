@@ -95,12 +95,13 @@ resolve_deps() {
       rm -f /tmp/$ARCHIVE_NAME
       rm -rf /tmp/$DIR_NAME
     fi
-    
+
     gem list rake -i
-    if [ $? -ne 0 ]; then
-      gem install rake
-    fi
-    
+    [ $? -ne 0 ] && gem install rake
+
+    gem list rdoc -i
+    [ $? -ne 0 ] && gem install rdoc
+
     sh -c "$RUBY_SQLITE3_CMD" > /dev/null 2>&1
     if [ $? -ne 0 ]; then
       yum -y install sqlite-devel make gcc
