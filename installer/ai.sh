@@ -213,6 +213,9 @@ install_product() {
 
     puts "Syncing physical servers state..."
     ruby $INSTALL_DIR/script/runner -e production "HardwareServer.all.each { |server| server.sync }"
+
+    puts "Reset remember_me tokens..."
+    ruby $INSTALL_DIR/script/runner -e production "User.all.each{ |user| user.remember_token = ''; user.save }"
   fi
   
   [ ! -x $INSTALL_DIR/script/owp ] && chmod +x $INSTALL_DIR/script/owp
